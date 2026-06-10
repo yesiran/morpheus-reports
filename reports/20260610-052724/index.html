@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>赌智能家居,还是赌雷军? · 墨菲斯研究</title>
+<style>
+:root {
+  --paper: #F4F1EA;
+  --paper-2: #FBF9F4;
+  --ink: #211F1A;
+  --ink-strong: #111111;
+  --muted: #7A7368;
+  --line: #E3DCCD;
+  --accent: #2F5D57;
+  --accent-deep: #234742;
+  --accent-soft: rgba(47, 93, 87, 0.09);
+  --brick: #B0503C;
+  --brick-soft: rgba(176, 80, 60, 0.10);
+  --amber: #BB8A2B;
+  --serif: "Songti SC", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+  --sans: "PingFang SC", "Noto Sans SC", "Source Han Sans SC", -apple-system, "Helvetica Neue", sans-serif;
+  --mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  --shadow: 0 22px 48px -26px rgba(60, 48, 28, 0.30);
+  --shadow-soft: 0 12px 28px -18px rgba(60, 48, 28, 0.22);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1C1A16;
+    --paper-2: #24211C;
+    --ink: #E6E1D6;
+    --ink-strong: #F5F2EA;
+    --muted: #9A9385;
+    --line: #3A362E;
+    --accent: #5E9C93;
+    --accent-deep: #7DB5AC;
+    --accent-soft: rgba(94, 156, 147, 0.14);
+    --brick: #CC7A66;
+    --brick-soft: rgba(204, 122, 102, 0.14);
+    --amber: #D2A653;
+    --shadow: none;
+    --shadow-soft: none;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.85;
+  font-feature-settings: "tnum";
+}
+.wrap { max-width: 744px; margin: 0 auto; padding: 0 26px 96px; }
+
+/* ── 开篇 ─────────────────────────────────────────── */
+.hero { padding: 76px 0 40px; border-bottom: 1px solid var(--line); }
+.kicker {
+  font: 600 12.5px/1 var(--mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 22px;
+}
+h1 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(32px, 6.2vw, 50px);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+  margin: 0 0 20px;
+}
+.lead {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--muted);
+  border-left: 2px solid var(--line);
+  padding-left: 18px;
+  margin: 0;
+}
+.lead b { color: var(--ink); font-weight: 600; }
+
+/* ── 总判断 ───────────────────────────────────────── */
+.verdict {
+  margin: 44px 0 8px;
+  padding: 28px 30px;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+}
+.verdict .tag {
+  font: 700 12px/1 var(--mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 12px;
+}
+.verdict p {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.66;
+  color: var(--ink-strong);
+}
+
+/* ── 目录 ─────────────────────────────────────────── */
+.toc { margin: 40px 0 0; padding: 0; list-style: none; }
+.toc li { margin: 0; border-bottom: 1px solid var(--line); }
+.toc a {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  padding: 11px 2px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.toc a:hover { color: var(--accent); }
+.toc .n { font: 700 13px/1 var(--mono); color: var(--accent); min-width: 20px; }
+
+/* ── 每题一节 ─────────────────────────────────────── */
+section { padding-top: 58px; scroll-margin-top: 24px; }
+.qhead { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 18px; }
+.qnum {
+  flex: none;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #FBF9F4;
+  font: 700 15px/32px var(--mono);
+  text-align: center;
+  margin-top: 5px;
+}
+h2 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.34;
+  color: var(--ink-strong);
+  margin: 0;
+}
+.answer {
+  margin: 20px 0 26px;
+  padding: 18px 22px;
+  background: var(--accent-soft);
+  border-radius: 12px;
+  font-size: 17px;
+  line-height: 1.75;
+}
+.answer .tag {
+  font: 700 11.5px/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 8px;
+}
+.answer p { margin: 0; color: var(--ink-strong); font-weight: 500; }
+p { margin: 0 0 18px; }
+strong { color: var(--ink-strong); font-weight: 650; }
+em {
+  font-style: normal;
+  background: linear-gradient(transparent 62%, var(--accent-soft) 62%);
+  padding: 0 2px;
+}
+blockquote {
+  margin: 30px 0;
+  padding: 4px 0 4px 24px;
+  border-left: 3px solid var(--accent);
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.62;
+  color: var(--ink-strong);
+}
+blockquote .src {
+  display: block;
+  margin-top: 10px;
+  font: 500 12.5px/1.5 var(--mono);
+  color: var(--muted);
+}
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 8px; line-height: 1.7; }
+a { color: var(--accent); text-decoration-color: var(--line); text-underline-offset: 3px; }
+
+/* ── 风险/反面(用砖红,克制) ───────────────────────── */
+.watch {
+  margin: 30px 0;
+  padding: 18px 22px;
+  background: var(--brick-soft);
+  border-radius: 12px;
+}
+.watch .tag {
+  font: 700 11.5px/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brick);
+  display: block;
+  margin-bottom: 8px;
+}
+.watch p, .watch ul { margin: 0; }
+.watch li { margin-bottom: 6px; }
+
+/* ── 信号看板(盯什么) ─────────────────────────────── */
+.signals { margin: 26px 0 0; padding: 0; list-style: none; }
+.signals li {
+  display: flex;
+  gap: 12px;
+  padding: 12px 2px;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+.signals .dot { flex: none; font: 700 13px/1 var(--mono); color: var(--amber); }
+.signals b { color: var(--ink-strong); font-weight: 650; }
+
+/* ── 来源与脚注 ───────────────────────────────────── */
+.sources { margin-top: 28px; }
+.sources summary {
+  cursor: pointer;
+  font: 600 13px/1 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 8px 0;
+}
+.sources ul { margin: 12px 0 0; }
+.sources li { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+/* ── 结尾 ─────────────────────────────────────────── */
+footer { margin-top: 76px; text-align: center; }
+.byline {
+  display: inline-block;
+  font: 600 13px/1.2 var(--mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 1px solid var(--ink-strong);
+  border-bottom: 1px solid var(--ink-strong);
+  padding: 14px 26px;
+}
+.byline .m { color: var(--accent); }
+
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .wrap { padding: 0 18px 72px; }
+  .hero { padding: 52px 0 32px; }
+  h1 { font-size: 32px; }
+  h2 { font-size: 22px; }
+  blockquote { font-size: 19px; }
+  .verdict { padding: 22px 20px; }
+  .verdict p { font-size: 18px; }
+  section { padding-top: 46px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="kicker">Morpheus Research · 2026-06-10</p>
+    <h1>赌智能家居,还是赌雷军?</h1>
+    <p class="lead">你问的是:<b>应不应该重仓小米,赌的是未来智能家居领域。</b>这份报告把这笔下注拆成六层——你赌的每一个前提,逐条压力测试。</p>
+  </header>
+
+  <div class="verdict">
+    <span class="tag">总判断</span>
+    <p>重仓小米不是"赌智能家居生态"的纯粹下注,而是"主赌手机+车盈利、附赠一张真但在漏、且头顶有华为的智能家居牌"的复合下注。如果你看好的是智能家居本身赢家通吃,小米未必是最干净的标的;如果你看好的是雷军这家公司穿越手机+车这道窄门的综合能力,那才对得上这笔重仓的真实赔率。</p>
+  </div>
+
+  <ul class="toc">
+    <li><a href="#q1"><span class="n">1</span>股票引擎不在家居舱</a></li>
+    <li><a href="#q2"><span class="n">2</span>护城河压在连接层</a></li>
+    <li><a href="#q3"><span class="n">3</span>锁不住最好的设备</a></li>
+    <li><a href="#q4"><span class="n">4</span>大模型加厚了入口权</a></li>
+    <li><a href="#q5"><span class="n">5</span>Matter 只削平了底层地板</a></li>
+    <li><a href="#q6"><span class="n">6</span>真正能掀翻你的是华为</a></li>
+  </ul>
+
+  <section id="q1">
+    <div class="qhead">
+      <span class="qnum">1</span>
+      <h2>股票引擎不在家居舱</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>重仓小米,主要在赌【手机+车】这台双引擎,外加互联网服务的高毛利印钞机;智能家居是利润里子,不是估值面子。"赌智能家居"和市场"赌手机毛利+汽车盈利"是错位的。</p>
+    </div>
+    <p>把小米拆成四块看谁在驱动估值:<strong>互联网服务</strong>毛利率 76.5%,是闷声印钞的里子,但盘子只占 8%;<strong>智能手机</strong>是命门,被存储芯片绑架,Q4 毛利率跌到 8.3% 的历史低位;<strong>汽车及 AI</strong>首次经营利润转正,是估值面子;<strong>IoT 智能家居</strong>毛利率两年从 16% 抬到 23%,越卖越赚——但它撑场子,不撑估值。</p>
+    <p>2025 年 6 月到 2026 年 4 月,小米股价<em>腰斩</em>:砸盘导火索没有一条跟智能家居有关——DRAM/NAND 合约价同比暴涨 200% 把手机毛利摁到历史低位,汽车购置税从全免改减半,五家机构集中下调目标价。</p>
+    <blockquote>
+      智能家居是个越卖越多、越卖越赚的好分部——但"自己赚钱"和"驱动股价"是两回事。
+      <span class="src">小米 2024/2025 年报分部数据 · 新浪财经、小米 IR 公告</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>这个错位意味着后五层分析的是"这块生意硬不硬",而不是"股票会不会涨"。若手机毛利率企稳、汽车净利率改善,股价才有可能为智能家居生态"补涨"——但这是第二步,不是第一步。</p>
+    </div>
+  </section>
+
+  <section id="q2">
+    <div class="qhead">
+      <span class="qnum">2</span>
+      <h2>护城河压在连接层,不在设备</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>小米智能家居的真正资产是【连接层 + 用户关系 + 流量分发】三位一体,不在设备本身。护城河的厚薄,只取决于这一层能不能被别人绕开。</p>
+    </div>
+    <p>小米干的本质是当"造设备的组织者":投了 430 多家公司(账面价值 671 亿),把便宜的供应链、巨大的渠道流量、品牌背书"租"给这些公司,换它们把性价比设备塞进米家。这跟苹果不造最好的镜头却赢了平台是同一个剧本——<em>小米连设备都不亲自造</em>。</p>
+    <p>真正值钱的资产是数字上已形成结构性优势的这一束:AIoT 连接设备数约 9.89 亿台、米家 App 月活破 1 亿、拥有 5 件以上设备的高粘性用户 1830 万、线下小米之家约 1.5 万家。这套"连接数 × 月活 × 门店"的分发网络,别人砸钱短期复制不出来。</p>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>护城河只在"用户没法不通过米家直连设备"这个条件下成立。一旦这层被绕开——Matter 从下方打通互操作、华为从上方接管入口——这道墙就会从两面同时被侵蚀。</p>
+    </div>
+  </section>
+
+  <section id="q3">
+    <div class="qhead">
+      <span class="qnum">3</span>
+      <h2>锁不住最好的设备</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>小米的生态控制力锁得住"性价比那档"的代工产能,锁不住任何想往高端走的公司——护城河在设备供给这一侧正被结构性掏空。</p>
+    </div>
+    <p>翻旧账就清楚了:<strong>石头科技</strong>来自小米的关联交易占比从 2016 年 100% 降到 2020 年 9.28%,脱钩后毛利率从 28% 飙到 51%,2024 年全球扫地机销量、销额双第一,如今反手杀进洗衣机直接抢小米市场;<strong>华米/Amazfit</strong>也已"毕业",小米占比从 53% 降到 26%;就连被视为"忠臣"的<strong>绿米/Aqara</strong>,2026 年 3 月递表港股 IPO,招股书里把小米降格成"众多生态中的一员",自己接了苹果 HomeKit、加入 Matter。</p>
+    <p>机制只有一句话:米家模式把你锁在 20% 毛利的性价比牢笼里,品牌还被小米吸走——所以任何技术够硬、想往高端走的公司,<em>留下来就是亏</em>,理性必然外逃。</p>
+    <blockquote>
+      小米给的是"启动渠道+流量",不是终身绑定。
+      <span class="src">石头去小米化 · 创业邦;绿米 IPO 招股书 · 新浪财经</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>这不是"覆盖面不够广"的问题,而是结构性的——最好的供给会主动出走。生态里长期留下的将是"性价比工厂":连接数越来越大,但设备品质的天花板越来越低。</p>
+    </div>
+  </section>
+
+  <section id="q4">
+    <div class="qhead">
+      <span class="qnum">4</span>
+      <h2>大模型加厚了入口权,不是聪明度</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>大模型让"中控大脑"成为小米的【加强护城河】——但加强的是"入口权+执行权"这一半,不是"模型聪明度"那一半。纯模型玩家(豆包/ChatGPT)拿不下意图路由的归属,只能当"外脑供应商"。</p>
+    </div>
+    <p>让脑子"变聪明"的那部分今天已是货架商品:小爱同学直接插 DeepSeek-R1,华为小艺也插,涂鸦平台"一行代码切换任意大模型"——<strong>"聪明"被彻底平权了</strong>。如果小米的护城河建在"我的模型更懂你"上,早被填平了。</p>
+    <p>真正的壁垒在另一层:大模型时代,语音助手要做"拆解需求→规划→调动一堆设备把事办成",靠的是<em>系统级权限、跨设备执行接口、和"用户张嘴第一个对谁说"</em>——这三样模型买不来。小米攥着近 10 亿台 AIoT 连接、HyperOS 连着 8.2 亿台设备、超级小爱渗透率 71%,这是"身体"。</p>
+    <blockquote>
+      脑子可以租,身体租不来,"你对谁说话"更抢不走。
+      <span class="src">高盛研报 · 系统权限/记忆/跨应用三门槛;华尔街见闻</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>苹果是最有说服力的反证:身体、隐私、装机量都有,却卡在"LLM Siri 做不可靠",home hub 从 2025 春一路推到 2026 年 9 月——<strong>光有身体没有靠谱的脑,连货都发不出来</strong>。小米能不能真正把"聪明"和"身体"组合好,是这层护城河能否兑现的关键变量。</p>
+    </div>
+  </section>
+
+  <section id="q5">
+    <div class="qhead">
+      <span class="qnum">5</span>
+      <h2>Matter 只削平了最底层地板</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>Matter 只统一了最不值钱的通用件(灯/开关/传感器),上层的体验、AI 中控、服务照样有墙——而且连地板都还没铺平。你担心的这个命门,被高估了约八成。</p>
+    </div>
+    <p>Matter 的本质是"通用绿卡",不是"通用语言":它只管设备能不能连上别家,不管连上之后体验好不好。哪怕贴了 Matter 标,跨平台往往只给你"开/关"的基础动作——自适应照明、能耗监测、场景定制这些值钱功能,全锁在厂商自己的 App 里。这是结构性的,不是过渡期 bug。</p>
+    <p>进展还极慢:安防摄像头拖到 2025 年 11 月(Matter 1.5)才进规范,扫地机和复杂家电至今只暴露子集功能。<em>小米的反应正说明问题</em>:只把灯泡、门锁这种边缘单品拿去出海接 Matter,国内米家本盘基本冷处理——接了等于给用户出逃开门,它没动力。</p>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>Matter 最终如果覆盖复杂家电并推动操作系统层面的统一互操作,情况会改变。但这是 5 年以上的时间尺度。在那之前,你的重仓赌局不需要把它列为主要威胁。</p>
+    </div>
+  </section>
+
+  <section id="q6">
+    <div class="qhead">
+      <span class="qnum">6</span>
+      <h2>真正能掀翻你的,是华为</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>小米是【被夹的胶着方,不是领先者】。它最可能的死法是被上下夹击:华为从上方(OS+中控+精装入口)吃掉"家"的入口,白电从侧面(自建生态+集体不接米家)把大件设备攥走。</p>
+    </div>
+    <p>小米 2024 年中国智能家居出货份额 38%,<em>量是第一,位置却被夹</em>。它赢的是"量"——便宜的灯、锁、扫地机联上了网;它没赢的是"值"和"入口"。</p>
+    <p><strong>华为是头顶那一刀,最危险</strong>:鸿蒙智家在地产精装前装市场份额 58%、连续两年第一,精装房渗透率正冲向 80%。前装是一次性锁死的,后装的小米很难逆向替换。更致命的是白电这一侧:<strong>海尔、美的、格力、方太、博世、西门子……都进了鸿蒙生态,却绕开米家</strong>——家里那些"大件好设备"可以倒向华为,但不经过你。</p>
+    <blockquote>
+      精装房渗透率冲向 80%,而前装是一次性锁死的——后装的小米很难逆向替换。
+      <span class="src">华为精装份额与 1+3+N 战略 · 36 氪、证券时报</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>白电"不接米家"目前是各自为政保流量入口,不是协同封锁。如果美的/海尔任意一家与米家达成深度合作,侧面的威胁会显著缩小。小米的体量和供应链吸引力不可忽视——这个天平还没有落定。</p>
+    </div>
+  </section>
+
+  <section id="signals">
+    <div class="qhead">
+      <span class="qnum">◎</span>
+      <h2>之后盯什么</h2>
+    </div>
+    <ul class="signals">
+      <li><span class="dot">▸</span><span><b>精装前装市场份额</b> — 华为鸿蒙智家份额持续增长意味着入口被提前锁死;一旦超过 70%,小米的后装策略空间极度压缩</span></li>
+      <li><span class="dot">▸</span><span><b>白电旗舰大件归属</b> — 美的/海尔/格力旗舰产品深度入鸿蒙而非米家,意味着"大件设备"这层正在向华为倾斜</span></li>
+      <li><span class="dot">▸</span><span><b>小米手机毛利率</b> — 存储芯片(DRAM/NAND)合约价走势;毛利率能否回到 12%+ 是股价反弹的先决条件,与智能家居无关</span></li>
+      <li><span class="dot">▸</span><span><b>汽车盈利节奏</b> — 净利率能否从不足 1% 爬升到有意义的水平;这台引擎如果长期亏损,手机毛利的压缩会是双重打击</span></li>
+      <li><span class="dot">▸</span><span><b>生态链"毕业生"动向</b> — 下一家从米家体系半独立的公司是谁;每一次"毕业"都是对设备供给护城河的一次小漏洞</span></li>
+    </ul>
+  </section>
+
+  <details class="sources">
+    <summary>来源清单</summary>
+    <ul>
+      <li>小米 2024/2025 年报分部数据 — 新浪财经、小米 IR 公告(q1)</li>
+      <li>股价腰斩归因分析 — 雪球、钛媒体(q1)</li>
+      <li>小米生态链投资数与连接设备数 — 界面新闻、搜狐(q2)</li>
+      <li>小米生态链赋能模式 — letschuhai(q2)</li>
+      <li>石头科技去小米化 — 创业邦(q3)</li>
+      <li>华米自有品牌萎缩 — 界面新闻、OFweek(q3)</li>
+      <li>绿米/Aqara IPO 去小米化 — 新浪财经(q3)</li>
+      <li>高盛研报:系统权限/记忆/跨应用三门槛 — 华尔街见闻(q4)</li>
+      <li>豆包系统级助手与 OEM 自研框架之争 — 21 经济网(q4)</li>
+      <li>苹果 home hub 延期 — MacRumors(q4)</li>
+      <li>Matter 只统一应用层、国内厂商冷淡 — 少数派(q5)</li>
+      <li>摄像头到 Matter 1.5 才纳入 — PCWorld(q5)</li>
+      <li>支持 Matter 但只给基础控制 — XDA(q5)</li>
+      <li>小米出海边缘单品接入 Matter — HomeKitNews(q5)</li>
+      <li>华为精装前装份额与 1+3+N 战略 — 36 氪、证券时报(q6)</li>
+      <li>白电不接米家却入鸿蒙 — 知乎、国元证券(q6)</li>
+      <li>小米 AIoT 连接数与份额 — 中国日报(q6)</li>
+    </ul>
+  </details>
+
+  <footer>
+    <span class="byline"><span class="m">墨菲斯</span> · Morpheus · 20260610-052724</span>
+  </footer>
+
+</div>
+</body>
+</html>
