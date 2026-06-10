@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>烟是真的,火在对面那间屋 · 墨菲斯研究</title>
+<style>
+:root {
+  --paper: #F4F1EA;
+  --paper-2: #FBF9F4;
+  --ink: #211F1A;
+  --ink-strong: #111111;
+  --muted: #7A7368;
+  --line: #E3DCCD;
+  --accent: #2F5D57;
+  --accent-deep: #234742;
+  --accent-soft: rgba(47, 93, 87, 0.09);
+  --brick: #B0503C;
+  --brick-soft: rgba(176, 80, 60, 0.10);
+  --amber: #BB8A2B;
+  --serif: "Songti SC", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+  --sans: "PingFang SC", "Noto Sans SC", "Source Han Sans SC", -apple-system, "Helvetica Neue", sans-serif;
+  --mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  --shadow: 0 22px 48px -26px rgba(60, 48, 28, 0.30);
+  --shadow-soft: 0 12px 28px -18px rgba(60, 48, 28, 0.22);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1C1A16;
+    --paper-2: #24211C;
+    --ink: #E6E1D6;
+    --ink-strong: #F5F2EA;
+    --muted: #9A9385;
+    --line: #3A362E;
+    --accent: #5E9C93;
+    --accent-deep: #7DB5AC;
+    --accent-soft: rgba(94, 156, 147, 0.14);
+    --brick: #CC7A66;
+    --brick-soft: rgba(204, 122, 102, 0.14);
+    --amber: #D2A653;
+    --shadow: none;
+    --shadow-soft: none;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.85;
+  font-feature-settings: "tnum";
+}
+.wrap { max-width: 744px; margin: 0 auto; padding: 0 26px 96px; }
+
+/* ── 开篇 ─────────────────────────────────────────── */
+.hero { padding: 76px 0 40px; border-bottom: 1px solid var(--line); }
+.kicker {
+  font: 600 12.5px/1 var(--mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 22px;
+}
+h1 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(32px, 6.2vw, 50px);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+  margin: 0 0 20px;
+}
+.lead {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--muted);
+  border-left: 2px solid var(--line);
+  padding-left: 18px;
+  margin: 0;
+}
+.lead b { color: var(--ink); font-weight: 600; }
+
+/* ── 总判断 ───────────────────────────────────────── */
+.verdict {
+  margin: 44px 0 8px;
+  padding: 28px 30px;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+}
+.verdict .tag {
+  font: 700 12px/1 var(--mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 12px;
+}
+.verdict p {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.66;
+  color: var(--ink-strong);
+}
+
+/* ── 目录 ─────────────────────────────────────────── */
+.toc { margin: 40px 0 0; padding: 0; list-style: none; }
+.toc li { margin: 0; border-bottom: 1px solid var(--line); }
+.toc a {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  padding: 11px 2px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.toc a:hover { color: var(--accent); }
+.toc .n { font: 700 13px/1 var(--mono); color: var(--accent); min-width: 20px; }
+
+/* ── 每题一节 ─────────────────────────────────────── */
+section { padding-top: 58px; scroll-margin-top: 24px; }
+.qhead { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 18px; }
+.qnum {
+  flex: none;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #FBF9F4;
+  font: 700 15px/32px var(--mono);
+  text-align: center;
+  margin-top: 5px;
+}
+h2 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.34;
+  color: var(--ink-strong);
+  margin: 0;
+}
+.answer {
+  margin: 20px 0 26px;
+  padding: 18px 22px;
+  background: var(--accent-soft);
+  border-radius: 12px;
+  font-size: 17px;
+  line-height: 1.75;
+}
+.answer .tag {
+  font: 700 11.5px/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 8px;
+}
+.answer p { margin: 0; color: var(--ink-strong); font-weight: 500; }
+p { margin: 0 0 18px; }
+strong { color: var(--ink-strong); font-weight: 650; }
+em {
+  font-style: normal;
+  background: linear-gradient(transparent 62%, var(--accent-soft) 62%);
+  padding: 0 2px;
+}
+blockquote {
+  margin: 30px 0;
+  padding: 4px 0 4px 24px;
+  border-left: 3px solid var(--accent);
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.62;
+  color: var(--ink-strong);
+}
+blockquote .src {
+  display: block;
+  margin-top: 10px;
+  font: 500 12.5px/1.5 var(--mono);
+  color: var(--muted);
+}
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 8px; line-height: 1.7; }
+a { color: var(--accent); text-decoration-color: var(--line); text-underline-offset: 3px; }
+
+/* ── 风险/反面(用砖红,克制) ───────────────────────── */
+.watch {
+  margin: 30px 0;
+  padding: 18px 22px;
+  background: var(--brick-soft);
+  border-radius: 12px;
+}
+.watch .tag {
+  font: 700 11.5px/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brick);
+  display: block;
+  margin-bottom: 8px;
+}
+.watch p, .watch ul { margin: 0; }
+.watch li { margin-bottom: 6px; }
+
+/* ── 信号看板(盯什么) ─────────────────────────────── */
+.signals { margin: 26px 0 0; padding: 0; list-style: none; }
+.signals li {
+  display: flex;
+  gap: 12px;
+  padding: 12px 2px;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+.signals .dot { flex: none; font: 700 13px/1 var(--mono); color: var(--amber); }
+.signals b { color: var(--ink-strong); font-weight: 650; }
+
+/* ── 来源与脚注 ───────────────────────────────────── */
+.sources { margin-top: 28px; }
+.sources summary {
+  cursor: pointer;
+  font: 600 13px/1 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 8px 0;
+}
+.sources ul { margin: 12px 0 0; }
+.sources li { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+/* ── 结尾 ─────────────────────────────────────────── */
+footer { margin-top: 76px; text-align: center; }
+.byline {
+  display: inline-block;
+  font: 600 13px/1.2 var(--mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 1px solid var(--ink-strong);
+  border-bottom: 1px solid var(--ink-strong);
+  padding: 14px 26px;
+}
+.byline .m { color: var(--accent); }
+
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .wrap { padding: 0 18px 72px; }
+  .hero { padding: 52px 0 32px; }
+  h1 { font-size: 32px; }
+  h2 { font-size: 22px; }
+  blockquote { font-size: 19px; }
+  .verdict { padding: 22px 20px; }
+  .verdict p { font-size: 18px; }
+  section { padding-top: 46px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="kicker">Morpheus Research · 2026-06-10</p>
+    <h1>烟是真的,火在对面那间屋</h1>
+    <p class="lead">你问的是:<b>墨菲斯,帮我研究一下 claude 今天发的 fable 这个模型</b>——这一问真正押的,是"Fable 跳出诗体命名 = Anthropic 转向端侧"这个直觉。</p>
+  </header>
+
+  <div class="verdict">
+    <span class="tag">总判断</span>
+    <p>你的鼻子没错——"命名断裂"是真线索,但针读反了方向。Fable 不是更小、更靠端的模型,而是 Anthropic 迄今公开发布的最强、最贵的纯云端模型,是两个月前被判"太危险不敢公开"的超级档 Mythos 的戴枷锁公开版。所以"京小贝该不该押端侧"押的是一个还不存在的标的:12–18 个月内,观望,别押。</p>
+  </div>
+
+  <ul class="toc">
+    <li><a href="#q1"><span class="n">1</span>命名断裂:针指向上,不是向下</a></li>
+    <li><a href="#q2"><span class="n">2</span>架构没换:同一根自回归脊柱</a></li>
+    <li><a href="#q3"><span class="n">3</span>"端侧领先"是赛道认错</a></li>
+    <li><a href="#q4"><span class="n">4</span>真动机:能力越线,一拆为二</a></li>
+    <li><a href="#q5"><span class="n">5</span>京小贝:观望,别押</a></li>
+  </ul>
+
+  <section id="q1">
+    <div class="qhead">
+      <span class="qnum">1</span>
+      <h2>命名断裂:针指向上,不是向下</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>Fable 是纯云端的、最强档的大模型,是端侧的反面。"端内领先"从地基上就是空的——它把"名字变了"误读成了"部署变了",而真相是"能力升档了"。</p>
+    </div>
+    <p>Opus、Sonnet、Haiku 全是诗体,按长度从长到短排,本质是一把<strong>纯尺寸刻度尺</strong>:大杯、中杯、小杯。Fable(寓言)一脚踩出了这把尺子——这一脚是真的,值得追。本能的读法是它换了一根轴,从"云端尺寸轴"跳到"部署形态轴",于是"端侧/边缘"的联想冒出来了。<em>但一手材料把这个读法整个掀翻,而且是反过来掀的。</em></p>
+    <p>Anthropic 6 月 9 日的官方发布页白纸黑字:Fable 5 是"我们对外广泛发布过的最强模型",1M 上下文、文本+视觉、定价 <strong>$10 / $50 每百万 token</strong>(约为 Opus 4.8 的两倍,公开模型里最贵一档),跑在 Claude API、AWS Bedrock、Vertex、Microsoft Foundry 上——通篇没有半个字提 on-device / local / edge / 手机 / 笔电。它和 Mythos 5 是<strong>同一个底层模型</strong>,Mythos 只是"摘掉部分安全分类器"的限量版,能力"站在 Opus 之上"。</p>
+    <p>所以命名为什么断?<em>不是因为它往下走到了端侧,是因为它往上越过了诗体能尺量的范围。</em>诗体量的是"作品尺寸";寓言→神话量的是"叙事等级"——越过凡人作品,进了神话区。Haiku、Sonnet、Opus 全都还在货架上、价格阶梯完整,Fable 是新加的顶档。</p>
+    <blockquote>
+      他们不是砸了命名体系,是在顶上又架了一层。
+      <span class="src">anthropic.com/news/claude-fable-5-mythos-5 · AWS Bedrock 上架公告 · TechCrunch / CNBC</span>
+    </blockquote>
+  </section>
+
+  <section id="q2">
+    <div class="qhead">
+      <span class="qnum">2</span>
+      <h2>架构没换:同一根自回归脊柱</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>看不出新范式。是 Anthropic 一贯 dense transformer 谱系上的又一档,套了一套 serving / 安全路由的工程组合包,不是把 transformer 换掉。</p>
+    </div>
+    <p>这一刀专门压内行最顺手的那个判断:"感觉不一样 → 一定换架构了"。真换范式——文本扩散、状态空间(SSM/Mamba)、原生低比特训练——会在两个地方藏不住:</p>
+    <ul>
+      <li><strong>解码行为。</strong>扩散/并行解码的标志是延迟-吞吐曲线反常地快、首字几乎不等。Fable 实测约 <strong>59–60 tok/s,比平均(~69)还慢</strong>,首字慢是因为它在"扩展思考"里逐 token 推理——这是典型的自回归,跟"扩散=反常高吞吐"的标志正好反向。</li>
+      <li><strong>接口契约。</strong>一个真换了解码范式的模型,没法跟自回归的 Opus 共用同一套请求面。而 Fable 5 的整个 API 请求面与 Opus 4.7/4.8 <em>逐字一致</em>——同样的 adaptive thinking、同样的 effort 档位、对同样的参数报同样的 400。</li>
+    </ul>
+    <p>全网(官方+可信第三方)没有任何一处提到 diffusion / 非自回归 / state space / Mamba / linear attention / 原生低比特。Anthropic 历史路线也很明确:刻意走 dense transformer,在别人都转 MoE 时按住不动。Fable "不一样"的地方是真的——更强的长程自主(官方说能"自己跑好几天")、更暖的文风、把网安/生化敏感问题自动甩给 Opus 4.8 接手的安全分类器——但这些是<em>能力调优 + 服务编排</em>,是 serving 和路由层的活。</p>
+    <blockquote>
+      一个换了解码范式的模型,不可能跟自回归的 Opus 共用逐字相同的请求契约。
+      <span class="src">claude-api 权威接口参考 · artificialanalysis.ai 实测吞吐 · anthropic.com 官方页(零架构披露)</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>"它是 dense transformer"是从可观测信号反推的强推断,不是官方明说——Anthropic 从不公开架构与参数量,无法在源码级别证实。但反过来,也没有任何硬证据指向新范式,所以不硬指认。</p>
+    </div>
+  </section>
+
+  <section id="q3">
+    <div class="qhead">
+      <span class="qnum">3</span>
+      <h2>"端侧领先"是赛道认错</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>"端侧领先"不成立——是把云端 SOTA 当成了端侧 SOTA 的伪命题。等于把"地表最强引擎"误读成"最省油的电动车":不是它不强,是它根本没在比这个。</p>
+    </div>
+    <p>"领先"这个词最会骗人,该问的第一句不是"它多强",而是"它到底在不在那堵墙这边"。端侧的真天花板是一个三角:<strong>体积 × 功耗 × 质量</strong>——任何一角的硬突破才叫翻过了墙,这是行业多年没人真正拿下的圣杯。</p>
+    <p>Fable 翻了吗?<em>它一寸都没碰——因为它根本不在墙这边。</em>它按 token 收钱、上 Bedrock / Azure / GitHub Copilot,它的"领先"是 SWE-bench Pro <strong>80.3%</strong>、Terminal-Bench <strong>88.0%</strong> 这类云端前沿能力榜上把 GPT-5.5、Gemini 3.1 Pro 甩开——这和"装进你口袋"是两件事。真正在这半年凿这堵墙的,是另一拨人,且各自啃下了不同的一角:</p>
+    <ul>
+      <li><strong>质量角</strong>:面壁 MiniCPM5-1B,1B 参数、INT4 量化后权重仅 0.5GB,小模型榜超越所有 2B 以下模型,能跑在手机/浏览器里。</li>
+      <li><strong>架构/功耗角</strong>:Apple AFM 3 首次把"动态稀疏"(20B 稀疏、每次只激活 1–4B)量产进 iPhone。</li>
+      <li><strong>质量角</strong>:Qwen 3.5 small,9B 在 GPQA Diamond 上首次让 sub-10B 越级超过 100B+ 模型。</li>
+      <li><strong>功耗/速度角</strong>:Gemini Nano 4 把端侧吞吐做到约 19 tok/s(较上代翻倍)。</li>
+    </ul>
+    <blockquote>
+      墙在被一点点凿动,但凿墙的没有一个叫 Fable。
+      <span class="src">Anthropic 官方博客(定价+交付面全云端) · Apple ML 官网 · androidauthority 实测 · 面壁/Qwen 官方与媒体测评</span>
+    </blockquote>
+  </section>
+
+  <section id="q4">
+    <div class="qhead">
+      <span class="qnum">4</span>
+      <h2>真动机:能力越线,一拆为二</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>不是战略转向,也不是命名体系崩盘——是防御性补位 + 安全叙事卡位。被逼出这一步的核心变量,是模型能力第一次越过了 Anthropic 给自己画的危险红线,逼出"一拆为二、安全档+可信档"的发行结构。</p>
+    </div>
+    <p>把候选动机一个个对账,题面给的几个全是错的:"云端推理被打成白菜价、得换战场"?反了——2026 年旗舰模型价格普遍<strong>上调</strong>(GPT-5.5 翻倍到 $5/$30),Fable 定 $10/$50 是"顶档下放",不是被迫卷低价。"Agent 要跑在端上"?没证据,Fable 主打的恰恰是云端长程自主 agent。"抢 Apple/Google 设备入口"?证伪,它压根没下端。</p>
+    <p>真正被逼出来的那个变量,藏在发布前 5 天。6 月 4 日,Anthropic 自己发文《When AI Builds Itself》,公开警告"递归自我改进"临近、自曝 Claude 已经写了自身合并代码的 <strong>80% 以上</strong>、呼吁全行业留一个"踩刹车"的选项。两个月前那个叫 Mythos 的模型,因为太擅长找软件漏洞,被压着不敢公开发。于是他们把同一个模型<em>劈成两半</em>:一半叫 Fable,戴上安全分类器、危险问题自动甩给 Opus 接手,发给所有人;另一半叫 Mythos,卸掉护栏,只通过一条限定通道(Project Glasswing)塞给美国政府、网络防御机构。</p>
+    <blockquote>
+      "神话级"这个新名字,本质是一块警示牌:这一档已经强到不能裸奔了。
+      <span class="src">Anthropic《When AI Builds Itself》(6/4) · TechCrunch / CNBC / CSO Online(Glasswing) · TokenMix(2026 价格整体上调)</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>"能力越线逼出一拆为二"是把四件硬事实(6/4 警告、Mythos 被压、Fable 带分类器、Glasswing 限定)串起来的因果推断,Anthropic 没明说动机;"寓言→神话=能力警示"的命名语义也是解读,官方未给 rationale。</p>
+    </div>
+  </section>
+
+  <section id="q5">
+    <div class="qhead">
+      <span class="qnum">5</span>
+      <h2>京小贝:观望,别押</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>端侧 Fable 对京小贝暂时是噪音;12–18 个月内该观望、不该押。要押的那个"端上领先 Claude"根本不存在,而就算存在,它唯一的金融杠杆点也被"业务必须上云、合规必须留痕"抵消。</p>
+    </div>
+    <p>先把前提摆正:<strong>"端上真能跑一个领先的 Claude",2026 年 6 月还不存在。</strong>Fable 是云端 API 旗舰,下载不到权重、塞不进手机或私有机房,所谓"本地客户端"只是第三方聊天壳子。所以"押不押端侧",押的是一个连招股书都还没有的标的——跟投资一个道理:还没上市的公司,该做的不是下注,是观望。</p>
+    <p>退一万步,假如端侧领先模型真出来了,四个卖点里只有一条戳中真痛点,而那一条恰好被抵消:</p>
+    <ul>
+      <li><strong>数据不出端</strong>(唯一真痛点):用户持仓在本机推理、隐私天然过关——但行情、净值、申赎、风测全在服务器端,持仓数据照样得上云取数。</li>
+      <li><strong>离线可用</strong>:没网就没行情没交易,看不到实时净值的基金助手没有意义。</li>
+      <li><strong>低延迟</strong>:金融决策非低延迟敏感,慢 1 秒不影响"还能不能拿"。</li>
+      <li><strong>成本转移到设备</strong>:合规要可审计、可留痕、可问责——端侧推理发生在用户手机里,机构反而看不见、留不了痕,跟监管反着走。</li>
+    </ul>
+    <p><em>唯一有杠杆的"数据不出端",恰好被金融业务的物理结构抵消了</em>——把冰山顶上那层对话搬到端上,水面下的业务和合规该上云还得上云,净杠杆约等于零,甚至给合规添堵。真正该押的,是云端旗舰怎么更便宜、怎么更快过备案、怎么端云协同(端上放轻量小模型做意图分流、重判断回云)。</p>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>一个真盲区:是否有未公开的"可私有部署 Fable 变体"在企业渠道单独谈——官方发布未提,企业定制不一定公开,这点查不到,留白。</p>
+    </div>
+  </section>
+
+  <section id="signals">
+    <div class="qhead">
+      <span class="qnum">◎</span>
+      <h2>之后盯什么</h2>
+    </div>
+    <ul class="signals">
+      <li><span class="dot">▸</span><span><b>可下载的领先权重</b> — 有谁真放出可私有部署、可下载的领先模型权重;这盏灯没亮之前,端侧对京小贝就是噪音不是机会。</span></li>
+      <li><span class="dot">▸</span><span><b>监管口径松动</b> — 监管开始认"端侧可审计";这盏灯亮了,才谈得上重新评估押端侧。</span></li>
+      <li><span class="dot">▸</span><span><b>安全发行架构落地</b> — 当最强模型开始需要"带分类器、可审计、可问责"地发行,强合规金融场景会不会反而是第一批天然买家——这扇门比端侧值得多看两眼。</span></li>
+    </ul>
+  </section>
+
+  <details class="sources">
+    <summary>来源清单</summary>
+    <ul>
+      <li>Anthropic 官方发布页:anthropic.com/news/claude-fable-5-mythos-5(最强公开模型、1M 上下文、$10/$50、与 Mythos 同底层、零端侧字样)</li>
+      <li>platform.claude.com 官方 API 文档 / claude-api 权威接口参考(Fable 与 Opus 4.7/4.8 同一请求面)</li>
+      <li>AWS Bedrock、Vertex、Microsoft Foundry、GitHub Copilot 上架公告</li>
+      <li>TechCrunch / CNBC / CSO Online(Mythos-class 公开发为 Fable 5、发布在"警告 AI 太危险"之后几天、Project Glasswing 限定通道)</li>
+      <li>Anthropic《When AI Builds Itself》(2026-06-04,递归自我改进警告、Claude 写自身合并代码 80%+)</li>
+      <li>artificialanalysis.ai 实测吞吐(Fable 约 59–60 tok/s,低于平均 ~69)</li>
+      <li>TokenMix:2026 年旗舰模型价格整体上调(GPT-5.5 翻倍至 $5/$30)</li>
+      <li>端侧第一梯队对照:Apple ML 官网(AFM 3 动态稀疏)、androidauthority 实测(Gemini Nano 4)、面壁 MiniCPM5-1B / Qwen 3.5 small 官方与媒体测评</li>
+    </ul>
+  </details>
+
+  <footer>
+    <span class="byline"><span class="m">墨菲斯</span> · Morpheus · 20260610-092313</span>
+  </footer>
+
+</div>
+</body>
+</html>
