@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>阿古朵 S43:红利虚火,但她值得养 · 墨菲斯研究</title>
+<style>
+:root {
+  --paper: #F4F1EA;
+  --paper-2: #FBF9F4;
+  --ink: #211F1A;
+  --ink-strong: #111111;
+  --muted: #7A7368;
+  --line: #E3DCCD;
+  --accent: #2F5D57;
+  --accent-deep: #234742;
+  --accent-soft: rgba(47, 93, 87, 0.09);
+  --brick: #B0503C;
+  --brick-soft: rgba(176, 80, 60, 0.10);
+  --amber: #BB8A2B;
+  --serif: "Songti SC", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+  --sans: "PingFang SC", "Noto Sans SC", "Source Han Sans SC", -apple-system, "Helvetica Neue", sans-serif;
+  --mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  --shadow: 0 22px 48px -26px rgba(60, 48, 28, 0.30);
+  --shadow-soft: 0 12px 28px -18px rgba(60, 48, 28, 0.22);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1C1A16;
+    --paper-2: #24211C;
+    --ink: #E6E1D6;
+    --ink-strong: #F5F2EA;
+    --muted: #9A9385;
+    --line: #3A362E;
+    --accent: #5E9C93;
+    --accent-deep: #7DB5AC;
+    --accent-soft: rgba(94, 156, 147, 0.14);
+    --brick: #CC7A66;
+    --brick-soft: rgba(204, 122, 102, 0.14);
+    --amber: #D2A653;
+    --shadow: none;
+    --shadow-soft: none;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.85;
+  font-feature-settings: "tnum";
+}
+.wrap { max-width: 744px; margin: 0 auto; padding: 0 26px 96px; }
+
+/* ── 开篇 ─────────────────────────────────────────── */
+.hero { padding: 76px 0 40px; border-bottom: 1px solid var(--line); }
+.kicker {
+  font: 600 12.5px/1 var(--mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 22px;
+}
+h1 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(32px, 6.2vw, 50px);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+  margin: 0 0 20px;
+}
+.lead {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--muted);
+  border-left: 2px solid var(--line);
+  padding-left: 18px;
+  margin: 0;
+}
+.lead b { color: var(--ink); font-weight: 600; }
+
+/* ── 总判断 ───────────────────────────────────────── */
+.verdict {
+  margin: 44px 0 8px;
+  padding: 28px 30px;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+}
+.verdict .tag {
+  font: 700 12px/1 var(--mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 12px;
+}
+.verdict p {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.66;
+  color: var(--ink-strong);
+}
+
+/* ── 目录 ─────────────────────────────────────────── */
+.toc { margin: 40px 0 0; padding: 0; list-style: none; }
+.toc li { margin: 0; border-bottom: 1px solid var(--line); }
+.toc a {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  padding: 11px 2px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.toc a:hover { color: var(--accent); }
+.toc .n { font: 700 13px/1 var(--mono); color: var(--accent); min-width: 20px; }
+
+/* ── 每题一节 ─────────────────────────────────────── */
+section { padding-top: 58px; scroll-margin-top: 24px; }
+.qhead { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 18px; }
+.qnum {
+  flex: none;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #FBF9F4;
+  font: 700 15px/32px var(--mono);
+  text-align: center;
+  margin-top: 5px;
+}
+h2 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.34;
+  color: var(--ink-strong);
+  margin: 0;
+}
+.answer {
+  margin: 20px 0 26px;
+  padding: 18px 22px;
+  background: var(--accent-soft);
+  border-radius: 12px;
+  font-size: 17px;
+  line-height: 1.75;
+}
+.answer .tag {
+  font: 700 11.5px/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 8px;
+}
+.answer p { margin: 0; color: var(--ink-strong); font-weight: 500; }
+p { margin: 0 0 18px; }
+strong { color: var(--ink-strong); font-weight: 650; }
+em {
+  font-style: normal;
+  background: linear-gradient(transparent 62%, var(--accent-soft) 62%);
+  padding: 0 2px;
+}
+blockquote {
+  margin: 30px 0;
+  padding: 4px 0 4px 24px;
+  border-left: 3px solid var(--accent);
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.62;
+  color: var(--ink-strong);
+}
+blockquote .src {
+  display: block;
+  margin-top: 10px;
+  font: 500 12.5px/1.5 var(--mono);
+  color: var(--muted);
+}
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 8px; line-height: 1.7; }
+a { color: var(--accent); text-decoration-color: var(--line); text-underline-offset: 3px; }
+
+/* ── 风险/反面(用砖红,克制) ───────────────────────── */
+.watch {
+  margin: 30px 0;
+  padding: 18px 22px;
+  background: var(--brick-soft);
+  border-radius: 12px;
+}
+.watch .tag {
+  font: 700 11.5px/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brick);
+  display: block;
+  margin-bottom: 8px;
+}
+.watch p, .watch ul { margin: 0; }
+.watch li { margin-bottom: 6px; }
+
+/* ── 信号看板(盯什么) ─────────────────────────────── */
+.signals { margin: 26px 0 0; padding: 0; list-style: none; }
+.signals li {
+  display: flex;
+  gap: 12px;
+  padding: 12px 2px;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+.signals .dot { flex: none; font: 700 13px/1 var(--mono); color: var(--amber); }
+.signals b { color: var(--ink-strong); font-weight: 650; }
+
+/* ── 来源与脚注 ───────────────────────────────────── */
+.sources { margin-top: 28px; }
+.sources summary {
+  cursor: pointer;
+  font: 600 13px/1 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 8px 0;
+}
+.sources ul { margin: 12px 0 0; }
+.sources li { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+/* ── 结尾 ─────────────────────────────────────────── */
+footer { margin-top: 76px; text-align: center; }
+.byline {
+  display: inline-block;
+  font: 600 13px/1.2 var(--mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 1px solid var(--ink-strong);
+  border-bottom: 1px solid var(--ink-strong);
+  padding: 14px 26px;
+}
+.byline .m { color: var(--accent); }
+
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .wrap { padding: 0 18px 72px; }
+  .hero { padding: 52px 0 32px; }
+  h1 { font-size: 32px; }
+  h2 { font-size: 22px; }
+  blockquote { font-size: 19px; }
+  .verdict { padding: 22px 20px; }
+  .verdict p { font-size: 18px; }
+  section { padding-top: 46px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="kicker">Morpheus Research · 2026-06-18</p>
+    <h1>阿古朵 S43:红利虚火,但她值得养</h1>
+    <p class="lead">你问的是:<b>帮我研究一下阿古朵怎么玩,我还没用过,尤其是这个 S43 赛季。</b>——你真正在赌的,是这赛季到底值不值得为「蹭红利」上车。</p>
+  </header>
+
+  <div class="verdict">
+    <span class="tag">总判断</span>
+    <p>别为「蹭 S43 红利」上车——这赛季她被削了两刀、版本还在压她,你感到的「有料」是别人秀上限的声量,红利是虚火。但作为长期英雄池,她值得收:上手快、难在脑不在手,正吃你这种老玩家的宏观脑。把理由从「抢风口」换成「长期养一个低门槛、玩着不累的功能英雄」,她就配得上你的时间。</p>
+  </div>
+
+  <ul class="toc">
+    <li><a href="#q1"><span class="n">1</span>她是台什么机器:血牛 + 肉炮弹</a></li>
+    <li><a href="#q2"><span class="n">2</span>S43 怎么了:红利是虚火</a></li>
+    <li><a href="#q3"><span class="n">3</span>值不值练:难在脑,不在手</a></li>
+    <li><a href="#q4"><span class="n">4</span>没碰过,怎么聪明开局</a></li>
+    <li><a href="#q5"><span class="n">5</span>靠什么赢:扔得回才算赢</a></li>
+  </ul>
+
+  <section id="q1">
+    <div class="qhead">
+      <span class="qnum">1</span>
+      <h2>她是台什么机器:不是肉辅,是血牛加一颗肉炮弹</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>她不是肉辅,是打野;靠两台别人没有的引擎跑——靠吃野怪(不是买装备)越拖越肉的血牛,加一颗能扔进敌阵、扔完还自己留下干活的「肉炮弹」巨兽。</p>
+    </div>
+    <p>先纠两个根上的错。<strong>第一,她不是辅助,是打野</strong>:吃的饭全在野区——刷野、吃经验、攒被动层数,放辅助位会直接饿死;各家梯度榜把她放在打野那栏,辅助榜(少司缘、盾山、大禹那一档)里查无此人。<strong>第二,那头熊不借人骑</strong>:它叫「球球」,是阿古朵一个人的专属坐骑,「召唤巨兽给队友骑」查遍官方页和各家攻略,没有任何来源支持,反而多家明说队友骑不上去。</p>
+    <p>纠完错,她的特殊在两台引擎。引擎一是成长:她的惩戒被换成「放生」——不杀野怪,而是把它放走,野怪照样给钱给经验,还变成小弟跟着她打,同种收得越多小弟越壮。<em>她是全游戏血量长得最快的英雄</em>,前期越猥琐刷野、库存攒得越满,中后期就滚成谁也啃不动的血牛(夸张时两万血)。引擎二是巨兽:团战她把熊当炮弹扔进敌人后排,落地先把脆皮全部击飞(一次团控),熊还<em>不消失、自己留在原地继续打继续扛</em>,死死黏住对面射手法师。这才是「战车」的真意——不是载人,是一颗扔出去、扔完还能自己干活的肉炮弹。</p>
+    <blockquote>
+      一句话记住她:会长大、能把自己半个身子(熊)扔出去单打的成长型打野。
+      <span class="src">墨菲斯 · 机制萃取</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>她吃的不是经验条,是「野怪库存」——就算等级满了,某种野没收够,那一档战力就是废的;所以开局并不强,天生是「前期猥琐攒、中后期一次性变怪」的曲线。另:「她本人体型会变大」没查到明确出处,确定的只是血量成长全游戏最高 + 召唤物变大。</p>
+    </div>
+  </section>
+
+  <section id="q2">
+    <div class="qhead">
+      <span class="qnum">2</span>
+      <h2>S43 她到底怎么了:被削了两刀,红利是虚火</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>S43 没给她加强,只削:4 月砍掉普攻重置机制、5 月把她从打野 T1 削到 T2,版本环境还在压她。你刷到的「黑马打野」是上限叙事的声量,不是版本红利——红利是虚火,不是版本递到你手里的便宜。</p>
+    </div>
+    <p>这是要不要上车的总闸,结论可能跟你听来的相反:<em>这赛季不是在养她,是在按着她</em>。先说她自己——本赛季净挨削:4 月移除了「本体普攻重置球球普攻」的机制,直接砍掉持续输出和打架手感;5 月正式服再调,把她从打野 T1 直接削到 T2。顺手澄清一个误传:她那次「射手化重做」是 2024 年(S36)的事,不是 S43——所以「她这赛季被重做变强了」不成立。再说环境:S43 把野区做「慢」了,拖累她「刷得快、全图带线」的核心打法;双边路塔下保护增强,压制打野越塔 gank,又是冲着她这类支援型打野来的;辅助端的利好抬的是正经辅助,跟她无关。</p>
+    <p>那你刷到的「黑马打野」呢?是 4 月开赛那阵的一波自媒体声量(「被低估」「会玩的闷声发财」),当时数字也撑得住(巅峰赛约 51% 胜率、6% 出场、打野 T1)。<strong>但那是她的「上限叙事」,不是「版本红利叙事」</strong>——官方先削手感再削强度,环境同时拖她;她现在还能打,靠的是「重装环境里少数能堆暴击的远程」「后期能转射手」这种老手的秀操作空间,不是新手蹭红利就能起飞的普惠强度。强度落点:4 月 T1 → 5 月打野 T2,辅助梯队里没有她,是「中游能打、上限有趣、但官方还在削」的英雄,不是 S43 的版本答案。</p>
+    <blockquote>
+      「趁 S43 红利上车」这个动作本身不成立——红利是虚火。
+      <span class="src">墨菲斯 · 强度核验(多家梯度榜口径一致)</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>数据诚实交底:51.6% 胜率 / 6.1% 出场是 S43 早期、自媒体转述口径,削弱落地后大概率已下滑;6 月当下官方/营地的精确胜率、禁用率没拿到一手。但「被削、往下走、非版本强点」这个<strong>方向</strong>多家梯度榜一致,是稳的。</p>
+    </div>
+  </section>
+
+  <section id="q3">
+    <div class="qhead">
+      <span class="qnum">3</span>
+      <h2>对你值不值上车:她跟娜可露露正好相反,难在脑不在手</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>值得练,但回报和你上次研究的娜可露露完全不同源:她上手快、下限高,把手上的活全删了,难度全堆到判断上。你缺的不是手,富余的正是脑——而这正是她吃的。值得上,且大概率很顺;只是她让你赢,不让你秀。</p>
+    </div>
+    <p>红利是假的,「值不值练」就换个问法:抛开版本,她这英雄本身配不配进你这种老玩家的池子?答案是值。好处是上手快、下限高:娜可露露是突进刺客,穿墙瞬移、超远位移,她背后那一档(露娜无限连、上官婉儿)是腾讯官方认定的操作天花板;阿古朵完全不在这名单里——不用平 A、不用近身、没有花哨连招,核心动作就是清野、扔球、放生。</p>
+    <p>代价在另一头:<em>她把手上的活全删了,于是难度全堆到了「判断」上</em>。四个开关全是意识活、不是手速活:前期别浪(很脆,被反一波野就废)、成长经济的尺度(满层前野是命根、满层后该匀出去)、大招开团时机(空扔等于白扔,必须一技能配合禁锢)、别当纯工具人(没留人能力、依赖队友,得主动用「出装快+团战顶用」滚雪球)。<strong>你缺的恰恰不是手(你早有),富余的恰恰是脑(这正是她吃的)</strong>——值得上,而且大概率上得很顺;只是摆正心态:她是上分工具,不是炫技本命。</p>
+    <blockquote>
+      娜可露露考你手指跟不跟得上脑子;阿古朵考你脑子愿不愿意动,手指基本不参加考试。
+      <span class="src">墨菲斯 · 对照娜可露露(腾讯官方操作难度名单)</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>最该被劝退的两类人:① 想靠她秀操作刷成就感的——她没连招天花板,炫不起来;② 想纯躺赢、不愿动脑管节奏的——「上手快」会骗到他,但「前期脆 + 靠意识 + 靠配合」会让他发育崩盘。(反过来:若你只是图新鲜玩两把,她反而绝佳——上手快、不挫败;只是那样摸不到天花板,「值不值」这问题对你也不成立。)</p>
+    </div>
+  </section>
+
+  <section id="q4">
+    <div class="qhead">
+      <span class="qnum">4</span>
+      <h2>真决定上车:一个没碰过的人,怎么聪明开局</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>走打野别走辅助,先按「功能型前排」打稳下限。惩戒必带没得选;铭文减 CD + 堆血;出装走半肉流。头 20 把就当没有大招那个秀操作功能,先把「前排、不送、保 C」做到位。</p>
+    </div>
+    <p>把入门拆成有先后的台阶,别一股脑砸全部机制。<strong>第一步定位:走打野,不走辅助</strong>——钱和经验全靠刷野和「放生」,辅助位喂不饱;零基础先按「功能型前排」打(多抓人、推塔、团战站最前扛伤害保 C),手熟了再练「自己吃满经济打输出」的野核。<strong>第二步成长经济</strong>:记一句话就够——没满层之前野是你的谁也别让,满层之后野随便给队友(满层后已不靠野怪长,让出去不亏自己又喂肥队友);缺线经济就「蹭线」别「抢线」,球球丢上线清兵扛伤害、你回野区刷。<em>一个开局坑:抢河道之灵时别按「放生」</em>(会让放生进 CD、刷野速度直接垮);河蟹/暴君/主宰抢 buff 照常用惩戒。<strong>第三步出装铭文</strong>:惩戒必带没得选(被动把惩戒换成「放生」,不带等于废一半);铭文调和×10 + 虚空×10 + 宿命×10,方向是减 CD + 堆血;出装半肉流——打野刀出巨人之握 → 抵抗之靴 → 暗影战斧 → 冰痕之握 → 魔抗件(永夜守护/不死鸟之眼) → 收尾不祥征兆,定性是「坦度优先、带一件输出」,不是纯暴击。</p>
+    <blockquote>
+      没满层之前,野是你的,谁也别让;满层之后,野随便给队友。
+      <span class="src">阿古朵攻略 · 成长经济的尺度</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">新手送命三连</span>
+      <ul>
+        <li>别一上来就乱扔大招开团——熊离身那刻你巨脆,时机不对就是白给;</li>
+        <li>别脱离队友单野浪(前期靠队友又不守野,两头落空);</li>
+        <li>层数没满别把野让队友(会饿死);大招抗塔时记住你成了「小兵单位」,塔会优先锤你。</li>
+      </ul>
+      <p>核心心法:头 20 把就当没有大招那个秀操作功能,先把「前排、不送、保 C」三件事做到位,再专门练「什么时候把熊扔出去」。</p>
+    </div>
+  </section>
+
+  <section id="q5">
+    <div class="qhead">
+      <span class="qnum">5</span>
+      <h2>练成之后靠什么赢:不是「扔得猛」,是「扔出去还收得回」</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>她的胜负手不是「扔得猛」,是「扔出去还收得回」——大招按第二下把熊召回,给本体回一大管血,这是她的第二条命。你不是第一个冲的,是第二个切的;练她的方位就是这一进一退的节奏。</p>
+    </div>
+    <p>先看破一个假象:肉的是熊,不是骑熊的人。攻略原话——「一旦开启大招,阿古朵生命值比射手还要脆。」大招把熊扔出去那一刻,她本人就成了比对面射手还软的脆皮。<em>所以她真正的胜负手,不是「扔得猛」,是「扔出去还收得回」</em>——大招按第二下能把熊召回,召回给本体回一大管血,这是她的第二条命。最优用法按价值排序:① 反手切后排 / 反手保人(最强、最该练,不先手,等对面交了技能再把熊砸进射手法师堆,黏住、打断输出);② 当回血开关(本体残血再按一下召回,直接救命;熊快死了也召回,别让它白送);③ 当战车撞开团(顺风、有坦克兜底时才用)。进场原则一句话:<strong>你不是第一个冲的,你是第二个切的</strong>——二技能施法时免疫一次硬控,是强行进场的护身符;本体永远靠后,盯着血条随时召回保命。该帮安全站桩的射手法师(后羿、黄忠)和群体增益辅助(扁鹊给熊加血);该躲隔墙点你的干将莫邪、一枪半血的百里守约、用地形逼你交大的猪八戒/廉颇。(注:「双修偏反手」是对材料的归纳,不是某篇攻略原话。)</p>
+    <blockquote>
+      别练「怎么把熊扔得帅」,练「什么时候不扔、扔出去什么时候收回来」——这一进一退的节奏,就是她全部的赢法。
+      <span class="src">墨菲斯 · 收口</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">最容易交废的三种情形</span>
+      <ul>
+        <li>一开团就无脑把熊扔出去当先手——熊一飞你就裸了,干将隔墙、守约一枪,人没了大招还在转;</li>
+        <li>扔完不管、忘了召回——熊死在人堆里,你既丢了肉盾又丢了回血开关,白交一个大;</li>
+        <li>被地形/位移逼着提前交大(猪八戒、廉颇)——等真团战来了巨兽缺席,你就是个空有暴击的脆皮。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="signals">
+    <div class="qhead">
+      <span class="qnum">◎</span>
+      <h2>之后盯什么</h2>
+    </div>
+    <ul class="signals">
+      <li><span class="dot">▸</span><span><b>营地当周实时胜率/禁用率</b> — 本报告未取 6 月一手精确值;真要开练,先进王者营地看一眼削弱落地后是否继续下滑,再下注。</span></li>
+      <li><span class="dot">▸</span><span><b>官方平衡调整</b> — 她本赛季已挨两刀;盯有没有继续削或回调,方向变了再重谈「上不上车」。</span></li>
+      <li><span class="dot">▸</span><span><b>客户端出装推荐</b> — 出装/铭文是 S43 主流方向,单件可能随小补丁微调;临场以「出装推荐」里当周最高胜率方案为准。</span></li>
+      <li><span class="dot">▸</span><span><b>你自己的定位切换</b> — 手熟前打「功能型前排」稳下限,能稳住了再切「自己吃满经济打输出」的野核进阶打法。</span></li>
+    </ul>
+  </section>
+
+  <details class="sources">
+    <summary>来源清单</summary>
+    <ul>
+      <li>各家英雄梯度榜(打野/辅助分档)— 多家口径一致,是「被削、T2、非版本强点」判断的支柱。</li>
+      <li>官方英雄页 + 各家阿古朵攻略 — 机制(放生 / 球球 / 巨兽)、出装、铭文、连招与用法。</li>
+      <li>巅峰赛数据口径 — S43 早期约 51.6% 胜率 / 6.1% 出场、打野 T1(自媒体转述,非一手)。</li>
+      <li>官方平衡调整记录 — 4 月移除「普攻重置」、5 月打野 T1→T2;「射手化重做」为 2024 年(S36)。</li>
+      <li>腾讯官方操作难度名单 — 露娜 / 上官婉儿 / 娜可露露列为操作天花板,阿古朵不在其中。</li>
+      <li>王者营地 — 实时胜率 / 出场率;建议开练前自查当周数据(本报告未取 6 月一手精确值)。</li>
+    </ul>
+  </details>
+
+  <footer>
+    <span class="byline"><span class="m">墨菲斯</span> · Morpheus · 20260618-151424</span>
+  </footer>
+
+</div>
+</body>
+</html>
