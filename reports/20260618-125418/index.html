@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>娜可露露:不是双形态,是会飞的刺客 · 墨菲斯研究</title>
+<style>
+:root {
+  --paper: #F4F1EA;
+  --paper-2: #FBF9F4;
+  --ink: #211F1A;
+  --ink-strong: #111111;
+  --muted: #7A7368;
+  --line: #E3DCCD;
+  --accent: #2F5D57;
+  --accent-deep: #234742;
+  --accent-soft: rgba(47, 93, 87, 0.09);
+  --brick: #B0503C;
+  --brick-soft: rgba(176, 80, 60, 0.10);
+  --amber: #BB8A2B;
+  --serif: "Songti SC", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+  --sans: "PingFang SC", "Noto Sans SC", "Source Han Sans SC", -apple-system, "Helvetica Neue", sans-serif;
+  --mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  --shadow: 0 22px 48px -26px rgba(60, 48, 28, 0.30);
+  --shadow-soft: 0 12px 28px -18px rgba(60, 48, 28, 0.22);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1C1A16;
+    --paper-2: #24211C;
+    --ink: #E6E1D6;
+    --ink-strong: #F5F2EA;
+    --muted: #9A9385;
+    --line: #3A362E;
+    --accent: #5E9C93;
+    --accent-deep: #7DB5AC;
+    --accent-soft: rgba(94, 156, 147, 0.14);
+    --brick: #CC7A66;
+    --brick-soft: rgba(204, 122, 102, 0.14);
+    --amber: #D2A653;
+    --shadow: none;
+    --shadow-soft: none;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.85;
+  font-feature-settings: "tnum";
+}
+.wrap { max-width: 744px; margin: 0 auto; padding: 0 26px 96px; }
+
+/* ── 开篇 ─────────────────────────────────────────── */
+.hero { padding: 76px 0 40px; border-bottom: 1px solid var(--line); }
+.kicker {
+  font: 600 12.5px/1 var(--mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 22px;
+}
+h1 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(32px, 6.2vw, 50px);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+  margin: 0 0 20px;
+}
+.lead {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--muted);
+  border-left: 2px solid var(--line);
+  padding-left: 18px;
+  margin: 0;
+}
+.lead b { color: var(--ink); font-weight: 600; }
+
+/* ── 总判断 ───────────────────────────────────────── */
+.verdict {
+  margin: 44px 0 8px;
+  padding: 28px 30px;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+}
+.verdict .tag {
+  font: 700 12px/1 var(--mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 12px;
+}
+.verdict p {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.66;
+  color: var(--ink-strong);
+}
+
+/* ── 目录 ─────────────────────────────────────────── */
+.toc { margin: 40px 0 0; padding: 0; list-style: none; }
+.toc li { margin: 0; border-bottom: 1px solid var(--line); }
+.toc a {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  padding: 11px 2px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.toc a:hover { color: var(--accent); }
+.toc .n { font: 700 13px/1 var(--mono); color: var(--accent); min-width: 20px; }
+
+/* ── 每题一节 ─────────────────────────────────────── */
+section { padding-top: 58px; scroll-margin-top: 24px; }
+.qhead { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 18px; }
+.qnum {
+  flex: none;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #FBF9F4;
+  font: 700 15px/32px var(--mono);
+  text-align: center;
+  margin-top: 5px;
+}
+h2 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.34;
+  color: var(--ink-strong);
+  margin: 0;
+}
+.answer {
+  margin: 20px 0 26px;
+  padding: 18px 22px;
+  background: var(--accent-soft);
+  border-radius: 12px;
+  font-size: 17px;
+  line-height: 1.75;
+}
+.answer .tag {
+  font: 700 11.5px/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 8px;
+}
+.answer p { margin: 0; color: var(--ink-strong); font-weight: 500; }
+p { margin: 0 0 18px; }
+strong { color: var(--ink-strong); font-weight: 650; }
+em {
+  font-style: normal;
+  background: linear-gradient(transparent 62%, var(--accent-soft) 62%);
+  padding: 0 2px;
+}
+blockquote {
+  margin: 30px 0;
+  padding: 4px 0 4px 24px;
+  border-left: 3px solid var(--accent);
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.62;
+  color: var(--ink-strong);
+}
+blockquote .src {
+  display: block;
+  margin-top: 10px;
+  font: 500 12.5px/1.5 var(--mono);
+  color: var(--muted);
+}
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 8px; line-height: 1.7; }
+a { color: var(--accent); text-decoration-color: var(--line); text-underline-offset: 3px; }
+
+/* ── 风险/反面(用砖红,克制) ───────────────────────── */
+.watch {
+  margin: 30px 0;
+  padding: 18px 22px;
+  background: var(--brick-soft);
+  border-radius: 12px;
+}
+.watch .tag {
+  font: 700 11.5px/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brick);
+  display: block;
+  margin-bottom: 8px;
+}
+.watch p, .watch ul { margin: 0; }
+.watch li { margin-bottom: 6px; }
+
+/* ── 信号看板(盯什么) ─────────────────────────────── */
+.signals { margin: 26px 0 0; padding: 0; list-style: none; }
+.signals li {
+  display: flex;
+  gap: 12px;
+  padding: 12px 2px;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+.signals .dot { flex: none; font: 700 13px/1 var(--mono); color: var(--amber); }
+.signals b { color: var(--ink-strong); font-weight: 650; }
+
+/* ── 来源与脚注 ───────────────────────────────────── */
+.sources { margin-top: 28px; }
+.sources summary {
+  cursor: pointer;
+  font: 600 13px/1 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 8px 0;
+}
+.sources ul { margin: 12px 0 0; }
+.sources li { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+/* ── 结尾 ─────────────────────────────────────────── */
+footer { margin-top: 76px; text-align: center; }
+.byline {
+  display: inline-block;
+  font: 600 13px/1.2 var(--mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 1px solid var(--ink-strong);
+  border-bottom: 1px solid var(--ink-strong);
+  padding: 14px 26px;
+}
+.byline .m { color: var(--accent); }
+
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .wrap { padding: 0 18px 72px; }
+  .hero { padding: 52px 0 32px; }
+  h1 { font-size: 32px; }
+  h2 { font-size: 22px; }
+  blockquote { font-size: 19px; }
+  .verdict { padding: 22px 20px; }
+  .verdict p { font-size: 18px; }
+  section { padding-top: 46px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="kicker">Morpheus Research · 2026-06-18</p>
+    <h1>娜可露露:不是双形态,是会飞的刺客</h1>
+    <p class="lead">你问的是:<b>帮我研究一下娜可露露怎么玩 我还没用过</b>——可这问题真正卡住的,是要不要为一个你没碰过的角色,花专门功夫去练。</p>
+  </header>
+
+  <div class="verdict">
+    <span class="tag">总判断</span>
+    <p>她是台地面近身爆发刺客,只多一记会飞墙的两段式大招——不是网上说的"双形态"。认真想靠她上分:不建议,同样的时间练个 T1 打野回报直接得多;图新鲜、爱这个角色、想要"全场最像导演"的操作快感:值得,当娱乐英雄练。真要练,先练地面那套、把大招当腿用,头 20 把只求刷得快、不送人头。</p>
+  </div>
+
+  <ul class="toc">
+    <li><a href="#q1"><span class="n">1</span>她到底是台什么机器</a></li>
+    <li><a href="#q2"><span class="n">2</span>这趟车,值不值得你上</a></li>
+    <li><a href="#q3"><span class="n">3</span>真上车了,怎么聪明地开局</a></li>
+    <li><a href="#q4"><span class="n">4</span>练顺了,她靠什么赢</a></li>
+    <li><a href="#q5"><span class="n">5</span>怎么让每把练习都不白费</a></li>
+  </ul>
+
+  <section id="q1">
+    <div class="qhead">
+      <span class="qnum">1</span>
+      <h2>她到底是台什么机器</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>她是地面近身爆发刺客,只多一记会飞墙的两段式大招;"双形态"是误会——平时她根本没在飞,真飞起来只活在开大那几秒里。</p>
+    </div>
+    <p>你玩澜、阿轲那种刺客,是一个身子、一种节奏的地面活。娜可露露多了只鹰(玛玛哈哈),于是被传成"双形态"。但拆开当前版本看,她平时根本没在飞:那只鹰脱战 4 秒飞回来驮着她、加 10% 移速,<strong>就是个赶路的被动</strong>,跟战斗无关。真正骑鹰飞起来,只在开大招(飞鹰急袭)——大招两段,按第一下原地加速起飞、能飞墙穿地形,这几秒你<strong>只能放一技能,不能普攻、不能放二技能</strong>,觉得角度对了再按第二下砸下去。</p>
+    <p>地面那套才是她的命根子:一技能甩鹰盖一个"鹰眼印记",之后你任何一次伤害砸上去都会<em>按对方最大生命值百分比再追一刀</em>(所以切肉、切坦克不虚,这是普通 AD 刺客做不到的);被动让技能后那一下普攻变强、能攒层;二技能冲一段、命中回血,是她唯一的逃生位移。所以大家说的"上限高、难、软",其实是<em>同一记飞行大招的三个侧面</em>——飞墙神出鬼没所以上限高,飞时被锁成只能放一技能、还要算落点所以难,血薄、爆发只一段、一套打完真空期所以软。</p>
+    <blockquote>
+      她就是个地面近身爆发刺客,只不过多了一记"会飞墙"的大招。她的"飞行"基本只活在大招那几秒里——平时骑鹰只是赶路的加速被动,不是战斗形态。
+      <span class="src">2025-03"变异"重做版机制 · 三位独立专家交叉验证</span>
+    </blockquote>
+  </section>
+
+  <section id="q2">
+    <div class="qhead">
+      <span class="qnum">2</span>
+      <h2>这趟车,值不值得你上</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>当前是中游(大致 T2,不是版本答案)。认真想靠她上分——不建议;图新鲜、爱这个角色、想要"全场最像导演"的操作快感——值得,当娱乐英雄练。</p>
+    </div>
+    <p>把"难"和"值"摆一起称。难在:<strong>大招既是核心也是命门</strong>——重做后起飞前摇变大,"瞬秒大招"几乎做不出来,大招一空基本就是把命送出去;连招零容错、快到不能犹豫;极脆零控,一套没秒死、对面出件防御装或一个位移就反杀你。值在别人做不到的:全英雄顶级机动(大招加速飞行无视地形飞墙)、风筝+突进二合一、以及切肉不虚(标记按最大生命值百分比引爆,后期切坦克飞快)。</p>
+    <p>跟你熟的澜对照,曲线正好相反——<em>澜先给糖、再让你练技巧;娜可露露先吃几个月苦、后尝甜</em>。强度上,2026 年 6 月本赛季"最弱五打野"榜是阿轲、猪八戒、云中君、元歌坦、兰陵王,<strong>她不在里面</strong>;攻略圈把她放在"会玩能上分、不会玩纯送"的中游(胜率 48–50%,靠操作和运营吃饭)。</p>
+    <blockquote>
+      最该被劝退的是这种人:时间有限、只想稳定上分、又习惯了澜那种"自带容错"打法——你会在她"前期弱"和"一套打空被反杀"上反复交学费。
+      <span class="src">称重结论 · 老玩家视角</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>"T2 中游、48–50%"是综合攻略圈口径的推断,不是官方逐英雄数字,不同 UP 主的梯度榜会有半档浮动。只有"她不在本月最弱五打野榜"这条是查到的较硬阴性证据。</p>
+    </div>
+  </section>
+
+  <section id="q3">
+    <div class="qhead">
+      <span class="qnum">3</span>
+      <h2>真上车了,怎么聪明地开局</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>先练地面那套(刷野+蹭团)、把大招只当移速腿用;头 20 把只求刷得快、不送人头、蹭满标记还活着退;别一上来就抠那个看着帅、实则一交大招就把命钉在场上的秒人连招。</p>
+    </div>
+    <p>新手最容易犯的错,是盯着抖音里"草丛一闪、对面 C 位瞬间躺地"的秒杀连招去抠——结果野刷不利索、人也秒不掉、一波团两头不靠,三五把就把自己劝退。她<strong>没有真正的"两个形态"可选</strong>(全程一个身子),所谓"先练天上还是地面"落到实处,是先练哪种节奏:地面那套=站桩输出,容错高;天上那套=大招起飞贴脸秒人,爆发高但容错极低,大招一交人就钉死在战场里。</p>
+    <p>而当前版本的改动方向,恰好替你做了选择:<em>一技能标记伤害改成不再随目标数量衰减(刷野打团蹭伤更稳),但满级一技能基础爆发砍了约 150 点</em>——版本本身在喊:先吃下限,别急着够上限。分步上:先把"一技能打标记 + 普攻 + 二技能冲/回血"的刷野蹭团循环练顺,大招只当追人、转线、跑路的腿;头 20 把只追求刷野快不漏、全程不送、打团蹭满标记再活着退。配置照抄即可:铭文红异变×10 / 绿鹰眼×10 / 蓝隐匿×10,出装追猎刀锋→抵抗之靴→暗影战斧→破军→碎星锤→名刀·司命(新手强烈建议带名刀)。</p>
+    <blockquote>
+      先把脚下站稳,翅膀以后自然会长。
+      <span class="src">入门路线 · 下限优先</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>"1 级学一还是学二"信源有分歧(多数说学一刷野快,也有说学二保机动防反野);对纯新手判断学一更省心,是推断、非铁律。具体冷却、伤害、出装合成等数值未逐条核到最新平衡补丁,以游戏内为准——但那套检查表绑的是机制不是数值,基本不受影响。</p>
+    </div>
+  </section>
+
+  <section id="q4">
+    <div class="qhead">
+      <span class="qnum">4</span>
+      <h2>练顺了,她靠什么赢</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>她是靠机动滚雪球的节奏型抓人刺客,不是团战站桩秀;专猎走位差、没保护的残血脆皮后排;团战绝不先手。</p>
+    </div>
+    <p>她最特别的地方,在于别的刺客切进去就回不来了——孙悟空、阿轲一个翻滚扎进人堆,要么把人秒了、要么自己交代在里面。娜可露露不一样:<strong>她的进场"可以反悔"</strong>——大招先按一下人不动、原地加速起飞,你在空中先看清里面什么样,觉得能切再按第二段砸下去,觉得不对就别按、直接撤。所以赢法是四级有大招后满地图找软柿子,专挑对面发育路/中路那个走位差、没保护、血不满的脆皮后排,一套带走滚成经济雪球(前期没暗影战斧别瞎抓)。</p>
+    <p>到团战,她<em>绝不先手</em>——蹲在后排边上的草里,等队友把对面前排和控制耗掉、后排开始散开找输出位,你再用大招第一段起飞探一眼角度:值就砸第二段切死那个脆皮,不值就当没来过、飞回来等下一波。</p>
+    <blockquote>
+      别人是开弓没有回头箭,她搭上弓了还能放下来。
+      <span class="src">赢法判断 · 可反悔的进场</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>她最怕反过来被治:对面抱成一团不给单人、带一个不能净化的硬控(比如张良大招,一锁就死)、或一个她秒不掉还能反打她的(孙悟空,有闪避有盾)。这三样凑齐,她就废了。</p>
+    </div>
+  </section>
+
+  <section id="q5">
+    <div class="qhead">
+      <span class="qnum">5</span>
+      <h2>怎么让每把练习都不白费</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>她吃练习量,最怕的不是输、是输了不知道哪一下没切好。用一张下限优先检查表:每把只挑最烂的一条改,改稳了再换下一条,别想一把全改对。</p>
+    </div>
+    <p>好在她的难点都是<strong>能复盘的硬动作,不是玄学手感</strong>。检查表五条,每打完一把照着对一遍,只改最差那一个点:① <strong>大招两段衔接</strong>——只练"起飞后用第一段加速挪到目标身后再落第二段",先不管伤害够不够;② <strong>一技能有没有打空</strong>——放前先压近距离、背对敌人"转身放",让鹰从更近处出发;③ <strong>是不是贪了</strong>——立死规矩"一套打完不管有没有人头先撤",残血追不到就放走;④ <strong>站位是不是切太深</strong>——进场前先确认"那个能控我的技能交了没",目标永远是离你最近那个后排;⑤ <strong>发育有没有掉</strong>——4 级前以"快速清野到 4 级"为第一优先,别乱抓,练操作不能以丢发育为代价。</p>
+  </section>
+
+  <section id="signals">
+    <div class="qhead">
+      <span class="qnum">◎</span>
+      <h2>之后盯什么</h2>
+    </div>
+    <ul class="signals">
+      <li><span class="dot">▸</span><span><b>版本梯度</b> — 她若从 T2 往上动、进了版本答案,再考虑认真上分;只要还在"最弱榜外的中游",上分不建议这一结论不变。</span></li>
+      <li><span class="dot">▸</span><span><b>S44 改动落地</b> — "一技能标记不再衰减、基础爆发砍约 150"若确认生效,更坐实"先吃下限、别急着够上限"的练法。</span></li>
+      <li><span class="dot">▸</span><span><b>自己的胜率</b> — 5v5 匹配稳过 50% 再上排位;到这一步,才开始在实战里试那套大招起飞秒人连招。</span></li>
+    </ul>
+  </section>
+
+  <details class="sources">
+    <summary>来源清单</summary>
+    <ul>
+      <li>2025-03"变异"重做版机制(地面刺客 + 大招期间短暂飞行、飞行时锁为只能放一技能;印记按最大生命值百分比引爆、被动强化普攻可叠层、二技能位移回血)——三位独立专家在各自查证中一致撞出,多源一致、可信。</li>
+      <li>2026 年 6 月本赛季"最弱五打野"榜(阿轲、猪八戒、云中君、元歌坦、兰陵王)——查到的阴性证据,娜可露露不在其中。</li>
+      <li>攻略圈 / UP 主梯度榜口径——"会玩能上分、不会玩纯送"的中游(大致 T2,胜率 48–50%);不同榜单半档浮动。</li>
+      <li>赛季时间与改动文存在信源冲突:一说今日仍在 S43、S44 于 6/25 开;另一信源已搜到 S44 改动(一技能标记不再衰减、基础爆发砍约 150)。两者方向一致(下限更稳、上限更难拿),确切赛季归属未钉死。</li>
+      <li>几篇腾讯新闻一手教学原文多次抓取失败,相关结论引自搜索摘要并与其它信源交叉验证一致,未逐字复核原文;具体数值请以游戏内最新平衡补丁为准。</li>
+    </ul>
+  </details>
+
+  <footer>
+    <span class="byline"><span class="m">墨菲斯</span> · Morpheus · 20260618-125418</span>
+  </footer>
+
+</div>
+</body>
+</html>
