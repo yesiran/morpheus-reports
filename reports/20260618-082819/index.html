@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<!-- 墨菲斯研究报告 · 单页(基于 report_page.html 模板渲染) -->
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>这张图,只管得着你半套组合 · 墨菲斯研究</title>
+<style>
+:root {
+  --paper: #F4F1EA;
+  --paper-2: #FBF9F4;
+  --ink: #211F1A;
+  --ink-strong: #111111;
+  --muted: #7A7368;
+  --line: #E3DCCD;
+  --accent: #2F5D57;
+  --accent-deep: #234742;
+  --accent-soft: rgba(47, 93, 87, 0.09);
+  --brick: #B0503C;
+  --brick-soft: rgba(176, 80, 60, 0.10);
+  --amber: #BB8A2B;
+  --serif: "Songti SC", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+  --sans: "PingFang SC", "Noto Sans SC", "Source Han Sans SC", -apple-system, "Helvetica Neue", sans-serif;
+  --mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  --shadow: 0 22px 48px -26px rgba(60, 48, 28, 0.30);
+  --shadow-soft: 0 12px 28px -18px rgba(60, 48, 28, 0.22);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1C1A16;
+    --paper-2: #24211C;
+    --ink: #E6E1D6;
+    --ink-strong: #F5F2EA;
+    --muted: #9A9385;
+    --line: #3A362E;
+    --accent: #5E9C93;
+    --accent-deep: #7DB5AC;
+    --accent-soft: rgba(94, 156, 147, 0.14);
+    --brick: #CC7A66;
+    --brick-soft: rgba(204, 122, 102, 0.14);
+    --amber: #D2A653;
+    --shadow: none;
+    --shadow-soft: none;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.85;
+  font-feature-settings: "tnum";
+}
+.wrap { max-width: 744px; margin: 0 auto; padding: 0 26px 96px; }
+
+/* ── 开篇 ─────────────────────────────────────────── */
+.hero { padding: 76px 0 40px; border-bottom: 1px solid var(--line); }
+.kicker {
+  font: 600 12.5px/1 var(--mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 22px;
+}
+h1 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(32px, 6.2vw, 50px);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+  margin: 0 0 20px;
+}
+.lead {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--muted);
+  border-left: 2px solid var(--line);
+  padding-left: 18px;
+  margin: 0;
+}
+.lead b { color: var(--ink); font-weight: 600; }
+
+/* ── 总判断 ───────────────────────────────────────── */
+.verdict {
+  margin: 44px 0 8px;
+  padding: 28px 30px;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+}
+.verdict .tag {
+  font: 700 12px/1 var(--mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 12px;
+}
+.verdict p {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.66;
+  color: var(--ink-strong);
+}
+
+/* ── 目录 ─────────────────────────────────────────── */
+.toc { margin: 40px 0 0; padding: 0; list-style: none; }
+.toc li { margin: 0; border-bottom: 1px solid var(--line); }
+.toc a {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  padding: 11px 2px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.toc a:hover { color: var(--accent); }
+.toc .n { font: 700 13px/1 var(--mono); color: var(--accent); min-width: 20px; }
+
+/* ── 每题一节 ─────────────────────────────────────── */
+section { padding-top: 58px; scroll-margin-top: 24px; }
+.qhead { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 18px; }
+.qnum {
+  flex: none;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #FBF9F4;
+  font: 700 15px/32px var(--mono);
+  text-align: center;
+  margin-top: 5px;
+}
+h2 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.34;
+  color: var(--ink-strong);
+  margin: 0;
+}
+.answer {
+  margin: 20px 0 26px;
+  padding: 18px 22px;
+  background: var(--accent-soft);
+  border-radius: 12px;
+  font-size: 17px;
+  line-height: 1.75;
+}
+.answer .tag {
+  font: 700 11.5px/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 8px;
+}
+.answer p { margin: 0; color: var(--ink-strong); font-weight: 500; }
+p { margin: 0 0 18px; }
+strong { color: var(--ink-strong); font-weight: 650; }
+em {
+  font-style: normal;
+  background: linear-gradient(transparent 62%, var(--accent-soft) 62%);
+  padding: 0 2px;
+}
+blockquote {
+  margin: 30px 0;
+  padding: 4px 0 4px 24px;
+  border-left: 3px solid var(--accent);
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.62;
+  color: var(--ink-strong);
+}
+blockquote .src {
+  display: block;
+  margin-top: 10px;
+  font: 500 12.5px/1.5 var(--mono);
+  color: var(--muted);
+}
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 8px; line-height: 1.7; }
+a { color: var(--accent); text-decoration-color: var(--line); text-underline-offset: 3px; }
+
+/* ── 风险/反面(用砖红,克制) ───────────────────────── */
+.watch {
+  margin: 30px 0;
+  padding: 18px 22px;
+  background: var(--brick-soft);
+  border-radius: 12px;
+}
+.watch .tag {
+  font: 700 11.5px/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brick);
+  display: block;
+  margin-bottom: 8px;
+}
+.watch p, .watch ul { margin: 0; }
+.watch li { margin-bottom: 6px; }
+
+/* ── 信号看板(盯什么) ─────────────────────────────── */
+.signals { margin: 26px 0 0; padding: 0; list-style: none; }
+.signals li {
+  display: flex;
+  gap: 12px;
+  padding: 12px 2px;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+.signals .dot { flex: none; font: 700 13px/1 var(--mono); color: var(--amber); }
+.signals b { color: var(--ink-strong); font-weight: 650; }
+
+/* ── 来源与脚注 ───────────────────────────────────── */
+.sources { margin-top: 28px; }
+.sources summary {
+  cursor: pointer;
+  font: 600 13px/1 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 8px 0;
+}
+.sources ul { margin: 12px 0 0; }
+.sources li { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+/* ── 结尾 ─────────────────────────────────────────── */
+footer { margin-top: 76px; text-align: center; }
+.byline {
+  display: inline-block;
+  font: 600 13px/1.2 var(--mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 1px solid var(--ink-strong);
+  border-bottom: 1px solid var(--ink-strong);
+  padding: 14px 26px;
+}
+.byline .m { color: var(--accent); }
+
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .wrap { padding: 0 18px 72px; }
+  .hero { padding: 52px 0 32px; }
+  h1 { font-size: 32px; }
+  h2 { font-size: 22px; }
+  blockquote { font-size: 19px; }
+  .verdict { padding: 22px 20px; }
+  .verdict p { font-size: 18px; }
+  section { padding-top: 46px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="kicker">Morpheus Research · 2026-06-18</p>
+    <h1>这张图,只管得着你半套组合</h1>
+    <p class="lead">你问的是:<b>美联储最新发布的点阵图意味着什么——我持有黄金、美团、小米,准备入手比特币,还有紫金矿业。</b>——说穿了,是在问:这只手往"收紧"拨一格,你这一篮子,谁先挨打、谁根本不归它管。</p>
+  </header>
+
+  <div class="verdict">
+    <span class="tag">总判断</span>
+    <p>这张点阵图直接管得着的,只有你半套组合——黄金、紫金、(准备买的)比特币;美团、小米基本不归它管。而你这半套里,把"赌钱变便宜"同一注押了两遍还加了杠杆(黄金+紫金),对面连个对冲腿都没有。所以该重想的不是"要不要清仓避险",而是一个还没掏钱的决定:比特币到底替你干什么活。</p>
+  </div>
+
+  <ul class="toc">
+    <li><a href="#q1"><span class="n">1</span>昨天"啥也没干",为什么反而砸盘</a></li>
+    <li><a href="#q2"><span class="n">2</span>一把钥匙,开不了你这五把锁</a></li>
+    <li><a href="#q3"><span class="n">3</span>黄金+紫金:两重保险,还是同一注押两遍</a></li>
+    <li><a href="#q4"><span class="n">4</span>比特币:嘴上数字黄金,身体很诚实</a></li>
+    <li><a href="#q5"><span class="n">5</span>美团小米:把"鹰派=都该慌"剪断</a></li>
+    <li><a href="#q6"><span class="n">6</span>收口:把组合往总开关上"净"一下</a></li>
+  </ul>
+
+  <section id="q1">
+    <div class="qhead">
+      <span class="qnum">1</span>
+      <h2>昨天"啥也没干",为什么反而砸盘</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>这是一次<em>鹰派意外</em>:钱更贵、降息没了反而要加息,把"钱的价格"这只总开关往"收紧"拨了一格,力度中等偏大——因为它扳的不是降息几次,而是"降还是加"这个方向。</p>
+    </div>
+    <p>昨天(6 月 17 日)美联储开会,利率<strong>一个点没动</strong>——还是 3.50%–3.75%,第四次按兵不动。可当天市场跌得很疼,黄金也跟着跌。它什么都没做,凭什么砸盘?因为真正动市场的,从来不是利率本身,是<em>它这次说的话跟大家事先赌好的不一样</em>。</p>
+    <p>把行话拆开:"点阵图"就是 18 位官员每人在纸上点一个点,标出自己觉得年底利率落在哪;市场开会前早把"这些点大概怎么动"提前赌进了价格。开会前大家赌的是:维持三月那版剧本,年底<strong>再降一次息</strong>(中位数 3.4%)。结果这次美联储把中位数一把抬到 <strong>3.8%</strong>,等于当众撕掉"今年还降一次"的承诺,改口"恐怕还得再加一次"——18 人里 9 个主张加息,只剩 1 个想降。原因写在它自己的预测里:一场伊朗战争把油价顶了上去,它把今年通胀预期从 <strong>2.7% 上调到 3.6%</strong>。</p>
+    <blockquote>
+      市场怎么投票的?看那根最诚实的体温计——2 年期美债收益率当场跳了 16 个基点,冲到一年来最高的 4.21%。钱一变贵,靠"未来才赚钱"撑估值的成长股、和压根不生息的黄金,第一个被往下打。
+      <span class="src">来源:美联储 6 月会议点阵图与经济预测(SEP)· 2 年期美债收益率</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>昨天股市收盘涨跌,两个信源打架(一个说标普跌 1.2%,一个说尾盘翻红收涨 0.8%)。"鹰派意外"的结论不依赖它——锚在点中位数 3.4%→3.8%、2 年期美债跳到 4.2% 这两个双方都认的硬事实上。单日股市那点涨跌是噪音,别当真。</p>
+    </div>
+  </section>
+
+  <section id="q2">
+    <div class="qhead">
+      <span class="qnum">2</span>
+      <h2>一把钥匙,开不了你这五把锁</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>真正被这张图直接驱动的,是黄金、紫金、比特币这一簇;美团、小米只是间接沾边。硬用点阵图去解释美团小米,就是<em>拿错钥匙开错锁</em>。</p>
+    </div>
+    <p>你这五个资产,不是排成一排平等地接在那只手上的,得先分成两圈人。<em>内圈三个</em>——黄金、紫金、(准备买的)比特币——直接坐在美联储腿上,那只手用两根实打实的管子捏着它们:一根叫<strong>实际利率</strong>(钱生息越狠,不生息的黄金越没人要,这叫机会成本);一根叫<strong>美元强弱</strong>(金、铜都用美元标价,美元一软,同样一盎司金换成美元的标价就机械地变高)。</p>
+    <p>外圈两个——美团、小米——坐在很远的板凳上,那只手够不着脸,只能扔根绳子隔空拽。这根绳子要绕三道弯:美联储松了 → 全球的钱变多变敢冒险 → 一部分钱流进港股、人民币走强 → 美团小米估值被抬一点点。<strong>任何一道弯都能把信号吃掉</strong>,尤其最后一道:这两只真正吃的是中国人点不点外卖、换不换手机。</p>
+    <blockquote>
+      但这张地图画的是"谁离那只手近",不是"那只手此刻正攥紧谁"。2025 年黄金干了件反教科书的事——利率被摁得高高的,它却涨了 70% 多,因为各国央行在疯狂囤金,这根新管子暂时把"实际利率"那根老管子盖住了。
+      <span class="src">来源:2025 年金价走势 · 全球央行购金数据</span>
+    </blockquote>
+  </section>
+
+  <section id="q3">
+    <div class="qhead">
+      <span class="qnum">3</span>
+      <h2>黄金+紫金:两重保险,还是同一注押两遍</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>黄金和紫金是"<em>同向加杠杆</em>",不是"互相分散"。利率往上顶、金价承压时,这两个仓位不会互相救,只会一起往下,紫金还摔得更狠——你这块的真实风险敞口,比账面上"两个仓位"集中得多。</p>
+    </div>
+    <p>道理很朴素:紫金从地里挖一克金,成本是死的(电费、工资、机器折旧,金价涨它们不涨),所以金价那部分涨幅扣掉固定成本后几乎整块掉进利润。这就是为什么 <strong>2024 年金价才涨 28%,紫金净利润却涨了 52%</strong>——一个小坡度被成本结构放大成一个大跳(经营杠杆)。关键是,<em>这个放大器是双向的</em>:2026 年初金价从高点回调约 <strong>20%</strong>,紫金股价却跌了近 <strong>30%</strong>,放大约 1.5 倍。它涨得猛,也摔得狠,但永远跟金价同一个方向。这不是分散,是杠杆。</p>
+    <p>更要命的是,紫金身上还压着两块黄金根本没有的东西:一,它一多半利润来自<strong>铜</strong>(占毛利 45%–47%,比金还多),铜赌的是全世界还在不在盖楼、修电网、造电车——是"经济好不好",跟黄金"经济越差我越值钱"的避险逻辑正好相反;二,它是一只<strong>中国 A/H 股票</strong>,估值会被 A 股情绪、人民币、政策一起拽。这轮就是两头挨刀:金价跌砍基本面,A 股杀估值砍市盈率,所以它跌得比金价本身还深。</p>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>紫金对金价的"放大倍数"1.5–1.8 倍,是用"下跌实测(20%→30%)+利润弹性(28%→52%)"两个口径估的量级,不是经过严格回归的精确 beta,别当成不变的常数。</p>
+    </div>
+  </section>
+
+  <section id="q4">
+    <div class="qhead">
+      <span class="qnum">4</span>
+      <h2>比特币:嘴上数字黄金,身体很诚实</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>在点阵图这件事上,比特币像高风险科技股,不像黄金;它和你的黄金是"方向打架",不是"互补对冲"。可以买,但别用"对冲"的名义买——眼下点阵图刚转鹰、流动性正逆风,"留子弹、分批进"比"现在一把梭"更顺它的脾气。</p>
+    </div>
+    <p>比特币外号"数字黄金",听上去该和黄金站一队一起对冲美元。但你只要看它<em>关键时刻的身体反应</em>,就知道这外号是嘴上叫的、身体不认。昨天那记鹰派耳光下:黄金小跌扛住,比特币跟着科技股一个跌法、跌得更多还在往下走。因为买黄金的人冲的是"怕",加息不改变他们的怕;买比特币的人其实冲的是"钱多",你一说要收钱,他第一个跑。</p>
+    <blockquote>
+      2022 年美联储史上最猛加息,所有东西都跌、唯独黄金扛住,而比特币全年腰斩还多(−64%),比纳斯达克(−33%)摔得更惨。它和科技股<em>太平时假装没关系,一慌就锁死,而且只跟着跌、不跟着涨</em>——这正是你最不想要的那种保险。
+      <span class="src">来源:2022 年加息周期回测 · 2025–2026 比特币与黄金相关性约 −0.88</span>
+    </blockquote>
+    <p>所以你要是按"黄金+比特币=双保险"的逻辑下手,实际买到的是"一边对冲(黄金)、一边加一份高风险的科技/流动性敞口(比特币)"。换个诚实的名义:这是"我主动加一笔押注全球放水的高风险资产",那它的仓位就该按你能承受的风险资产上限来定,别记进"避险"那本账。</p>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>"若只动一个仓位、就动比特币"是推断不是事实——说的是它的<strong>买入逻辑站不住</strong>(你以为它干 A、它其实干 B),不是"比特币一定会跌"。</p>
+    </div>
+  </section>
+
+  <section id="q5">
+    <div class="qhead">
+      <span class="qnum">5</span>
+      <h2>美团小米:把"鹰派=都该慌"剪断</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>点阵图对美团/小米是边缘力量,不是主导。读完这次鹰派点阵图,这两只基本不需要因此调整——把"鹰派=我所有持仓都该慌"这个错误推论,在这儿剪断。</p>
+    </div>
+    <p>美团、小米是港股,美联储这只手够不到它们的脸,顶多隔着两层扔根绳子轻轻拽:加息预期 → 全球钱变贵 → 外资从港股撤一点 → 恒生科技整体被压,这俩作为成分股<em>跟着一起晃,不是被点名</em>。而且这根绳子今年还被两股自己的力量顶住:<strong>南向资金越跌越买</strong>(年初至今净买超 1200 亿港元)、<strong>人民币升值</strong>把更多内地的钱赶进港股——这两股钱是中国自己掏的,加不加息管不着。</p>
+    <p>真正决定这两只死活的,是它们各自的故事,最近全在自己演:<strong>美团</strong>去年被外卖补贴战烧掉两百多亿,今年一季度核心本地业务亏损从约 100 亿砍到 20 亿,当天涨 6.5%,它头顶真正的刀是抖音到店(商家月活已超美团);<strong>小米</strong>一边电动车交付月月创新高(4 月 3.67 万台,冲 55 万台年目标),一边手机被内存芯片涨价(同比约翻倍)压毛利、发了涨价警告,股价从 60 港元一度腰斩到 30 出头。</p>
+    <blockquote>
+      美团涨是因为减亏,小米跌是因为内存——<em>这两件事里,没有一件是点阵图画出来的</em>。
+      <span class="src">来源:美团 2026 Q1 业绩 · 小米 4 月交付与手机毛利警告</span>
+    </blockquote>
+  </section>
+
+  <section id="q6">
+    <div class="qhead">
+      <span class="qnum">6</span>
+      <h2>收口:把组合往总开关上"净"一下</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>你的组合相对点阵图这只手,是<em>严重净多"钱变便宜"</em>、内部还夹着一处对着干。最该重新想的一个仓位,是你还没买的比特币——不是因为它最危险,是因为它的<em>买入逻辑最站不住</em>。在还没掏钱时重想,这是成本最低的一次。</p>
+    </div>
+    <p>把五个仓位都摆到"钱会变贵还是变便宜"这根开关前面:<strong>黄金</strong>赌钱变便宜、美元变弱,站"便宜"这边;<strong>紫金</strong>同一个赌注、仓位放大 1.5–1.8 倍还顺手押了铜,也站"便宜"这边、身子探得更出去;<strong>比特币</strong>你以为它站"便宜"这边(抗法币),实际行为里它站"大家敢不敢冒险"那边,鹰派时跟黄金反向;<strong>美团、小米</strong>根本没站在这根开关前面。</p>
+    <p>把账一净:你在"钱的价格"这根开关上,是重仓净多"钱会变便宜"——黄金+紫金一起押、其中一个还加了杠杆,对面连个对冲腿都没有。这次点阵图往"变贵"拨,戳的正是你押得最重的方向。但这不是说你押错了:2025 年央行在高利率下照样把金价顶上天,你这个方向有它自己的撑腰逻辑(去美元化),这只手比美联储还大。问题只在于:你把太多筹码压在同一个故事上,一旦故事错,是两个仓位连杠杆一起错。</p>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <ul>
+        <li>黄金最大的"算不全":央行购金这只手还能盖住实际利率多久,没人能给确定时点——这是你"赌钱变便宜"方向最大的不确定。别因为这张鹰派点阵图就去砍黄金,点阵图对它是逆风,不是主驱动。</li>
+        <li>"净多"是方向判断,不是精确敞口:我没有你各仓位的具体权重,算不出"加杠杆后回撤具体多大"。要落到数,得把五个仓位的实际比例报给我,可以再开一道"敞口测算"的题。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="signals">
+    <div class="qhead">
+      <span class="qnum">◎</span>
+      <h2>之后盯什么</h2>
+    </div>
+    <ul class="signals">
+      <li><span class="dot">▸</span><span><b>美国赤字 / 长期利率</b> — 赤字占 GDP 从 5.8% 往 6.7% 爬,会自己把长期利率顶高;这只手美联储管不着,却实实在在压你的黄金和成长股。</span></li>
+      <li><span class="dot">▸</span><span><b>缩表已停、改买短债</b> — 利率明线喊"再加一次"(收紧),流动性暗线却在 2025 年底悄悄放水。两条在打架——这条最容易被点阵图标题盖过,却同样决定钱贵不贵。</span></li>
+      <li><span class="dot">▸</span><span><b>油价与霍尔木兹航道</b> — 伊朗战争把油价一度顶到 100 多美元,油贵则百物贵,这才是逼点阵图上修通胀的真发动机;盯油价和那条航道通不通,比盯那几个点更早。</span></li>
+      <li><span class="dot">▸</span><span><b>各国央行购金</b> — 这只手比美联储还大,2025 年在高利率下照样把金价顶涨 70%;它撑你"钱变便宜"那个方向,但能盖住实际利率多久,是黄金最大的变量。</span></li>
+      <li><span class="dot">▸</span><span><b>抖音到店 / 小米交付与手机毛利</b> — 美团真正的刀是抖音到店(商家月活已超美团),小米看月度交付和内存涨价;这两只的死活在这儿,不在点阵图——而这块本就是你的内行场。</span></li>
+    </ul>
+  </section>
+
+  <details class="sources">
+    <summary>来源清单</summary>
+    <ul>
+      <li>美联储 6 月会议:点阵图年底中位数 3.4%→3.8%、通胀预期(SEP)2.7%→3.6%、利率维持 3.50%–3.75%(第四次按兵不动)</li>
+      <li>2 年期美债收益率:会后当场跳 16 个基点至 4.21%(一年来最高)</li>
+      <li>紫金矿业:2024 年净利 +52%(同期金价 +28%);2026 年初金价回调约 20%、紫金股价跌约 30%;铜占毛利约 45%–47%</li>
+      <li>比特币:2022 年 −64%(同期纳斯达克 −33%);2025–2026 与黄金相关性约 −0.88</li>
+      <li>港股:南向资金年初至今净买入约 1200 亿港元;人民币升值带动内地资金流入</li>
+      <li>美团:2026 Q1 核心本地业务亏损约 100 亿→约 20 亿,当日涨 6.5%;抖音到店商家月活已超美团</li>
+      <li>小米:4 月电动车交付 3.67 万台(年目标 55 万台);手机受内存涨价(同比约翻倍)压毛利、发涨价警告</li>
+      <li>美国财政:赤字占 GDP 约 5.8%→6.7%;美联储 2025 年底结束缩表、转为买短债</li>
+      <li>诚实交底:昨日股市收盘涨跌两信源打架(标普 −1.2% vs 尾盘翻红 +0.8%),结论不依赖单日股市</li>
+    </ul>
+  </details>
+
+  <footer>
+    <span class="byline"><span class="m">墨菲斯</span> · Morpheus · 20260618-082819</span>
+  </footer>
+
+</div>
+</body>
+</html>
