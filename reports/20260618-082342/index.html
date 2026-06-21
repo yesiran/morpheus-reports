@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>澜:节奏靠抢,团战留药 · 墨菲斯研究</title>
+<style>
+:root {
+  --paper: #F4F1EA;
+  --paper-2: #FBF9F4;
+  --ink: #211F1A;
+  --ink-strong: #111111;
+  --muted: #7A7368;
+  --line: #E3DCCD;
+  --accent: #2F5D57;
+  --accent-deep: #234742;
+  --accent-soft: rgba(47, 93, 87, 0.09);
+  --brick: #B0503C;
+  --brick-soft: rgba(176, 80, 60, 0.10);
+  --amber: #BB8A2B;
+  --serif: "Songti SC", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+  --sans: "PingFang SC", "Noto Sans SC", "Source Han Sans SC", -apple-system, "Helvetica Neue", sans-serif;
+  --mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  --shadow: 0 22px 48px -26px rgba(60, 48, 28, 0.30);
+  --shadow-soft: 0 12px 28px -18px rgba(60, 48, 28, 0.22);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1C1A16;
+    --paper-2: #24211C;
+    --ink: #E6E1D6;
+    --ink-strong: #F5F2EA;
+    --muted: #9A9385;
+    --line: #3A362E;
+    --accent: #5E9C93;
+    --accent-deep: #7DB5AC;
+    --accent-soft: rgba(94, 156, 147, 0.14);
+    --brick: #CC7A66;
+    --brick-soft: rgba(204, 122, 102, 0.14);
+    --amber: #D2A653;
+    --shadow: none;
+    --shadow-soft: none;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.85;
+  font-feature-settings: "tnum";
+}
+.wrap { max-width: 744px; margin: 0 auto; padding: 0 26px 96px; }
+
+/* ── 开篇 ─────────────────────────────────────────── */
+.hero { padding: 76px 0 40px; border-bottom: 1px solid var(--line); }
+.kicker {
+  font: 600 12.5px/1 var(--mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 22px;
+}
+h1 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(32px, 6.2vw, 50px);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+  margin: 0 0 20px;
+}
+.lead {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--muted);
+  border-left: 2px solid var(--line);
+  padding-left: 18px;
+  margin: 0;
+}
+.lead b { color: var(--ink); font-weight: 600; }
+
+/* ── 总判断 ───────────────────────────────────────── */
+.verdict {
+  margin: 44px 0 8px;
+  padding: 28px 30px;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+}
+.verdict .tag {
+  font: 700 12px/1 var(--mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 12px;
+}
+.verdict p {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.66;
+  color: var(--ink-strong);
+}
+
+/* ── 目录 ─────────────────────────────────────────── */
+.toc { margin: 40px 0 0; padding: 0; list-style: none; }
+.toc li { margin: 0; border-bottom: 1px solid var(--line); }
+.toc a {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  padding: 11px 2px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.toc a:hover { color: var(--accent); }
+.toc .n { font: 700 13px/1 var(--mono); color: var(--accent); min-width: 20px; }
+
+/* ── 每题一节 ─────────────────────────────────────── */
+section { padding-top: 58px; scroll-margin-top: 24px; }
+.qhead { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 18px; }
+.qnum {
+  flex: none;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #FBF9F4;
+  font: 700 15px/32px var(--mono);
+  text-align: center;
+  margin-top: 5px;
+}
+h2 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.34;
+  color: var(--ink-strong);
+  margin: 0;
+}
+.answer {
+  margin: 20px 0 26px;
+  padding: 18px 22px;
+  background: var(--accent-soft);
+  border-radius: 12px;
+  font-size: 17px;
+  line-height: 1.75;
+}
+.answer .tag {
+  font: 700 11.5px/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 8px;
+}
+.answer p { margin: 0; color: var(--ink-strong); font-weight: 500; }
+p { margin: 0 0 18px; }
+strong { color: var(--ink-strong); font-weight: 650; }
+em {
+  font-style: normal;
+  background: linear-gradient(transparent 62%, var(--accent-soft) 62%);
+  padding: 0 2px;
+}
+blockquote {
+  margin: 30px 0;
+  padding: 4px 0 4px 24px;
+  border-left: 3px solid var(--accent);
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.62;
+  color: var(--ink-strong);
+}
+blockquote .src {
+  display: block;
+  margin-top: 10px;
+  font: 500 12.5px/1.5 var(--mono);
+  color: var(--muted);
+}
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 8px; line-height: 1.7; }
+a { color: var(--accent); text-decoration-color: var(--line); text-underline-offset: 3px; }
+
+/* ── 风险/反面(用砖红,克制) ───────────────────────── */
+.watch {
+  margin: 30px 0;
+  padding: 18px 22px;
+  background: var(--brick-soft);
+  border-radius: 12px;
+}
+.watch .tag {
+  font: 700 11.5px/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brick);
+  display: block;
+  margin-bottom: 8px;
+}
+.watch p, .watch ul { margin: 0; }
+.watch li { margin-bottom: 6px; }
+
+/* ── 信号看板(盯什么) ─────────────────────────────── */
+.signals { margin: 26px 0 0; padding: 0; list-style: none; }
+.signals li {
+  display: flex;
+  gap: 12px;
+  padding: 12px 2px;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+.signals .dot { flex: none; font: 700 13px/1 var(--mono); color: var(--amber); }
+.signals b { color: var(--ink-strong); font-weight: 650; }
+
+/* ── 来源与脚注 ───────────────────────────────────── */
+.sources { margin-top: 28px; }
+.sources summary {
+  cursor: pointer;
+  font: 600 13px/1 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 8px 0;
+}
+.sources ul { margin: 12px 0 0; }
+.sources li { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+/* ── 结尾 ─────────────────────────────────────────── */
+footer { margin-top: 76px; text-align: center; }
+.byline {
+  display: inline-block;
+  font: 600 13px/1.2 var(--mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 1px solid var(--ink-strong);
+  border-bottom: 1px solid var(--ink-strong);
+  padding: 14px 26px;
+}
+.byline .m { color: var(--accent); }
+
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .wrap { padding: 0 18px 72px; }
+  .hero { padding: 52px 0 32px; }
+  h1 { font-size: 32px; }
+  h2 { font-size: 22px; }
+  blockquote { font-size: 19px; }
+  .verdict { padding: 22px 20px; }
+  .verdict p { font-size: 18px; }
+  section { padding-top: 46px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="kicker">Morpheus Research · 2026-06-21</p>
+    <h1>澜:节奏靠抢,团战留药</h1>
+    <p class="lead">你问的是:<b>帮我研究一下澜怎么玩,我打过300把,但是感觉不知道怎么限制对方节奏,以及打团不知道怎么上。</b>——你以为缺的是操作和勇气,真正卡住你的,是两个被框错的判断。</p>
+  </header>
+
+  <div class="verdict">
+    <span class="tag">总判断</span>
+    <p>你那300把卡住的,从来不是澜的操作,是两个被你框错的判断。「限制对方节奏」根本不存在——打野是全场唯一满地图自由跑的人,节奏的主动权天生在你手里,你要做的是错位抓人、专挑软柿子、比对面打野快半拍滚雪球。「打团怎么上」也不是找勇气——是用下潜逼对面交保命键、控一空再用大招那张承诺键砸进后排,二技能永远留作后悔药。而把这两件事变成本事的,是那张6条复盘表:下一把开打前,只盯一条。</p>
+  </div>
+
+  <ul class="toc">
+    <li><a href="#q1"><span class="n">1</span>节奏不是「限制」,是抢</a></li>
+    <li><a href="#q2"><span class="n">2</span>三条路,第一反应那条最坑</a></li>
+    <li><a href="#q3"><span class="n">3</span>开局一眼,定今天浪还是忍</a></li>
+    <li><a href="#q4"><span class="n">4</span>团战:后悔药藏错了一格</a></li>
+    <li><a href="#q5"><span class="n">5</span>把300把变成复利机器</a></li>
+  </ul>
+
+  <section id="q1">
+    <div class="qhead">
+      <span class="qnum">1</span>
+      <h2>「限制对方节奏」这句话,本身就把你放错了边</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>「限制」是个防守框,框错了。打野是这局唯一满地图自由跑的人,节奏的主动权天生在你手里;你真正的对手不是对面五个人,是对面那一个打野——你俩抢的是「谁先把雪球滚起来」。<em>节奏是抢出来的,不是防出来的</em>。</p>
+    </div>
+    <p>这局十个人,谁活动范围最大?是你。其余九个都被拴着:对线那四个身上有根隐形的绳子叫<strong>兵线</strong>——一离开自己那条路,兵就被推到塔下、塔就掉血,所以他走不开;辅助贴着人走也不自由。<strong>只有打野的钱长在满地图的野怪上,不归任何一条线管。</strong>这意味着你比别人多出一份可以随便花的体力——砸到哪一路,哪一路立刻变成「你方两个打他一个」。这就是抓人(gank)的全部秘密:不是操作秀,而是你在一个局部、一个瞬间,临时凑出了人多打人少。</p>
+    <p>所以「节奏」翻成人话,就是<em>在对方还没反应过来之前,我已经动完了</em>。关键在于:这个雪球是单向的——你快半拍滚起来,对面打野就被压在野区里出不来,他想「限制你」都没机会,因为限制的前提是他得先有节奏。「防」这个动作从逻辑上就慢一拍:等你开始想怎么防他,说明他已经先动了。</p>
+    <blockquote>
+      你不是在「限制对方节奏」,你是在和对面打野下一盘棋——谁先滚起雪球。该想的不是「我怎么拦住他」,是「我下一个抓人窗口在哪,怎么比他先到」。
+      <span class="src">第一个开关 · 重构</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>别把「抢」误会成「去野区跟对面打野单挑」。你俩不共一条线,没必要硬碰拳头——你抢的是<strong>时间差,不是谁拳头硬</strong>。这一点对澜尤其要命,下一节就是它的代价。</p>
+    </div>
+  </section>
+
+  <section id="q2">
+    <div class="qhead">
+      <span class="qnum">2</span>
+      <h2>那具体怎么抢?三条路里,你最容易走错的恰恰是第一反应那条</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>看到对面打野,三条路:反他野、堵回家、<em>错位抓人</em>。第一反应去反野,恰恰是玩澜最容易翻车的一步——那是拿澜最弱的正面对拼去赌。澜的活路是错位抓人:他在上半区,你就去下半区,抓那条没了打野保护的落单脆皮。九成的局走这条。</p>
+    </div>
+    <p>为什么反野翻车?因为澜的伤害是<strong>慢慢叠出来的</strong>(靠被动印记叠真伤),满血对满血站着对A,他打不过大多数战士型打野,身上又没有救命的硬控。你拿他最弱的一面跑去对面野区赌一把,输了就是1换0送钱,他还反手端了你家野区。</p>
+    <p>那澜的强项是什么?是<em>一口咬死一个血薄的人</em>。被动是:敌人血量低于约30%被标成「猎物」,澜打猎物有额外真实伤害(无视护甲魔抗),周围有残血时移速暴涨——对面越残,他冲得越快、打得越疼,是台教科书级的收割机。把这两件事一对,澜该走的就是错位抓人:躲开了打不过的那一架,却没躲开抓人,节奏照样到手。</p>
+    <blockquote>
+      看到对面打野在A,我就去A的对角线刷钱、抓那边落单的脆皮;他没露面、位置不明,我就往队友身边收,绝不一个人往他野区钻。
+      <span class="src">第二个开关 · 主路线</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>反野不是不能做,但要<strong>三个条件同时成立</strong>才碰:对面打野是前期软蛋 + 你带着队友一起 + 他位置已经确认。缺一个,就走错位那条路。(澜比别的刺客稍敢反野一点,因为他刷野不那么依赖红蓝buff、丢了buff也扛得住——但这只是「稍敢」,不是「硬反」。)</p>
+    </div>
+  </section>
+
+  <section id="q3">
+    <div class="qhead">
+      <span class="qnum">3</span>
+      <h2>可澜不是哪儿都能抢——开局那一眼,就决定了今天该浪还是该忍</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>澜不是任何时候、任何对面都能抓。你卡节奏,八成是在他抓不动的时候硬抓、专挑了打不动的目标。强势期 = <em>4级点出大招那一刻</em>到暗影战斧成型(大致4到12分钟);<em>开局先看一眼对面阵容</em>——满屏硬控、抱团、有人能接你大招秒你,今天就忍;脆皮多、控制少,4级一到见谁咬谁。</p>
+    </div>
+    <p>先认一件不好听的事:这版本的澜<strong>不是神</strong>。当前赛季(S43,2026年6月)梯度榜把他放在偏中游,系测评原话是「机制和伤害二选一的尴尬英雄,顺风没存在感、逆风第一个被针对」。这说明澜没有版本红利给你兜底——抓对了你是滚雪球的鲨鱼,抓错了你就是纯亏的软柿子,中间没有缓冲。所以「时机」对澜比对别的打野重要得多。1到3级他刷野慢、单挑一般,有了大招才第一次变成猎人,等暗影战斧出来才真能一套带走脆皮。</p>
+    <p>抓谁躲谁也卡死了:<strong>专杀</strong>交不出位移、没保命、走位差的脆皮(站桩射手、没闪现的法师、软辅);<strong>躲开</strong>带硬控、带保命位移、单挑顶得住你的人。还有一条硬机制你必须知道:<strong>澜大招下潜突进的过程中,他本人是能被选中、被控制的,不是无敌冲脸,而且澜自带没有净化解控</strong>——所以一条硬控链(东皇吸住、张良圈住、老夫子定住)就能在你进场那一下把你钉死。</p>
+    <blockquote>
+      满屏硬控、抱团视野好、有人能接你大招秒你,今天就忍;对面脆皮多、控制少、走位还菜,4级一到见谁咬谁。该浪还是该忍,开局这一眼就定了。
+      <span class="src">第三个开关 · 该激进还是该忍</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>澜的版本强度<strong>榜单打架</strong>:一路说他本月已恢复、是T0~T1强势打野,另一路引S43梯度榜说他T2~T3偏中游,我无法判定谁更准。但两边收敛——他是「吃时机的雪球刺客」,不是镜/马超那种无脑carry的T0,所以「看时机和阵容」这个核心判断照样成立。点名的克制英雄(东皇/张良/老夫子)和段位假设(钻石—星耀),以你天梯实际遇到的为准。</p>
+    </div>
+  </section>
+
+  <section id="q4">
+    <div class="qhead">
+      <span class="qnum">4</span>
+      <h2>团战那几秒:你以为的后悔药,藏错了一格</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>澜的大招不是后悔药,是一张<em>承诺键</em>——按下、用指示器选定方向那一刻,方向就钉死了,中途改不了向;它真正的价值在霸体(顶着控制硬穿)。真正能反悔的是<em>下潜的那双脚 + 二技能的反复位移</em>。先用下潜逼对面交控制保命键,等控一空、站位散了,才把大招砸进后排;二技能永远留作后悔药。</p>
+    </div>
+    <p>刺客最常见的死法就两种:<strong>进早了</strong>被五个人一起秒,<strong>进晚了</strong>队友死光你进去也是送。中间那条缝才是你要练的。你一直觉得澜的底气在大招,像张「可以反悔的进场键」——这个手感是真的,但藏的地方错了一格。大招扔匕首、后跳、冲刺,是一条不能回头的轨道;它的本事在<strong>霸体</strong>:顶着对面的控制硬穿进去,这是别的刺客没有的。</p>
+    <p>那「进得去也撤得出」的手感真身是谁?是<strong>下潜 + 二技能</strong>:下潜给你移速、视野、无视地形(河道里还不限时间),二技能能反复横跳、靠强化普攻自己回冷却。把这一格挪对,团战节奏就清楚了:先用下潜在对面边上游走贴脸,逼他们把控制和保命键先交了(这一段你随时能缩回来);等控一空、后排保命也空了、站位散了,你才把大招这张承诺键拍出去,一条轨道砸进后排。</p>
+    <blockquote>
+      你那几秒要盯的,从来不是「哪有缝能冲」,是「对面保命键交完没、我的二技能还在不在手里」。进场前永远留着二技能当后悔药,绝不在冲锋路上把它交光。
+      <span class="src">第四个开关 · 进场信号 + 后悔药</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>澜的技能精确数值(二技能回血/冷却、大招CD/位移距离)没拿到2026年6月正式服逐项面板,所谓「无限二技能续航」别照搬旧攻略,<strong>以你客户端内技能描述为最终事实</strong>。机制层(大招方向锁死不可改向、下潜+二技能是机动核心、大招冲锋可被控制、澜无自带净化)跨版本稳定可信。原始框架「大招=可反悔进场键」被验证后已修正——能反悔的是下潜+二技能,大招是霸体承诺键。</p>
+    </div>
+  </section>
+
+  <section id="q5">
+    <div class="qhead">
+      <span class="qnum">5</span>
+      <h2>最后一块:把这300把,变成一台会涨分的复利机器</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>光看这份东西你学不会——前四个开关得靠你自己从300把里一把把抠出来。用复利的眼睛看:你这300把,<em>利息没滚进本金</em>。每把存的是「赢了爽/输了坑」的情绪,不是经验,所以下一把又从零开始。缺的只有一样:一个把「稀里糊涂」抠成「一个具体决策点」的过滤器,秘密就两个字——<em>窄(一次只改一个点)和闭(发现错→下把专改→验证)</em>。</p>
+    </div>
+    <p>赢了不知道赢在哪,输了甩锅运气,刻意练习里管这叫<strong>高原期</strong>:你不是没练,是在重复你已经会的东西,而重复已会的,只能维持现状。要让300把变成3000把还在涨,就靠这张6条复盘表把「窄」和「闭」焊死在每一局上。看回放时<strong>不看连招、不看手速</strong>,只在这6个决策点上按暂停,问自己一句「重来我会不会换个选法」——每条都能勾对/错,不是「打得好不好」这种没法判定的空话。</p>
+    <blockquote>
+      每局只盯1-2条,不要6条全改。6条不是清单,是6周的路线图。一次盯6个点,等于一个都没盯住——刻意练习的全部威力,都在「窄」这个字上。
+      <span class="src">第五节 · 怎么用</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>这套刻意练习是从音乐/棋类/运动迁移过来的,不是有人拿王者做过对照实验——原理(窄反馈 + 单点闭环)可信度高,迁到MOBA是<strong>类比推理</strong>、逻辑自洽,但不是「这样打一定涨分」。另外这表只管决策、不管操作手法:如果6条都判「对」了还输,瓶颈可能在手或英雄池,不在脑,那是另一套练法。</p>
+    </div>
+  </section>
+
+  <section id="signals">
+    <div class="qhead">
+      <span class="qnum">◎</span>
+      <h2>之后盯什么:6条复盘表(6周路线图)</h2>
+    </div>
+    <ul class="signals">
+      <li><span class="dot">▸</span><span><b>1. 这次gank值不值</b> — 拿人头/逼出闪现治疗=赚;白跑一趟=平/亏;反被抓死=大亏。一局「赚」不到一半,说明你在乱抓,不是抓节奏。</span></li>
+      <li><span class="dot">▸</span><span><b>2. 是不是弱势期硬抓</b> — 大招在手、对方关键控制空=该抓;大招在CD、对方控制齐全、血没满还往里冲=硬抓,十次九次喂。</span></li>
+      <li><span class="dot">▸</span><span><b>3. 有没有浪费上半区窗口</b> — 看到对面打野去下半区那刻,上半区对线身后没了保护,是免费窗口。去抓了=吃到了;埋头刷野/瞎逛=浪费了。</span></li>
+      <li><span class="dot">▸</span><span><b>4. 进场早了还是晚了</b> — 对面硬控已空、你进去收割=时机对;控制全在你第一个跳=进早了;人都死光你才到=进晚了。</span></li>
+      <li><span class="dot">▸</span><span><b>5. 第一刀切前排还是后排</b> — 越过前排切到后排C位=切对了;对着坦克一通输出=切错了(拿屠龙刀砍棉被)。</span></li>
+      <li><span class="dot">▸</span><span><b>6. 大招用在刀刃还是白留死</b> — 追杀收割/躲掉致命技能=用对了;从头留到尾、团输了大招还在=白留死;无脑一进场就放空=白扔了。</span></li>
+    </ul>
+  </section>
+
+  <details class="sources">
+    <summary>来源清单</summary>
+    <ul>
+      <li>打野=节奏发动机 / 节奏定义 — Dignitas《Controlling Tempo: A Jungler's Guide》、腾讯pvp官方</li>
+      <li>澜对拼弱 · 收割落单 · 错位主路 — 搜狐/腾讯新闻 S42–S44 打野梯队、知乎刺客打野干货(多源交叉)</li>
+      <li>澜强势期 · 克制阵容 — 17173/腾讯新闻 S43 梯度榜(2026-04)、小米游戏中心英雄克制专题</li>
+      <li>澜大招机制 — 游侠手游技能介绍、代练通《澜大招怎么控制方向》、腾讯pvp官方刺客团战思路</li>
+      <li>刻意练习 — fs.blog《Deliberate Practice Guide》(转述 Ericsson《Peak》)、Ericsson 1993 奠基论文</li>
+    </ul>
+  </details>
+
+  <footer>
+    <span class="byline"><span class="m">墨菲斯</span> · Morpheus · 20260618-082342</span>
+  </footer>
+
+</div>
+</body>
+</html>
