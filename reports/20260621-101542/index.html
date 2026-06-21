@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<!--
+  墨菲斯研究报告 · 单页模板(style contract)
+  ════════════════════════════════════════════════════════════════
+  给渲染器(claude -p)的硬约束:
+  1. <style> 块一字不改。所有视觉决定已在 CSS 里定死,你只做内容编辑。
+  2. 双花括号占位符全部替换成真实内容;交付的 HTML 里不允许残留占位符。
+  3. 标着「⟳ 每题一节」的 <section> 按问题数复制;用不到的组件(aside.watch、
+     blockquote 等)整块删掉,不留空壳。
+  4. 重点突出只用这三种武器:<em>(下划高亮,一节最多 2 处)、blockquote
+     (金句/关键证据,一节最多 1 个)、.answer 卡(每题的判断,必有)。
+  5. 禁止:加 emoji、加渐变、加新颜色、改字体、内联 style 属性。
+  6. 语言:全文中文,讲清楚优先;标题短、判断硬、证据带来源。
+-->
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>你脚下那把枪,叫 harness · 墨菲斯研究</title>
+<style>
+:root {
+  --paper: #F4F1EA;
+  --paper-2: #FBF9F4;
+  --ink: #211F1A;
+  --ink-strong: #111111;
+  --muted: #7A7368;
+  --line: #E3DCCD;
+  --accent: #2F5D57;
+  --accent-deep: #234742;
+  --accent-soft: rgba(47, 93, 87, 0.09);
+  --brick: #B0503C;
+  --brick-soft: rgba(176, 80, 60, 0.10);
+  --amber: #BB8A2B;
+  --serif: "Songti SC", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+  --sans: "PingFang SC", "Noto Sans SC", "Source Han Sans SC", -apple-system, "Helvetica Neue", sans-serif;
+  --mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  --shadow: 0 22px 48px -26px rgba(60, 48, 28, 0.30);
+  --shadow-soft: 0 12px 28px -18px rgba(60, 48, 28, 0.22);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1C1A16;
+    --paper-2: #24211C;
+    --ink: #E6E1D6;
+    --ink-strong: #F5F2EA;
+    --muted: #9A9385;
+    --line: #3A362E;
+    --accent: #5E9C93;
+    --accent-deep: #7DB5AC;
+    --accent-soft: rgba(94, 156, 147, 0.14);
+    --brick: #CC7A66;
+    --brick-soft: rgba(204, 122, 102, 0.14);
+    --amber: #D2A653;
+    --shadow: none;
+    --shadow-soft: none;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.85;
+  font-feature-settings: "tnum";
+}
+.wrap { max-width: 744px; margin: 0 auto; padding: 0 26px 96px; }
+
+/* ── 开篇 ─────────────────────────────────────────── */
+.hero { padding: 76px 0 40px; border-bottom: 1px solid var(--line); }
+.kicker {
+  font: 600 12.5px/1 var(--mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 22px;
+}
+h1 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(32px, 6.2vw, 50px);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+  margin: 0 0 20px;
+}
+.lead {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--muted);
+  border-left: 2px solid var(--line);
+  padding-left: 18px;
+  margin: 0;
+}
+.lead b { color: var(--ink); font-weight: 600; }
+
+/* ── 总判断 ───────────────────────────────────────── */
+.verdict {
+  margin: 44px 0 8px;
+  padding: 28px 30px;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+}
+.verdict .tag {
+  font: 700 12px/1 var(--mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 12px;
+}
+.verdict p {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.66;
+  color: var(--ink-strong);
+}
+
+/* ── 目录 ─────────────────────────────────────────── */
+.toc { margin: 40px 0 0; padding: 0; list-style: none; }
+.toc li { margin: 0; border-bottom: 1px solid var(--line); }
+.toc a {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  padding: 11px 2px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.toc a:hover { color: var(--accent); }
+.toc .n { font: 700 13px/1 var(--mono); color: var(--accent); min-width: 20px; }
+
+/* ── 每题一节 ─────────────────────────────────────── */
+section { padding-top: 58px; scroll-margin-top: 24px; }
+.qhead { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 18px; }
+.qnum {
+  flex: none;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #FBF9F4;
+  font: 700 15px/32px var(--mono);
+  text-align: center;
+  margin-top: 5px;
+}
+h2 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.34;
+  color: var(--ink-strong);
+  margin: 0;
+}
+.answer {
+  margin: 20px 0 26px;
+  padding: 18px 22px;
+  background: var(--accent-soft);
+  border-radius: 12px;
+  font-size: 17px;
+  line-height: 1.75;
+}
+.answer .tag {
+  font: 700 11.5px/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 8px;
+}
+.answer p { margin: 0; color: var(--ink-strong); font-weight: 500; }
+p { margin: 0 0 18px; }
+strong { color: var(--ink-strong); font-weight: 650; }
+em {
+  font-style: normal;
+  background: linear-gradient(transparent 62%, var(--accent-soft) 62%);
+  padding: 0 2px;
+}
+blockquote {
+  margin: 30px 0;
+  padding: 4px 0 4px 24px;
+  border-left: 3px solid var(--accent);
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.62;
+  color: var(--ink-strong);
+}
+blockquote .src {
+  display: block;
+  margin-top: 10px;
+  font: 500 12.5px/1.5 var(--mono);
+  color: var(--muted);
+}
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 8px; line-height: 1.7; }
+a { color: var(--accent); text-decoration-color: var(--line); text-underline-offset: 3px; }
+
+/* ── 风险/反面(用砖红,克制) ───────────────────────── */
+.watch {
+  margin: 30px 0;
+  padding: 18px 22px;
+  background: var(--brick-soft);
+  border-radius: 12px;
+}
+.watch .tag {
+  font: 700 11.5px/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brick);
+  display: block;
+  margin-bottom: 8px;
+}
+.watch p, .watch ul { margin: 0; }
+.watch li { margin-bottom: 6px; }
+
+/* ── 信号看板(盯什么) ─────────────────────────────── */
+.signals { margin: 26px 0 0; padding: 0; list-style: none; }
+.signals li {
+  display: flex;
+  gap: 12px;
+  padding: 12px 2px;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+.signals .dot { flex: none; font: 700 13px/1 var(--mono); color: var(--amber); }
+.signals b { color: var(--ink-strong); font-weight: 650; }
+
+/* ── 来源与脚注 ───────────────────────────────────── */
+.sources { margin-top: 28px; }
+.sources summary {
+  cursor: pointer;
+  font: 600 13px/1 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 8px 0;
+}
+.sources ul { margin: 12px 0 0; }
+.sources li { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+/* ── 结尾 ─────────────────────────────────────────── */
+footer { margin-top: 76px; text-align: center; }
+.byline {
+  display: inline-block;
+  font: 600 13px/1.2 var(--mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 1px solid var(--ink-strong);
+  border-bottom: 1px solid var(--ink-strong);
+  padding: 14px 26px;
+}
+.byline .m { color: var(--accent); }
+
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .wrap { padding: 0 18px 72px; }
+  .hero { padding: 52px 0 32px; }
+  h1 { font-size: 32px; }
+  h2 { font-size: 22px; }
+  blockquote { font-size: 19px; }
+  .verdict { padding: 22px 20px; }
+  .verdict p { font-size: 18px; }
+  section { padding-top: 46px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="kicker">Morpheus Research · 2026-06-21</p>
+    <h1>你脚下那把枪,叫 harness</h1>
+    <p class="lead">你问的是:<b>harness 到底是什么、边界在哪——提示词和 skill 我都熟,可 CLI、harness、agent 这几个词,我分不清。</b>而这一问真正在赌的,是作为做京小贝的产品人,你该把团队工程力押在哪一层。</p>
+  </header>
+
+  <div class="verdict">
+    <span class="tag">总判断</span>
+    <p>模型、提示词、skill、harness、CLI、agent 不在一条起跑线上,它们是上下叠着的一座塔;harness 就是托着模型跑的那层「身体」,你最熟的 prompt 和 skill 只是喂进它嘴里的子弹。而护城河不在 harness 那层——它是 Anthropic 在守、还在亲手填平的城;京小贝真正的金矿,在用户每天替你挖出的独家数据,和你用合规砌起的那道墙里。</p>
+  </div>
+
+  <ul class="toc">
+    <li><a href="#q1"><span class="n">1</span>六个词不是对手,是一座塔</a></li>
+    <li><a href="#q2"><span class="n">2</span>模型说完一句就死了</a></li>
+    <li><a href="#q3"><span class="n">3</span>一条线,一刀切清边界</a></li>
+    <li><a href="#q4"><span class="n">4</span>agent 是整栈成品,不是某一层</a></li>
+    <li><a href="#q5"><span class="n">5</span>护城河不在你以为的那层</a></li>
+  </ul>
+
+  <section id="q1">
+    <div class="qhead">
+      <span class="qnum">1</span>
+      <h2>六个词不是对手,是一座塔</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>这六个词压根不在一条起跑线上,没法比——它们是上下叠着的一座塔。harness 是托着模型跑的「身体」,prompt 和 skill 不是塔里的硬件,是喂进它嘴里的内容;你三个 agent(Claude Code / OpenClaw / Hermes)都站在 harness 这一层,只是换了张脸、接了颗脑。</p>
+    </div>
+    <p>最底是<strong>模型</strong>:云端那颗大脑,给它一段文字、吐回一段文字,没手脚、没记忆、不会自己循环。套在它外面的第 2 层就是 <strong>harness</strong>——一个一圈圈转的循环(agent loop):拼上下文、调模型、接住模型说「我要用某工具」并真去执行、把结果塞回上下文、再管窗口别撑爆和权限。最外面第 3 层是<strong>入口皮</strong>:CLI 命令行、IDE 插件、网页、飞书、微信——<em>同一个身体可以换不同的脸,换脸,身体一点没变</em>。你每天念叨的 prompt 和 skill 不是塔里的硬件,是<strong>喂进这个身体嘴里的内容</strong>。</p>
+    <p>你的三个 agent 都站在第 2 层:<strong>Claude Code</strong>(脸=CLI/IDE,脑=Claude,专攻编码)、<strong>OpenClaw</strong>(脸=飞书/微信,可换多模型,管日常对话与知识库)、<strong>Hermes</strong>(脸=飞书,喊 claude -p 当脑,在你这套墨菲斯里更瘦、兼一层薄传输)。而 <em>「agent」本身不是塔里的某一层,它是模型+harness+入口装在一起、能自己干活的那整套成品的名字</em>。</p>
+    <blockquote>
+      你 Hermes 的特殊性,在你自己代码里被白纸黑字写成「薄传输+路由,把脑外包给 claude -p 子进程」——这是你机器上「Claude 当脑、Hermes 当身体」的实物证据,不是我猜的。
+      <span class="src">scripts/morpheus_think.py · specs/003-claude-brain-research/plan.md</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>OpenClaw 的分层归类(harness / 身体)是基于其已知功能做的架构推断,这个具体产品没有公开资料可引。Hermes 那条相反——有你自己的项目代码作硬证据。</p>
+    </div>
+  </section>
+
+  <section id="q2">
+    <div class="qhead">
+      <span class="qnum">2</span>
+      <h2>模型说完一句就死了</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>模型有个死穴:给它一句话,它「想」完一步就死了,连刚才说了啥都不记得。是 harness 独占的一对孪生控制权——「一圈圈重跑」和「每圈往模型嘴里写什么」——把它一次次救活;agent 能自己把活干完,就从这对权力里长出来。</p>
+    </div>
+    <p>模型的全部本事,是「喂它一坨文字、算一遍、吐一坨文字」。算完这次调用就结束,<em>它什么都不记得,连「我再想一步」都做不到</em>,因为「再来一次」根本不在它能力里。那 Claude Code 怎么一口气读五个文件、改代码、还说「先跑个测试」?把「读一下 plan.md」这一回合慢放:harness 先把整坨(系统设定 + 所有工具长啥样 + 历史对话 + 你这句)拼齐发过去;模型吐回的不是文件内容——它没读过任何文件,它吐的是一张纸条「我想用 Read 读 plan.md」,吐完就死;harness 接手,过一道权限闸(读文件放行,要删库就在这儿拦你确认),真的去操作系统里把文件捞出来;再把文件内容<strong>塞进下一圈的输入、把模型叫醒</strong>;模型这才基于内容吐下一步。整回合模型只露两次面,每次都「吃一坨、吐一坨、然后失忆」——<em>把它们串起来、决定每次喂什么、判断何时收手,全是 harness 干的</em>。</p>
+    <blockquote>
+      harness 补给模型的最核心那一件事,是它独占了一对孪生的控制权——「一圈圈重跑(循环)」和「每圈往模型嘴里写什么(进料口)」。聪明在模型里,能干活这件事在 harness 里。
+      <span class="src">Anthropic 官方 tool use 文档 · platform.claude.com</span>
+    </blockquote>
+  </section>
+
+  <section id="q3">
+    <div class="qhead">
+      <span class="qnum">3</span>
+      <h2>一条线,一刀切清边界</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>谁握着循环、并握着「往上下文窗口里写什么」的权力,谁就是 harness。拿这把尺子量:往下,模型不算(分界就在那一次 API 调用上);往上,CLI / 网页 / 飞书是「皮」;往旁边,MCP / 工具 / skill 是「外挂」。</p>
+    </div>
+    <p>这条线简单到你会怀疑,但够用。<strong>往下</strong>:模型不算 harness——调用之内(把字发给云端、拿回答案)是模型的活,调用之外那个一圈圈转的循环是 harness 的活。<strong>往上</strong>:CLI / 网页 / 飞书是皮——同一套 harness 从终端进、从网页进、像你这套从飞书进,<em>循环逻辑一个字不用改;能被整块换掉而内核不动的,按定义就不是内核</em>。<strong>往旁边</strong>:MCP / 工具 / skill 是外挂——MCP 官方自己声明,它只管工具和数据怎么标准化地递进来,<em>明确不规定怎么用模型、怎么管上下文,等于把「循环+上下文写权」原封不动留给了 harness</em>。那几个灰色地带(system prompt 怎么拼、记忆回填哪几条、子 agent 拆几个各喂什么)一量就清楚:全是「在循环每一拍决定往那屏字里写什么」,全是握笔的手,全是 harness 内核。</p>
+    <p>对你团队的直接落点:<strong>内核</strong>(循环、上下文拼装、记忆选取、子 agent 编排)重投工程力;<strong>外挂</strong>(MCP / 工具 / skill)主要接标准、接口做干净、别造轮子;<strong>皮</strong>(CLI / 网页 / 飞书)做多端适配、别让某个入口把循环绑死。</p>
+    <blockquote>
+      谁握着那支笔——谁拥有「循环」、并拥有「往上下文窗口里写什么」的权力,谁就是 harness。
+      <span class="src">MCP 官方架构与边界声明 · modelcontextprotocol.io</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>「harness」业界没有标准组织的统一定义(也叫 agent runtime / scaffold)。这条「谁握循环+上下文写权,谁就是 harness」的切分线,是综合多个权威来源后的判断、不是某份规范的原文——但它和所有来源自洽,且能干净处理灰区。</p>
+    </div>
+  </section>
+
+  <section id="q4">
+    <div class="qhead">
+      <span class="qnum">4</span>
+      <h2>agent 是整栈成品,不是某一层</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>「agent」有两层意思:大的是「整个系统在跑」,小的是「系统跑途中临时开的一个隔离、干净的第二个上下文窗口」。子 agent 的本质,就是那个隔离开的、干净的第二个上下文窗口——看懂这层,任何「多 agent 编排」都褪去术语,变成一个总编带一群记者。</p>
+    </div>
+    <p>这堆词里 agent 歧义最大:一会儿指整个跑起来的系统,一会儿指你用 Task 派出去的小兵。其实是<strong>同一结构的两个尺度</strong>。<strong>广义 agent</strong>=一个模型 + 一套工具 + 一个目标,在循环里自己决定下一步(而非照写死的剧本走),你的墨菲斯 worker 整体就是。<strong>子 agent</strong>=主系统干活中途临时雇的「带独立脑子的临时工」,本质就是<em>再开一个空白、干净的第二个上下文窗口</em>,塞给它子任务,它在那窗口里翻江倒海,跑完只递回一句结论,然后回收。</p>
+    <p>为什么要这么干?一个 agent 一次能看进眼里的全部东西(查过的网页、读过的文件、纠结过的废稿)全挤在一个有限的<strong>上下文窗口</strong>里;让它自己顺着查 5 个问题,盒子很快被中间垃圾塞爆、对全局的判断力就糊了。子 agent 一招治两病:<em>主 agent 的盒子永远干净(只拿回结论、不沾垃圾),临时工还能 5 个一起并行</em>。</p>
+    <blockquote>
+      你的 morpheus-worker 写死了「必须组建专家团队,严禁单干」。这 5 个问题各派一个专家(子 agent),在各自干净的盒子里联网、钻研、试错,我(总编)只攒回 5 份干净判断——一个总编带一群各有独立脑子的记者,这就是「多 agent 编排」褪去术语后的真身。
+      <span class="src">Anthropic《How we built our multi-agent research system》</span>
+    </blockquote>
+  </section>
+
+  <section id="q5">
+    <div class="qhead">
+      <span class="qnum">5</span>
+      <h2>护城河不在你以为的那层</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>harness 这层确实值钱(光改架构,SWE-bench 能涨 22 分,换模型只涨 1 分),但这条护城河是 Anthropic 的、不是京小贝的——官方已把 harness 打包成免费 SDK、把 MCP 捐给 Linux 基金会,昨天的护城河今天变成免费水泥地。给京小贝的押注:接标准 harness,重押独家数据,合规即护城河,吃满京东分发。</p>
+    </div>
+    <p>模型谁都能调,Claude Code、Cursor、Codex 底下那台发动机其实差不多,它们卷的是发动机外面那套传动系统——harness。这层真值钱:<strong>同一个模型,光改 harness 架构,SWE-bench 上能改 22 分,换一代新模型只改 1 分</strong>。所以 2026 全行业都喊「模型是燃料,harness 才是护城河」。但这正是要拆穿的地方。</p>
+    <p><strong>反转一:这条护城河是 Anthropic 的,不是京小贝的。</strong>官方把自己最值钱的 harness 打包成谁都能免费装的 Claude Agent SDK,又把接工具的 MCP 捐给了 Linux 基金会(OpenAI、谷歌、微软一起站台,变成像 USB 口一样的公共标准)——<em>昨天的护城河,今天被官方亲手填平成所有人脚下的免费水泥地</em>。它对造模型的实验室仍是护城河(模型针对自家 harness 调教、协同进化),可你不造模型,拿到的只是被免费送给你、也送给豆包的公共品。</p>
+    <p><strong>反转二:护城河迁到哪了?不在 prompt / skill 那层。</strong>prompt 和 skill 是世界上最容易被复制的东西,你写的金融话术豆包照样写。它迁到了两处:其一,<em>你的产品独家「制造」出来的数据</em>——用户在京小贝面前暴露的真实财务状态、面对涨跌的反应、被哪句话说服,只有当用户把它当成管钱的记录系统(system of record)才会被生出来,通用大模型这辈子拿不到;其二,金融这行的合规边界本身就是墙,「算得对、说得清、过得了监管」才值钱,这道墙挡的不是用户,是竞争对手。</p>
+    <p>押注方向:别去自建通用 harness(那是在 Anthropic 有结构性优势、还在把成本打到零的战场上砸重资产);站在标准 harness 上,把团队工程力全压在三件事——① 数据飞轮(最高优先级):把京小贝做成京东金融用户财务的记录系统;② 金融 skill 和合规焊死、可审计、过监管;③ 吃满京东分发,把 agent 深度嵌进现有工作流。</p>
+    <blockquote>
+      接标准 harness,重押独家数据,合规即护城河,吃满京东分发。harness 是地图上一座别人在守的城;真正属于你的金矿,在你脚下用户每天替你挖出来的那堆数据里。
+      <span class="src">段永平 / a16z 框架 · a16z.com/is-software-losing-its-head</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>「通用 harness 长期沦为 commodity」是趋势推断、不是定论——方向证据硬(官方 SDK + MCP 标准化 + 可热插拔 harness 三箭齐发),但沦为 commodity 到什么程度、多快是推测。「对应用层=commodity、对实验室=护城河」这个区分,是墨菲斯的判断,不是哪篇文章的原话。</p>
+    </div>
+  </section>
+
+  <section id="signals">
+    <div class="qhead">
+      <span class="qnum">◎</span>
+      <h2>之后盯什么</h2>
+    </div>
+    <ul class="signals">
+      <li><span class="dot">▸</span><span><b>京小贝数据盘点</b> — 你们到底沉淀了哪些公开大模型拿不到的数据?那个闭环真转得动吗?「独家数据是最大资产」是把 a16z 框架套到京小贝的推断,最该你拿内部事实去验。</span></li>
+      <li><span class="dot">▸</span><span><b>Codex vs Claude Code 沙箱实测</b> — 「内核层 vs harness 层强制权限」这条对照来自搜索聚合、未经一手实测;金融场景选型前,建议团队亲手跑一遍两者的权限/沙箱模型再定。</span></li>
+    </ul>
+  </section>
+
+  <details class="sources">
+    <summary>来源清单</summary>
+    <ul>
+      <li>Anthropic:把 agent 拆成「大脑/手脚」两件可独立替换的东西(anthropic.com/engineering/managed-agents);《Building Effective Agents》;《How we built our multi-agent research system》(主从并行、多 agent 比单 agent 强 90%+)。</li>
+      <li>Anthropic 官方 tool use 文档:模型不执行工具、只吐 tool_use 意图,harness 执行后回 tool_result、按 stop_reason 转圈(platform.claude.com)。</li>
+      <li>Claude Code 官方文档:子 agent 独立上下文窗口、只回结论;上下文满了自动压缩 auto-compact(code.claude.com/docs/en/sub-agents)。</li>
+      <li>harness 术语定义(huggingface.co/blog/agent-glossary);harness = 包住模型的完整基础设施、模型是其中最小一块(MongoDB 工程博客,2026)。</li>
+      <li>模型无状态、每次重传完整上下文(atlan.com/know/are-llms-stateless)。</li>
+      <li>MCP 官方架构与边界声明、MCP Host 跑循环(modelcontextprotocol.io/docs/learn/architecture);MCP 捐给 Linux 基金会(anthropic.com/news)。</li>
+      <li>harness &gt; 模型的硬数据:改架构在 SWE-bench / Terminal-Bench 上的涨分(fourweekmba.com;isuruig.medium.com;LangChain)。</li>
+      <li>Claude Agent SDK 免费发布(claude.com/blog)。</li>
+      <li>「独家制造的数据 / system of record」(a16z.com/is-software-losing-its-head);「perimeter 即护城河」(fintech.global);反方「harness 对实验室仍是护城河」(uncoveralpha.com)。</li>
+      <li>OpenClaw 分层为架构推断、无公开资料可引;Hermes 有项目代码作硬证据(scripts/morpheus_think.py、specs/003-claude-brain-research/plan.md)。</li>
+    </ul>
+  </details>
+
+  <footer>
+    <span class="byline"><span class="m">墨菲斯</span> · Morpheus · 20260621-101542</span>
+  </footer>
+
+</div>
+</body>
+</html>
