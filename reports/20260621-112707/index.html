@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>王昭君:假红利,真武器 · 墨菲斯研究</title>
+<style>
+:root {
+  --paper: #F4F1EA;
+  --paper-2: #FBF9F4;
+  --ink: #211F1A;
+  --ink-strong: #111111;
+  --muted: #7A7368;
+  --line: #E3DCCD;
+  --accent: #2F5D57;
+  --accent-deep: #234742;
+  --accent-soft: rgba(47, 93, 87, 0.09);
+  --brick: #B0503C;
+  --brick-soft: rgba(176, 80, 60, 0.10);
+  --amber: #BB8A2B;
+  --serif: "Songti SC", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+  --sans: "PingFang SC", "Noto Sans SC", "Source Han Sans SC", -apple-system, "Helvetica Neue", sans-serif;
+  --mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  --shadow: 0 22px 48px -26px rgba(60, 48, 28, 0.30);
+  --shadow-soft: 0 12px 28px -18px rgba(60, 48, 28, 0.22);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1C1A16;
+    --paper-2: #24211C;
+    --ink: #E6E1D6;
+    --ink-strong: #F5F2EA;
+    --muted: #9A9385;
+    --line: #3A362E;
+    --accent: #5E9C93;
+    --accent-deep: #7DB5AC;
+    --accent-soft: rgba(94, 156, 147, 0.14);
+    --brick: #CC7A66;
+    --brick-soft: rgba(204, 122, 102, 0.14);
+    --amber: #D2A653;
+    --shadow: none;
+    --shadow-soft: none;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.85;
+  font-feature-settings: "tnum";
+}
+.wrap { max-width: 744px; margin: 0 auto; padding: 0 26px 96px; }
+
+/* ── 开篇 ─────────────────────────────────────────── */
+.hero { padding: 76px 0 40px; border-bottom: 1px solid var(--line); }
+.kicker {
+  font: 600 12.5px/1 var(--mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 22px;
+}
+h1 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(32px, 6.2vw, 50px);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+  margin: 0 0 20px;
+}
+.lead {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--muted);
+  border-left: 2px solid var(--line);
+  padding-left: 18px;
+  margin: 0;
+}
+.lead b { color: var(--ink); font-weight: 600; }
+
+/* ── 总判断 ───────────────────────────────────────── */
+.verdict {
+  margin: 44px 0 8px;
+  padding: 28px 30px;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+}
+.verdict .tag {
+  font: 700 12px/1 var(--mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 12px;
+}
+.verdict p {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.66;
+  color: var(--ink-strong);
+}
+
+/* ── 目录 ─────────────────────────────────────────── */
+.toc { margin: 40px 0 0; padding: 0; list-style: none; }
+.toc li { margin: 0; border-bottom: 1px solid var(--line); }
+.toc a {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  padding: 11px 2px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.toc a:hover { color: var(--accent); }
+.toc .n { font: 700 13px/1 var(--mono); color: var(--accent); min-width: 20px; }
+
+/* ── 每题一节 ─────────────────────────────────────── */
+section { padding-top: 58px; scroll-margin-top: 24px; }
+.qhead { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 18px; }
+.qnum {
+  flex: none;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #FBF9F4;
+  font: 700 15px/32px var(--mono);
+  text-align: center;
+  margin-top: 5px;
+}
+h2 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.34;
+  color: var(--ink-strong);
+  margin: 0;
+}
+.answer {
+  margin: 20px 0 26px;
+  padding: 18px 22px;
+  background: var(--accent-soft);
+  border-radius: 12px;
+  font-size: 17px;
+  line-height: 1.75;
+}
+.answer .tag {
+  font: 700 11.5px/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 8px;
+}
+.answer p { margin: 0; color: var(--ink-strong); font-weight: 500; }
+p { margin: 0 0 18px; }
+strong { color: var(--ink-strong); font-weight: 650; }
+em {
+  font-style: normal;
+  background: linear-gradient(transparent 62%, var(--accent-soft) 62%);
+  padding: 0 2px;
+}
+blockquote {
+  margin: 30px 0;
+  padding: 4px 0 4px 24px;
+  border-left: 3px solid var(--accent);
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.62;
+  color: var(--ink-strong);
+}
+blockquote .src {
+  display: block;
+  margin-top: 10px;
+  font: 500 12.5px/1.5 var(--mono);
+  color: var(--muted);
+}
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 8px; line-height: 1.7; }
+a { color: var(--accent); text-decoration-color: var(--line); text-underline-offset: 3px; }
+
+/* ── 风险/反面(用砖红,克制) ───────────────────────── */
+.watch {
+  margin: 30px 0;
+  padding: 18px 22px;
+  background: var(--brick-soft);
+  border-radius: 12px;
+}
+.watch .tag {
+  font: 700 11.5px/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brick);
+  display: block;
+  margin-bottom: 8px;
+}
+.watch p, .watch ul { margin: 0; }
+.watch li { margin-bottom: 6px; }
+
+/* ── 信号看板(盯什么) ─────────────────────────────── */
+.signals { margin: 26px 0 0; padding: 0; list-style: none; }
+.signals li {
+  display: flex;
+  gap: 12px;
+  padding: 12px 2px;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+.signals .dot { flex: none; font: 700 13px/1 var(--mono); color: var(--amber); }
+.signals b { color: var(--ink-strong); font-weight: 650; }
+
+/* ── 来源与脚注 ───────────────────────────────────── */
+.sources { margin-top: 28px; }
+.sources summary {
+  cursor: pointer;
+  font: 600 13px/1 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 8px 0;
+}
+.sources ul { margin: 12px 0 0; }
+.sources li { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+/* ── 结尾 ─────────────────────────────────────────── */
+footer { margin-top: 76px; text-align: center; }
+.byline {
+  display: inline-block;
+  font: 600 13px/1.2 var(--mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 1px solid var(--ink-strong);
+  border-bottom: 1px solid var(--ink-strong);
+  padding: 14px 26px;
+}
+.byline .m { color: var(--accent); }
+
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .wrap { padding: 0 18px 72px; }
+  .hero { padding: 52px 0 32px; }
+  h1 { font-size: 32px; }
+  h2 { font-size: 22px; }
+  blockquote { font-size: 19px; }
+  .verdict { padding: 22px 20px; }
+  .verdict p { font-size: 18px; }
+  section { padding-top: 46px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="kicker">Morpheus Research · 2026-06-21</p>
+    <h1>王昭君:假红利,真武器</h1>
+    <p class="lead">你问的是:<b>帮我研究一下王者荣耀冰女,王昭君怎么玩,我还没用过,尤其是这个 S43 赛季</b>——你其实是在赌 S43 有波红利能蹭。</p>
+  </header>
+
+  <div class="verdict">
+    <span class="tag">总判断</span>
+    <p>S43 没碰她一根毫毛,所谓"版本红利"是假的——她这赛季没被加强,稳停在 T2,那股"热"是两年前 S30 的老印象。冲着"蹭红利上分"就别练她;但若你要的是一件团战定海神针、顺便学会中路这个新位置,这趟车值得上——只要认清你买的是"一个英雄 + 一个新位置"的双份票。</p>
+  </div>
+
+  <ul class="toc">
+    <li><a href="#q1"><span class="n">1</span>她不是冰女,是一台全团冰冻机</a></li>
+    <li><a href="#q2"><span class="n">2</span>"S43 红利"是虚火,账这么算</a></li>
+    <li><a href="#q3"><span class="n">3</span>要不要练?你买的是双份票</a></li>
+    <li><a href="#q4"><span class="n">4</span>头 20 把,只练两件事</a></li>
+    <li><a href="#q5"><span class="n">5</span>练成后那座山,靠什么赢</a></li>
+    <li><a href="#q6"><span class="n">6</span>这趟车,到底上不上</a></li>
+  </ul>
+
+  <section id="q1">
+    <div class="qhead">
+      <span class="qnum">1</span>
+      <h2>她不是"会减速的冰女",是一台"全团冰冻机"</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>别把她当"会放冰的法师"。她几乎被一个技能整个定义——大招让她钉在原地念咒约 5 秒,脚下一大圈范围连续砸暴风雪,把整片敌人原地冻住、连续挨打。你听过的"团控天花板""前期软站桩""特别吃时机",不是三件事,是这同一个动作的三个侧面。</p>
+    </div>
+    <p>别的中路法师靠一套技能糊脸把人秒了;王昭君靠的是"把一群人按在地上,让队友进来收割"。妙就妙在那些看似矛盾的评价都是同一动作的影子:大招一次冻一大片,所以是<strong>团控天花板</strong>;念咒那几秒她又<em>一个逃命位移都没有</em>,所以前期就是块活靶子;放早了敌人走出圈、放晚了她自己先倒,所以"特别吃时机、大招老交废"。</p>
+    <p>平时那些招,都在给这一锤铺路:<strong>一技能</strong>戳一下、减速,顺便清兵消耗;<strong>二技能</strong>延迟约 1 秒炸开、把人硬冻住约 2~2.5 秒(她唯一的硬控);<strong>被动</strong>让已被冻住的人挨打更疼。标准节奏就是:先一技能让你走不快 → 二技能稳稳冻住 → 大招暴风雪才扎扎实实全打在你身上。</p>
+    <blockquote>
+      强、软、难,不是三件事,是同一个动作的三个侧面——她站定、念咒、冻一片。
+      <span class="src">墨菲斯 · 机制拆解</span>
+    </blockquote>
+  </section>
+
+  <section id="q2">
+    <div class="qhead">
+      <span class="qnum">2</span>
+      <h2>回到"S43":为什么是虚火,这账两条线查的</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>"不是版本红利、停在 T2"不是拍脑袋,是分两条线查实的,两条都指向"版本没在养她"。她自己没被加强,版本环境反而踩了她一脚,核心装"梦魇之牙"还挨了削。所谓"很热",是 S30(约 2024 年)的老黄历。</p>
+    </div>
+    <p><strong>第一条·她被加强了吗?——没有。</strong> S43"陌上相逢"版本(2026-04-01 上线)加强的是元流之子、亚瑟、程咬金、妲己,削的是赵云、云缨、廉颇,逐字翻官方日志,没有"王昭君"三个字。</p>
+    <p><strong>第二条·版本在抬她吗?——反而踩了一脚。</strong> 这赛季奖励的是"清兵快、能自保、能自己带线 carry"的中路(元流之子、女娲、海月),而王昭君恰恰全是反面:<em>清线慢、腿短支援慢、还得靠辅助先按住人她再读条甩大招</em>。装备上 S43 削了"梦魇之牙"(法攻 −20、还涨价),把好处给了利好高爆发法师的"回响法杖",跟她的控制流不搭。</p>
+    <blockquote>
+      今天还觉得她很强很热,多半是吃了老印象的红利,不是 S43 的真实强度。
+      <span class="src">腾讯官方版本日志 · S43"陌上相逢"</span>
+    </blockquote>
+  </section>
+
+  <section id="q3">
+    <div class="qhead">
+      <span class="qnum">3</span>
+      <h2>那到底要不要练?你买的是"双份票"</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>值得上车,但要认清你买的是"一个新位置 + 一件团控神器"的双份票。回报很实在,就一个字:控——一个大招把对面整个团切成两半。代价是双层的,第二层你可能还没意识到。</p>
+    </div>
+    <p>她一个大招能把暴风雪丢在对面坦克和输出之间,坦克退不回去、输出冲不上来,凭一个技能就把阵型拆开按住。<strong>对你这种懂打团、有团战时机感的老玩家,这正好接得住你已有的本事</strong>——团战脑直接变现成 carry,而且她没位移、没复杂连招,对练过澜、娜可露露的人,"手"这关基本是送的。</p>
+    <p>但代价是双层的:<strong>第一层(英雄层)</strong>你大概有预期——血薄、无位移、前期软,难在脑(放大招的时机和位置),不难在手,靠经验能较快过。<strong>第二层(位置层)才是隐藏票价</strong>:她是个中单法师,而<em>中单很可能是你没系统打过的位置</em>。它逼你干三件不熟的活——控线(别无脑清线把兵推到对面塔下)、清线后的支援节奏、对线消耗加守塔发育。打野的节奏是你主动去找的,中单的节奏是兵线和地图逼你做选择的;从"猎人"变成"需要被保护的炮台",这个心态转弯比学会放大招难得多。</p>
+    <p>好处是,王昭君恰好是"用最简单的手、逼你学会中单这个新位置"的理想入门法师:团控强度撑得住学习期的挫败,操作又不会在重学位置时再加一层手上负担。</p>
+    <div class="watch">
+      <span class="tag">反面 / 最该被劝退的两类人</span>
+      <ul>
+        <li><strong>站不住桩的手急党</strong>——大招是"站定念咒的活靶子",受不了"放完还得赌对面没闪现"的人别碰。</li>
+        <li><strong>不耐烦发育、只图新鲜的人</strong>——她前期弱、要靠补兵控线慢慢起,给不了打野那种"一刀一个"的即时快感,图新鲜很快就会弃坑。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="q4">
+    <div class="qhead">
+      <span class="qnum">4</span>
+      <h2>真决定上车:头 20 把,只练两件事</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>别一股脑去背全部机制。<strong>头 20 把,只追求两件事:清线别漏 + 大招不空交。</strong>秀的事,第 20 把以后再说。</p>
+    </div>
+    <p><strong>第一级·把"中单基本功"当新位置单独练。</strong>铁律一条:有兵先清兵,清完再想去哪帮忙(兵线 &gt; 抓人)。前期贴自己兵线后面站,用技能清兵顺便骚扰,血被压低就回家别恋战——你没逃命技能,打野一来跑都跑不掉。出门多看小地图。</p>
+    <p><strong>第二级·大招只追求一个最低标准:</strong>团战站后排,往人堆里放一片,宁可慢半拍也别空。记三句:站在你方坦克身后;等双方人挤成一团再放;目标是"罩住两三个人",不是点死一个。还有条保命潜规则——<em>有大招才敢站前一点,没大招就老实缩后面</em>。</p>
+    <p><strong>第三级·出装铭文(S43 主流,先照抄别纠结):</strong></p>
+    <ul>
+      <li><strong>铭文:</strong>红色梦魇 ×10 / 绿色心眼 ×10 / 蓝色狩猎 ×10(法师通用模板,约 88 点法术穿透,直接套)。</li>
+      <li><strong>出装:</strong>冷静之靴 → 回响之杖 → 痛苦面具 → 博学者之怒 → 虚无法杖 → 收尾看局势出辉月(被刺客追时短暂无敌)或冰霜法杖(加血更稳)。</li>
+      <li><strong>召唤师技能:</strong>闪现(逃命/调站位,必带)。<strong>加点:</strong>主一、副二、有大升大。</li>
+      <li>另有一条"减速重伤"控制流(凝冰之息+梦魇之牙+炽热支配者+辉月)更偏工具人、理解成本高,等熟了再试,别上来就用。</li>
+    </ul>
+    <p><strong>第四级·前 20 把的目标设定。</strong>只求三个下限指标:清线不漏刀、不被抓死、每场团战大招至少蹭到两个人。新手输,十有八九不是"秀得不够",而是"送得太多 + 大招全空"。把"站住桩、大招不空"玩成本能,胜率自然就上来了。</p>
+  </section>
+
+  <section id="q5">
+    <div class="qhead">
+      <span class="qnum">5</span>
+      <h2>再往后看一步:练成后那座山,靠什么赢</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>她不靠杀人,靠"把一群人按在地上动不了"——卖的是"秩序",不是人头。核心赢法是用大招做"反手控一片":反手比先手更稳、上限更高,因为大招约 1 秒前摇里她不能动,先手冲上去等于把软皮送到对面脸上。人堆得越密、越到后期,她一张大招收益越大。</p>
+    </div>
+    <p>更优解是:让己方坦克先开团进场,或等对面刺客扑向你方后排的那一刹那,你反手一套把这一片全冻住——既保了后排,又把进场的人全锁死。<strong>站位铁律:永远全队最后排,贴着自己的坦克走,技能放完立刻撤,绝不落单、绝不进草。</strong></p>
+    <p>有个关键修正,别被网上带偏:很多攻略说她"最怕被打断",听着像怕大招中途被叫停。<em>不是。</em>经过重做,她的大招一旦放出来,你再控她、晕她,暴风雪照样在地上转,打不断。真正的软肋在两个更早的点:① 放大招那约 1 秒前摇里被秒;② 在二技能冻住人之前被切。</p>
+    <blockquote>
+      练成后的王昭君,是团队的"暂停键"——赢就赢在团战那几秒的"全场定身":按得准、按得满、还没被人先按死。
+      <span class="src">墨菲斯 · 方位感</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 她最怕谁、怎么防</span>
+      <p><strong>最怕:</strong>突进刺客(李白、阿珂、兰陵王,专挑她落单一套秒)、免控型(庄周顶着大招冲、还能群体解控)、自解控制的高伤射手(狄仁杰)——她只要落单就是待宰。<strong>怎么防:</strong>二技能往自己脚底下丢(防切看家本事,等刺客突进到脸上正好被冻);R 闪(放大招同时接闪现,人离开火力中心、暴风雪照转);召唤师技能可考虑净化;保命装出抵抗鞋、辉月/金身。</p>
+    </div>
+  </section>
+
+  <section id="q6">
+    <div class="qhead">
+      <span class="qnum">6</span>
+      <h2>收束:这趟车,到底上不上</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>她不是版本答案,是一件需要你用耐心和团战脑去喂的"硬实力武器"。值不值,看你要的是红利,还是这件武器本身。</p>
+    </div>
+    <p>绕回开头那个问题,真相是:这波版本红利是假的,她这赛季没被加强,是 T2,"热"是两年前的老印象。所以——</p>
+    <ul>
+      <li>理由是"<strong>趁 S43 红利上分</strong>"——<strong>下车</strong>,没这趟红利。</li>
+      <li>理由是"<strong>想要一张团战定海神针、顺便趁机学会中路这个新位置</strong>"——<strong>这趟车值得上</strong>,但请认清你买的是"一个英雄 + 一个新位置"的双份票,做好头 20 把当中单新手的心理准备。</li>
+      <li>你是"<strong>手急站不住桩 / 只图新鲜</strong>"——这英雄会让你很快弃坑,<strong>别上</strong>。</li>
+    </ul>
+  </section>
+
+  <section id="signals">
+    <div class="qhead">
+      <span class="qnum">◎</span>
+      <h2>之后盯什么(诚实交底:还没压实的)</h2>
+    </div>
+    <ul class="signals">
+      <li><span class="dot">▸</span><span><b>精确数值有缺口</b> — 王昭君 S43 的精确胜率/登场率/Ban 率、技能帧数百分比,文字搜不到(多画在配图里)。要确数得进游戏内"英雄数据"或玩加这类实时面板看;本报告只给"梯队 + 根因 + 机制",绝不编百分比。</span></li>
+      <li><span class="dot">▸</span><span><b>"中单是你没打过的新位置"是推断</b> — 从你过去只玩打野/刺客/辅助外推,只有你能确认。若你其实零散玩过中单,第三节那层"位置成本"就要往下调,更接近"只学一个英雄"。</span></li>
+      <li><span class="dot">▸</span><span><b>出装铭文随版本可能小改</b> — 已尽量按 S43 校准(铭文模板很稳、核心装是当前主流)。正式开打前,在游戏内"推荐出装"再瞄一眼当前热度排名做最后对齐。</span></li>
+      <li><span class="dot">▸</span><span><b>一条未核实传闻(同向)</b> — 搜索里有人提她"施法范围变短/二技能覆盖下降",未能开页核实是哪个版本。若属实,只会让"反手等对面进场再放"更重要,与本报告判断同向,故未写进硬结论。</span></li>
+    </ul>
+  </section>
+
+  <details class="sources">
+    <summary>来源清单</summary>
+    <ul>
+      <li>腾讯官方技能与版本公告 — S43"陌上相逢"版本日志(英雄加强/削弱、法师装备改动)</li>
+      <li>游民星空 / 17173 — S43 版本梳理与英雄梯度榜</li>
+      <li>网易 / 游侠 — 中路法师梯度榜(T0/T1 构成)</li>
+      <li>知乎 — 国服榜一王昭君教学(机制、节奏、反手细节)</li>
+      <li>4399 / 3DM / 9game — S43 王昭君出装铭文与上手攻略</li>
+      <li>(待核实)腾讯官方文章"王昭君成最热英雄、登场率第一" — 经查为 S30 赛季(约 2024 年)数据</li>
+    </ul>
+  </details>
+
+  <footer>
+    <span class="byline"><span class="m">墨菲斯</span> · Morpheus · 20260621-112707</span>
+  </footer>
+
+</div>
+</body>
+</html>
