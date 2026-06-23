@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>紫金大跌:机器没坏,是杠杆在干活 · 墨菲斯研究</title>
+<style>
+:root {
+  --paper: #F4F1EA;
+  --paper-2: #FBF9F4;
+  --ink: #211F1A;
+  --ink-strong: #111111;
+  --muted: #7A7368;
+  --line: #E3DCCD;
+  --accent: #2F5D57;
+  --accent-deep: #234742;
+  --accent-soft: rgba(47, 93, 87, 0.09);
+  --brick: #B0503C;
+  --brick-soft: rgba(176, 80, 60, 0.10);
+  --amber: #BB8A2B;
+  --serif: "Songti SC", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+  --sans: "PingFang SC", "Noto Sans SC", "Source Han Sans SC", -apple-system, "Helvetica Neue", sans-serif;
+  --mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  --shadow: 0 22px 48px -26px rgba(60, 48, 28, 0.30);
+  --shadow-soft: 0 12px 28px -18px rgba(60, 48, 28, 0.22);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1C1A16;
+    --paper-2: #24211C;
+    --ink: #E6E1D6;
+    --ink-strong: #F5F2EA;
+    --muted: #9A9385;
+    --line: #3A362E;
+    --accent: #5E9C93;
+    --accent-deep: #7DB5AC;
+    --accent-soft: rgba(94, 156, 147, 0.14);
+    --brick: #CC7A66;
+    --brick-soft: rgba(204, 122, 102, 0.14);
+    --amber: #D2A653;
+    --shadow: none;
+    --shadow-soft: none;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.85;
+  font-feature-settings: "tnum";
+}
+.wrap { max-width: 744px; margin: 0 auto; padding: 0 26px 96px; }
+
+/* ── 开篇 ─────────────────────────────────────────── */
+.hero { padding: 76px 0 40px; border-bottom: 1px solid var(--line); }
+.kicker {
+  font: 600 12.5px/1 var(--mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 22px;
+}
+h1 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(32px, 6.2vw, 50px);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+  margin: 0 0 20px;
+}
+.lead {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--muted);
+  border-left: 2px solid var(--line);
+  padding-left: 18px;
+  margin: 0;
+}
+.lead b { color: var(--ink); font-weight: 600; }
+
+/* ── 总判断 ───────────────────────────────────────── */
+.verdict {
+  margin: 44px 0 8px;
+  padding: 28px 30px;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+}
+.verdict .tag {
+  font: 700 12px/1 var(--mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 12px;
+}
+.verdict p {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.66;
+  color: var(--ink-strong);
+}
+
+/* ── 目录 ─────────────────────────────────────────── */
+.toc { margin: 40px 0 0; padding: 0; list-style: none; }
+.toc li { margin: 0; border-bottom: 1px solid var(--line); }
+.toc a {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  padding: 11px 2px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.toc a:hover { color: var(--accent); }
+.toc .n { font: 700 13px/1 var(--mono); color: var(--accent); min-width: 20px; }
+
+/* ── 每题一节 ─────────────────────────────────────── */
+section { padding-top: 58px; scroll-margin-top: 24px; }
+.qhead { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 18px; }
+.qnum {
+  flex: none;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #FBF9F4;
+  font: 700 15px/32px var(--mono);
+  text-align: center;
+  margin-top: 5px;
+}
+h2 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.34;
+  color: var(--ink-strong);
+  margin: 0;
+}
+.answer {
+  margin: 20px 0 26px;
+  padding: 18px 22px;
+  background: var(--accent-soft);
+  border-radius: 12px;
+  font-size: 17px;
+  line-height: 1.75;
+}
+.answer .tag {
+  font: 700 11.5px/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 8px;
+}
+.answer p { margin: 0; color: var(--ink-strong); font-weight: 500; }
+p { margin: 0 0 18px; }
+strong { color: var(--ink-strong); font-weight: 650; }
+em {
+  font-style: normal;
+  background: linear-gradient(transparent 62%, var(--accent-soft) 62%);
+  padding: 0 2px;
+}
+blockquote {
+  margin: 30px 0;
+  padding: 4px 0 4px 24px;
+  border-left: 3px solid var(--accent);
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.62;
+  color: var(--ink-strong);
+}
+blockquote .src {
+  display: block;
+  margin-top: 10px;
+  font: 500 12.5px/1.5 var(--mono);
+  color: var(--muted);
+}
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 8px; line-height: 1.7; }
+a { color: var(--accent); text-decoration-color: var(--line); text-underline-offset: 3px; }
+
+/* ── 风险/反面(用砖红,克制) ───────────────────────── */
+.watch {
+  margin: 30px 0;
+  padding: 18px 22px;
+  background: var(--brick-soft);
+  border-radius: 12px;
+}
+.watch .tag {
+  font: 700 11.5px/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brick);
+  display: block;
+  margin-bottom: 8px;
+}
+.watch p, .watch ul { margin: 0; }
+.watch li { margin-bottom: 6px; }
+
+/* ── 信号看板(盯什么) ─────────────────────────────── */
+.signals { margin: 26px 0 0; padding: 0; list-style: none; }
+.signals li {
+  display: flex;
+  gap: 12px;
+  padding: 12px 2px;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+.signals .dot { flex: none; font: 700 13px/1 var(--mono); color: var(--amber); }
+.signals b { color: var(--ink-strong); font-weight: 650; }
+
+/* ── 来源与脚注 ───────────────────────────────────── */
+.sources { margin-top: 28px; }
+.sources summary {
+  cursor: pointer;
+  font: 600 13px/1 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 8px 0;
+}
+.sources ul { margin: 12px 0 0; }
+.sources li { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+/* ── 结尾 ─────────────────────────────────────────── */
+footer { margin-top: 76px; text-align: center; }
+.byline {
+  display: inline-block;
+  font: 600 13px/1.2 var(--mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 1px solid var(--ink-strong);
+  border-bottom: 1px solid var(--ink-strong);
+  padding: 14px 26px;
+}
+.byline .m { color: var(--accent); }
+
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .wrap { padding: 0 18px 72px; }
+  .hero { padding: 52px 0 32px; }
+  h1 { font-size: 32px; }
+  h2 { font-size: 22px; }
+  blockquote { font-size: 19px; }
+  .verdict { padding: 22px 20px; }
+  .verdict p { font-size: 18px; }
+  section { padding-top: 46px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="kicker">Morpheus Research · 2026-06-23</p>
+    <h1>紫金大跌:机器没坏,是杠杆在干活</h1>
+    <p class="lead">你问的是:<b>今天紫金矿业为什么大跌?</b>——可你真正在赌的,从来不是"今天",是"钱会不会变便宜"这注还成不成立。</p>
+  </header>
+
+  <div class="verdict">
+    <span class="tag">总判断</span>
+    <p>今天没出事。这一跌,是你买它那天就签了字的杠杆在正常工作——价格变了、生意没变。动作倾向:拿住,往后只盯铜价(和"钱还会不会变便宜")。真等到增发摊薄、负债失控、或铜也补跌,再谈减。</p>
+  </div>
+
+  <ul class="toc">
+    <li><a href="#q1"><span class="n">1</span>八个点拆开:机器在干活,不是机器坏了</a></li>
+    <li><a href="#q2"><span class="n">2</span>摁下金铜的那根开关,正是你押的那根</a></li>
+    <li><a href="#q3"><span class="n">3</span>翻遍命门:紫金没有"自己的事"</a></li>
+    <li><a href="#q4"><span class="n">4</span>你账本没标的腿:半个身子押着铜</a></li>
+    <li><a href="#q5"><span class="n">5</span>落到手上:拿、加,还是减?</a></li>
+  </ul>
+
+  <section id="q1">
+    <div class="qhead">
+      <span class="qnum">1</span>
+      <h2>先把今天的跌拆开:是机器在干活,还是机器坏了?</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>今天的跌,主要是金价 + 铜价同步回调被整个板块放大;它属于"整条有色街一起跌的宏观 beta",不是紫金独有的个股冲击。</p>
+    </div>
+    <p>今天(6/23)紫金 A 股(601899)收跌<strong>约 8.8%</strong>。八个多点,看着像出了大事。但先别翻公告找雷——做一道小学算术,把这八个点拆开看它从哪来:</p>
+    <ul>
+      <li>今天<strong>伦敦金跌 1.72%、伦铜跌 2.97%</strong>。</li>
+      <li>紫金这台机器,金和铜大致各占一半收入,把金属价的波动放大约 1.5 倍(这是 6/18 估的粗口径,不是精确常数)。</li>
+      <li>一乘一加:金属价<strong>最多只能解释其中 3.5%~4.2% 的跌</strong>。</li>
+    </ul>
+    <p>也就是说,8.8% 里头,有<strong>将近一半(约 5 个点)是金、铜现货价根本解释不了的</strong>。按"大跌必有坏消息"的本能,这 5 个点就该是紫金自己的雷了——对吧?<em>先别下这个结论,把隔壁的牌摊开看一眼。</em>同一天:</p>
+    <ul>
+      <li><strong>有色金属 ETF(516650)盘中跌 8.86%</strong>——跟紫金 8.8% 像照镜子。</li>
+      <li>同板块的中金黄金、江西铜业、西部矿业、赤峰黄金、国城矿业,一排排<strong>直接跌停(-10%)</strong>;紫金跌得比这些还轻一点。</li>
+    </ul>
+    <p>这就把那 5 个点的来历讲清楚了:<em>它不是紫金一个人的事,是整条有色街一起多跌的。</em>平时金属价动一下,矿股放大 1.5 倍跟着动;可一旦金、铜同时回调、市场情绪一缩,股票端的恐慌、止损、撤资叠上去,整个板块"超跌",杠杆开得比 1.5 倍还猛。紫金只是这台板块放大器里的一台,被一起甩下来,没被单独多砸。</p>
+    <blockquote>
+      8.8% 里,有将近一半是金、铜现货价根本解释不了的——可它跟有色 ETF 的 8.86% 像照镜子。
+      <span class="src">新浪财经 6/23《有色板块午后加速走低》</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>八个点的拆分是量级估算,不是逐笔分账(1.5 倍是粗口径、"金铜各半"是约数)。但"是 beta 不是个股"这个核心结论很硬:ETF 跟紫金几乎同幅、同行成排跌停。</p>
+    </div>
+  </section>
+
+  <section id="q2">
+    <div class="qhead">
+      <span class="qnum">2</span>
+      <h2>那根把金铜一起摁下去的开关,正是你押的那一根</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>今天压金/铜的,不是冒出一根新开关,而是你已经在赌的那根"钱变便宜"被反向拨了一下。你那注的逻辑被正面戳了一下、但框架仍成立——金价确实由"钱贵还是钱便宜"驱动,这次只是方向对你不利。</p>
+    </div>
+    <p>既然是 beta,真正的问题就变成:今天把金价、铜价一起往下摁的,是哪根开关?它是不是你一直在赌的那一根?是。而且这里有个让你一愣的巧合——<em>摁下去的,正是你下注的那场会议自己。</em></p>
+    <p>你 6/18 押的是"钱会变便宜":美联储要降息,借钱成本往下走,持有不生息的黄金就不亏利息,金价该往上飘。这套逻辑一点没错。问题是,就在你下注的那场 FOMC 上(6/17–18,新主席沃什 Kevin Warsh 的首秀),<strong>美联储自己当众改了口</strong>:</p>
+    <ul>
+      <li>它发布的那张"每个官员心里今年利率该是多少"的点阵图,把<strong>年底利率预测从 3.4% 抬到了 3.8%</strong>;</li>
+      <li><strong>19 个官员里,9 个开始说"今年不仅不降,可能还得加一次"</strong>;</li>
+      <li>美元应声冲上<strong>13 个月新高</strong>。</li>
+    </ul>
+    <p>市场一看,立刻把"钱要变便宜"改写成"钱可能还要变贵"。钱变贵,两条路一起打黄金:美元被买上去(金价用美元标,美元越贵,金价数字越小),持金的机会成本变高(别处利息更香,黄金一分不生)。于是金价往下走。中东其实在降温(伊朗拿到售油许可、海峡要复通),按理也帮着压金——但今天连这条都是配角,<em>主角就是利率这一根。</em></p>
+  </section>
+
+  <section id="q3">
+    <div class="qhead">
+      <span class="qnum">3</span>
+      <h2>顺手验一下:紫金今天到底有没有"自己的事"?</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>今天没有"紫金个股那截额外跌幅"这回事。那 5 个点的超跌是全板块共有的情绪惊吓(美联储转鹰),不是紫金自己的;它伤的是"今天这一下"的金属价情绪,没伤到紫金长期赚钱的能力。生意没变。</p>
+    </div>
+    <p>承重墙已经钉死是 beta 了,这一步是补一刀确认——把紫金这台机器的命门一条条摸过去,看 6/23 当天有没有它自己的雷。结论很干净:<strong>没有,一条都没有。</strong></p>
+    <ul>
+      <li>海外矿山(刚果金 / 塞尔维亚 / 南美)停产、加税、被收 —— 当天无任何新事件。</li>
+      <li>增发 / 配股 / 大股东减持 / 解禁砸盘 —— 无;最大那笔解禁(紫金黄金国际的限售股)卡在 <strong>3 月底和 9 月底</strong>,6 月根本不开闸。</li>
+      <li>业绩爆雷、利润预警 —— 反向:一季度净利 <strong>200.79 亿、同比 +97.5%</strong>,超预期。</li>
+      <li>矿难 / 安全 / 环保停产 —— 无,公告干净。</li>
+      <li>吓人的大收购 —— 旧账:280 亿买加拿大金矿、182 亿拿赤峰,是今年 1–3 月的事,早消化完了。</li>
+      <li>评级下调 —— 未搜到。</li>
+    </ul>
+    <p>紫金 6 月发的全是开股东会、分红、可转债转股价做技术性微调这类家长里短,没有一条带刺。在那条 6/23 的"有色全板块跌停"新闻里,<em>紫金连名字都没被单独点到</em>——它只是混在跌停的人堆里。</p>
+    <blockquote>
+      没搜到任何 6/23 紫金的公司利空——这个"查不到",本身就是支持"这是 beta、不是个股"的硬证据。
+      <span class="src">紫金官网投资者公告页 · 6 月公告清单</span>
+    </blockquote>
+  </section>
+
+  <section id="q4">
+    <div class="qhead">
+      <span class="qnum">4</span>
+      <h2>你账本上没标的那条腿:你以为买的是黄金,其实半个身子押着铜</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>紫金日常股价"金、铜两条腿都重",当期谁剧烈波动谁主导——此刻是金在拉。"加杠杆的黄金"这个标签漏了铜这条腿:你实际还押着一注全球需求。只不过眼下这注没爆,反而在帮你扛跌。</p>
+    </div>
+    <p>前三题已经把"今天为什么跌"答完了。但研究里钻出一件比今天跌多少更值钱的事,得单独拎出来——它戳的是你脑子里那个等号:<strong>"紫金 ≈ 加杠杆的黄金"。</strong>这个等号,漏了一条腿。翻开紫金 2025 年报:</p>
+    <ul>
+      <li><strong>黄金:营收占 44.43%,毛利占 40.89%(第一)</strong></li>
+      <li><strong>铜:营收占 27.62%,毛利占 34.49%(第二)</strong></li>
+    </ul>
+    <p>两条腿几乎一样粗。你"利润一大半来自铜"的老印象,2025 年已经不成立了——金价这两年翻倍式上涨,把金的利润贡献从第二顶到了第一;但反过来,铜依然撑着你这台机器三分之一以上的利润。你以为只押了一注"钱变便宜"(金),其实账本上没写的地方,还押着一注"全球经济好不好"(铜)——铜涨是因为全世界在开工、盖电网、建数据中心,这跟"钱贵钱贱"是两台完全不同的发动机。</p>
+    <p>而紫金股价,哪台发动机当期闹得凶,哪台就主导。两个"自然实验"把这事说死了:</p>
+    <ul>
+      <li><strong>2024 那轮(铜在跌):</strong>纯金股中金黄金、赤峰涨 28%、30% 的时候,紫金只涨不到 10%——那次是铜在拖它后腿。</li>
+      <li><strong>2026 这半年(金在崩):</strong>"含金量"越纯跌得越惨——纯金 H 股紫金黄金国际年内跌超 61%,全球纯金巨头跌 27%~38%;而你手里这只"掺了铜"的母公司紫金,跌得比纯金同行轻。</li>
+    </ul>
+    <p>看明白这个反转没有?你今天担心的是"会不会是铜在跌、我一直盯着金没看见?"——<em>事实正相反。</em>此刻崩的是金(从年初 5600 一路砸到 4000 附近,半年跌掉近 30%),铜相对稳。你手里的铜这条腿,这次不是拖累你的那个,<em>是替你接住一部分跌的那个。</em></p>
+    <blockquote>
+      你以为只押了一注"钱变便宜",账本上没写的地方,还押着一注"全球经济好不好"。
+      <span class="src">紫金 2025 年报 · 黄金营收 44.43%、铜 27.62%</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>哪天全球需求转弱、铜也补跌(2024 那种"金铜背离 → 铜崩"重演),主导权会瞬间切回铜——那才是你账本上没标、现在没爆、但会爆的那个风险点。</p>
+    </div>
+  </section>
+
+  <section id="q5">
+    <div class="qhead">
+      <span class="qnum">5</span>
+      <h2>落回你的手:拿、加,还是减?</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>这次跌属于"你签过字的杠杆在正常工作,逻辑没变",不是一条没定价的新风险浮现。对应动作:拿住。(只有一种情况倾向小幅加——它哪天跌得明显比金铜本身更狠、被纯情绪打了大折扣;但今天它跟板块同步、甚至比跌停的同行还轻,谈不上被错杀。)</p>
+    </div>
+    <p>把上面四块拼起来,收口就清楚了。今天这跌归到哪一边?——<strong>归到"机器没坏、杠杆正常工作"这一边。</strong>金铜回调被板块放大(q1)、推手是你押的那根宏观开关被反向拨(q2)、紫金自己没出任何事(q3)。这是你<em>签字那天就同意的代价</em>:这台放大器,涨的时候替你放大赚,跌的时候一样替你放大赔——这是杠杆的双向性,不是新闻。</p>
+    <blockquote>
+      买股票就是买这家公司未来几十年挖矿卖钱的能力。今天该不该动手,根子上不是看跌了多少,是问一句:这台机器赚钱的本事,变了没有?
+      <span class="src">段永平 · 投资观</span>
+    </blockquote>
+    <p>答案是:没变。所以动作倾向<em>拿住</em>——今天它跟板块同步、甚至比跌停的同行还轻,谈不上被错杀,所以是"拿住"而非"抄底加"。</p>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>有一条会让"拿住"翻成"该减"的暗线:紫金今年初为买矿(280 亿吞 Allied Gold、182 亿拿赤峰)用的是举债 + H 股大折价配股——这是真往股东价值上动了刀。今天它不是驱动跌的原因(是 Q1 旧账),但它是放大器底座上唯一一道真有可能裂开的缝。只要它还在继续靠折价增发买买买、负债率往上飘,这只票就从"拿住"滑向"该减"。</p>
+    </div>
+  </section>
+
+  <section id="signals">
+    <div class="qhead">
+      <span class="qnum">◎</span>
+      <h2>之后盯什么</h2>
+    </div>
+    <ul class="signals">
+      <li><span class="dot">▸</span><span><b>铜价(只盯一个就盯它)</b> — 它站得住,你这台机器的底层逻辑就站得住;要是因全球制造业、电网需求长期转弱而塌,就把这只票从"拿住"自动推向"该减"。铜是你讲得清因果的那条腿。</span></li>
+      <li><span class="dot">▸</span><span><b>美联储利率路径</b> — 一句话:市场到底还信不信"钱会变便宜"。看降息预期还在不在、美元和实际利率往哪走(提醒:别只盯实际利率这块老仪表,这几年金价越来越被各国央行抢着囤金驱动,它对黄金没以前灵了)。</span></li>
+      <li><span class="dot">▸</span><span><b>紫金的负债与折价增发</b> — 这是底座上唯一可能裂的缝。只要它还在继续靠折价配股买矿、负债率往上飘,就从"拿住"滑向"该减"。</span></li>
+    </ul>
+  </section>
+
+  <details class="sources">
+    <summary>来源清单</summary>
+    <ul>
+      <li>TradingEconomics —— 金 / 铜 6/23 价格。</li>
+      <li>新浪财经 6/23《有色板块午后加速走低》—— 板块跌停名单 + 有色 ETF。</li>
+      <li>BullionVault / Briefs.co —— 6/18 FOMC 点阵图转鹰、美元 13 个月新高。</li>
+      <li>紫金矿业 2025 年报摘要 —— 金 / 铜营收·毛利占比。</li>
+      <li>紫金官网投资者公告页 —— 6 月公告清单。</li>
+      <li>虎嗅《紫金矿业,被铜拖累了》+ 南方财经 / 证券时报 —— 金铜主导的两次自然实验。</li>
+      <li>界面新闻 / 新浪财经 —— 两笔收购的举债 + 折价配股。</li>
+    </ul>
+  </details>
+
+  <footer>
+    <span class="byline"><span class="m">墨菲斯</span> · Morpheus · 20260623-174156</span>
+  </footer>
+
+</div>
+</body>
+</html>
