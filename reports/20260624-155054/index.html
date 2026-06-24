@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<!--
+  墨菲斯研究报告 · 单页模板(style contract)
+  ════════════════════════════════════════════════════════════════
+  给渲染器(claude -p)的硬约束:
+  1. <style> 块一字不改。所有视觉决定已在 CSS 里定死,你只做内容编辑。
+  2. 双花括号占位符全部替换成真实内容;交付的 HTML 里不允许残留占位符。
+  3. 标着「⟳ 每题一节」的 <section> 按问题数复制;用不到的组件(aside.watch、
+     blockquote 等)整块删掉,不留空壳。
+  4. 重点突出只用这三种武器:<em>(下划高亮,一节最多 2 处)、blockquote
+     (金句/关键证据,一节最多 1 个)、.answer 卡(每题的判断,必有)。
+  5. 禁止:加 emoji、加渐变、加新颜色、改字体、内联 style 属性。
+  6. 语言:全文中文,讲清楚优先;标题短、判断硬、证据带来源。
+-->
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>国家队托底:保你不崩,不保你赚 · 墨菲斯研究</title>
+<style>
+:root {
+  --paper: #F4F1EA;
+  --paper-2: #FBF9F4;
+  --ink: #211F1A;
+  --ink-strong: #111111;
+  --muted: #7A7368;
+  --line: #E3DCCD;
+  --accent: #2F5D57;
+  --accent-deep: #234742;
+  --accent-soft: rgba(47, 93, 87, 0.09);
+  --brick: #B0503C;
+  --brick-soft: rgba(176, 80, 60, 0.10);
+  --amber: #BB8A2B;
+  --serif: "Songti SC", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+  --sans: "PingFang SC", "Noto Sans SC", "Source Han Sans SC", -apple-system, "Helvetica Neue", sans-serif;
+  --mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  --shadow: 0 22px 48px -26px rgba(60, 48, 28, 0.30);
+  --shadow-soft: 0 12px 28px -18px rgba(60, 48, 28, 0.22);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1C1A16;
+    --paper-2: #24211C;
+    --ink: #E6E1D6;
+    --ink-strong: #F5F2EA;
+    --muted: #9A9385;
+    --line: #3A362E;
+    --accent: #5E9C93;
+    --accent-deep: #7DB5AC;
+    --accent-soft: rgba(94, 156, 147, 0.14);
+    --brick: #CC7A66;
+    --brick-soft: rgba(204, 122, 102, 0.14);
+    --amber: #D2A653;
+    --shadow: none;
+    --shadow-soft: none;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.85;
+  font-feature-settings: "tnum";
+}
+.wrap { max-width: 744px; margin: 0 auto; padding: 0 26px 96px; }
+
+/* ── 开篇 ─────────────────────────────────────────── */
+.hero { padding: 76px 0 40px; border-bottom: 1px solid var(--line); }
+.kicker {
+  font: 600 12.5px/1 var(--mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 22px;
+}
+h1 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(32px, 6.2vw, 50px);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+  margin: 0 0 20px;
+}
+.lead {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--muted);
+  border-left: 2px solid var(--line);
+  padding-left: 18px;
+  margin: 0;
+}
+.lead b { color: var(--ink); font-weight: 600; }
+
+/* ── 总判断 ───────────────────────────────────────── */
+.verdict {
+  margin: 44px 0 8px;
+  padding: 28px 30px;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+}
+.verdict .tag {
+  font: 700 12px/1 var(--mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 12px;
+}
+.verdict p {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.66;
+  color: var(--ink-strong);
+}
+
+/* ── 目录 ─────────────────────────────────────────── */
+.toc { margin: 40px 0 0; padding: 0; list-style: none; }
+.toc li { margin: 0; border-bottom: 1px solid var(--line); }
+.toc a {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  padding: 11px 2px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.toc a:hover { color: var(--accent); }
+.toc .n { font: 700 13px/1 var(--mono); color: var(--accent); min-width: 20px; }
+
+/* ── 每题一节 ─────────────────────────────────────── */
+section { padding-top: 58px; scroll-margin-top: 24px; }
+.qhead { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 18px; }
+.qnum {
+  flex: none;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #FBF9F4;
+  font: 700 15px/32px var(--mono);
+  text-align: center;
+  margin-top: 5px;
+}
+h2 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.34;
+  color: var(--ink-strong);
+  margin: 0;
+}
+.answer {
+  margin: 20px 0 26px;
+  padding: 18px 22px;
+  background: var(--accent-soft);
+  border-radius: 12px;
+  font-size: 17px;
+  line-height: 1.75;
+}
+.answer .tag {
+  font: 700 11.5px/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 8px;
+}
+.answer p { margin: 0; color: var(--ink-strong); font-weight: 500; }
+p { margin: 0 0 18px; }
+strong { color: var(--ink-strong); font-weight: 650; }
+em {
+  font-style: normal;
+  background: linear-gradient(transparent 62%, var(--accent-soft) 62%);
+  padding: 0 2px;
+}
+blockquote {
+  margin: 30px 0;
+  padding: 4px 0 4px 24px;
+  border-left: 3px solid var(--accent);
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.62;
+  color: var(--ink-strong);
+}
+blockquote .src {
+  display: block;
+  margin-top: 10px;
+  font: 500 12.5px/1.5 var(--mono);
+  color: var(--muted);
+}
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 8px; line-height: 1.7; }
+a { color: var(--accent); text-decoration-color: var(--line); text-underline-offset: 3px; }
+
+/* ── 风险/反面(用砖红,克制) ───────────────────────── */
+.watch {
+  margin: 30px 0;
+  padding: 18px 22px;
+  background: var(--brick-soft);
+  border-radius: 12px;
+}
+.watch .tag {
+  font: 700 11.5px/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brick);
+  display: block;
+  margin-bottom: 8px;
+}
+.watch p, .watch ul { margin: 0; }
+.watch li { margin-bottom: 6px; }
+
+/* ── 信号看板(盯什么) ─────────────────────────────── */
+.signals { margin: 26px 0 0; padding: 0; list-style: none; }
+.signals li {
+  display: flex;
+  gap: 12px;
+  padding: 12px 2px;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+.signals .dot { flex: none; font: 700 13px/1 var(--mono); color: var(--amber); }
+.signals b { color: var(--ink-strong); font-weight: 650; }
+
+/* ── 来源与脚注 ───────────────────────────────────── */
+.sources { margin-top: 28px; }
+.sources summary {
+  cursor: pointer;
+  font: 600 13px/1 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 8px 0;
+}
+.sources ul { margin: 12px 0 0; }
+.sources li { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+/* ── 结尾 ─────────────────────────────────────────── */
+footer { margin-top: 76px; text-align: center; }
+.byline {
+  display: inline-block;
+  font: 600 13px/1.2 var(--mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 1px solid var(--ink-strong);
+  border-bottom: 1px solid var(--ink-strong);
+  padding: 14px 26px;
+}
+.byline .m { color: var(--accent); }
+
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .wrap { padding: 0 18px 72px; }
+  .hero { padding: 52px 0 32px; }
+  h1 { font-size: 32px; }
+  h2 { font-size: 22px; }
+  blockquote { font-size: 19px; }
+  .verdict { padding: 22px 20px; }
+  .verdict p { font-size: 18px; }
+  section { padding-top: 46px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="kicker">Morpheus Research · 2026-06-24</p>
+    <h1>国家队托底:保你不崩,不保你赚</h1>
+    <p class="lead">你问的是:<b>中国股市国家队的弹药到底有多厚、能抗住多大的金融危机——虽然我根本不理解什么是金融危机。</b>你真正在赌的,是能不能把「国家会托底」当成投资中国的安全垫。</p>
+  </header>
+
+  <div class="verdict">
+    <span class="tag">总判断</span>
+    <p>国家托底是真的,但它托的是「股市指数的地板」,不是个股的免死金牌——保的是「指数不崩」,不保「你投进去不亏」。中国离一场崩盘式金融危机还远,但慢性通缩在身上;今后你只需盯房地产这一盏灯,别盯国家队的手。</p>
+  </div>
+
+  <ul class="toc">
+    <li><a href="#q1"><span class="n">1</span>「金融危机」到底是什么?</a></li>
+    <li><a href="#q2"><span class="n">2</span>国家队是谁?弹药是会打光的钱箱吗?</a></li>
+    <li><a href="#q3"><span class="n">3</span>能印钱,为什么还不是无限?</a></li>
+    <li><a href="#q4"><span class="n">4</span>托住 A 股 ＝ 抗住金融危机吗?</a></li>
+    <li><a href="#q5"><span class="n">5</span>别人托底,买到了什么、买不到什么?</a></li>
+    <li><a href="#q6"><span class="n">6</span>这个底,能当投资中国的安全垫吗?</a></li>
+  </ul>
+
+  <section id="q1">
+    <div class="qhead">
+      <span class="qnum">1</span>
+      <h2>金融危机不住在股市,住在「借钱」里</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>金融危机不住在股市(脸色)里,住在「借钱」(血管)上。股灾让你账户数字变小(纸面亏、工厂照转);金融危机让连健康公司都借不到周转钱(血管冻、经济停转)。A 股自己几乎变不成金融危机——你怕的危机,和国家队护的盘,从一开始就不是同一样东西。</p>
+    </div>
+    <p>先看一个反常识的画面:2008 年雷曼兄弟倒闭那天,美股只跌了 4.5%——比好多普通的大跌日还温柔。真正吓人的事发生在你看不见的地方:<strong>银行之间,互相不借钱了</strong>。因为金融危机根本不住在股市里,它住在「借钱」这件事上。<em>钱是血,借钱是血管</em>:股市是身体表面的脸色,跌了是纸面亏、是心里发慌,可你隔壁的工厂、发工资的公司,和你账户那个数字没有借贷关系,该开工开工;借钱才是血管,一旦冻住,再健康的器官也会坏死。</p>
+    <p>2008 年就是血管冻住了——大家同时来抽钱、有人还不上债、机构互相欠债像骨牌一样倒,最后谁都不敢借钱给谁,连<strong>通用电气这种蓝筹好公司都借不到一分隔夜钱,靠巴菲特拎 120 亿美元来救命</strong>。轮到 A 股:<em>它就算跌成 2015 年那样三周蒸发三成,本身也几乎变不成真正的金融危机</em>——因为中国的钱主要是银行借出去的,股票只占老百姓家底不到一成半,伤口基本停在纸面层。</p>
+    <blockquote>
+      股灾让你账户里的数字变小(纸面亏,工厂照转);金融危机让连健康的公司都借不到周转钱(血管冻,经济停转)。
+      <span class="src">证据 ① · 2008 雷曼 / 通用电气案例</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>A 股唯一可能引爆危机的条件:大跌点着「借钱炒股的杠杆」连环爆仓,再把窟窿捅进银行体系。但中国真正的火药桶压根不在股市(见第 4 题)。</p>
+    </div>
+  </section>
+
+  <section id="q2">
+    <div class="qhead">
+      <span class="qnum">2</span>
+      <h2>弹药不是钱箱,是央行的印钞后门</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>国家队真正的弹药,不是一个会打光的固定钱箱,是央行能印的、近乎无限的「后门」。所以「弹药有多少钱」这个问法没抓住真正约束——那个数字会被印钞稀释,根本不是硬约束。</p>
+    </div>
+    <p>几乎所有人都把国家队想成一个金库:账上躺着几万亿,每买一次就少一块,于是问「还剩多少、够撑几天」。这张图从根上就错了。国家队头牌是<strong>中央汇金</strong>(托底主力),身后跟着证金、社保、国新、险资和几大国有银行,真正坐指挥位的是央行和证监会。光看存量,2024 年底汇金 ETF 才一万亿出头,2025 年三季度堆到约一万五千亿——你只盯这个数,就会以为子弹有限。</p>
+    <p>但 2024 年下半年央行专门给股市开了<em>两道印钱后门</em>:一道「互换便利」,机构拿不好卖的股票抵押给央行换出国债、再借钱买股,官方说不增加基础货币;一道「回购增持再贷款」,央行直接印钱经银行借给上市公司,规定只能拿去买自家股票。两道门到 2025 年 5 月合并扩容到 8000 亿、利率降到 1.5%。所以关键不在金库厚薄,而在于<em>这些钱的源头是央行的印钞机,买的又是用人民币计价的 A 股</em>——用本币托本币市场,只要央行愿意,原则上可以一直供下去。</p>
+    <blockquote>
+      中国式平准基金定为「证金公司＋央行流动性」,意味着这个流动性可能是无限量的。
+      <span class="src">人民网 / 人民日报 · 2015-07</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>「国家队总持仓」口径很乱(不同来源从 3.8 万亿到 4.47 万亿都有);本报告只用相对干净的「汇金 ETF 约 1.5 万亿」这条线,请按量级理解。另:两道后门到 2025/26 的累计实际使用额没查到确切数,但用得并不满——这恰恰反证弹药不是约束:不是没钱,是没全用。</p>
+    </div>
+  </section>
+
+  <section id="q3">
+    <div class="qhead">
+      <span class="qnum">3</span>
+      <h2>印钞机造不出美元——闸在汇率</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>国家队真正的天花板不是钱,是「汇率/外储」那道印不出来的闸。在这道闸亮红灯之前,中国托自己 A 股的能力极强;和韩国那种托不住的市场,结构性差别只在一点——弹药归不归你印、闸门关不关得上。</p>
+    </div>
+    <p>A 股用人民币买,人民币是央行自己印的——托 A 股是「用自己印的钱,买用自己货币标价的东西」,一个闭环,中间不用换汇,永远不会没钱。2025 年 4 月救市就是活样本:央行答应给汇金充足再贷款,国新、诚通几千亿往里砸,文件里连「汇率」两个字都没出现。</p>
+    <p><em>那闸在你想把人民币换成美元的那一刻</em>:人民币印多了、或大家觉得要贬,持有人就想换成美元跑(资本外流);要顶住、不让人民币崩,央行就得在另一头拿美元接盘,可美元印不出来,只能从约 3.4 万亿美元外储里掏,掏一块烧一块、补不回。这不是吓唬——2015 年「811 汇改」后人民币一有贬值预期、资本一夺路,<strong>央行两年就烧掉近 1 万亿美元保汇率</strong>,外储从近 4 万亿掉到 3 万亿出头。这背后是「不可能三角」:汇率稳、资本自由进出、货币自己说了算,三样只能要两样。中国要「汇率稳＋货币自主」(才能印钱托底),代价是半锁资本账户、换汇出境要批——正因锁住这一样,印本币那一侧才敢放手。</p>
+    <blockquote>
+      韩国当年口袋里只有约 300 亿美元外储,头上却压着 1100 多亿美元外债——口袋 300 块,欠别人 1100 块;韩元又自由浮动、外资说走就走。弹药是借来的、闸门是敞开的,印钞机帮不上忙。
+      <span class="src">证据 ⑤ · 韩国 1997</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>一个做长期投资该知道的软肋:国家队买成最大买家后,价格就不再是市场定的;而且进去容易出来难——2015 年证金进了 800 多家公司前十大股东,平价退出据测算要花几十年,一卖就砸盘。所以它托得住地板,却托不出一个有真实价格的健康牛市。</p>
+    </div>
+  </section>
+
+  <section id="q4">
+    <div class="qhead">
+      <span class="qnum">4</span>
+      <h2>托 A 股和抗危机,是两个池子两个靶</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>托底 A 股和抗金融危机,是两个池子、两个靶。汇金买 ETF 的弹药,对真正的火药桶基本使不上劲。所以「弹药能抗多大金融危机」的真答案是:<strong>那笔弹药根本不是用来抗危机的</strong>。</p>
+    </div>
+    <p>央行白纸黑字规定过:给汇金、给券商的这些钱<em>只能拿去买股票</em>,不能挪作他用——这套弹药从出生那天起就被焊死在股市里,物理上转不去填房地产或地方债的窟窿。它能干的是 A 股快跌穿时进去托一把指数、稳一稳情绪,是个保面子、保信心的工程。可中国真正可能着火的地方压根不在股市,火药桶有三个,每个都比 A 股这个池子大一两个数量级:</p>
+    <ul>
+      <li><strong>房地产(最大)</strong>:相关贷款约 52.8 万亿(2024Q4),恒大单家负债曾达 2.44 万亿——抗它靠保交楼再贷款、专项借款、白名单、收储。</li>
+      <li><strong>地方隐性债 / 城投</strong>:官方口径约十几万亿,广义(含城投有息债)市场估 50 万亿+——抗它靠 10 万亿化债(6 万亿置换＋4 万亿专项债)、展期降息。</li>
+      <li><strong>银行</strong>:不良约 3.3 万亿、拨备约 6.9 万亿(2024Q4)——抗它靠拨备吸收、核销、AMC 坏账处置、必要时注资。</li>
+    </ul>
+    <p>最反直觉的一点:A 股本来就是个<em>小池子</em>——老百姓的钱约六成压在房子上,股票基金只占金融资产三到五个点;企业借钱约七成靠银行贷款,靠股市融资的连 3% 都不到。所以真正引爆系统性危机的那条链子——房企或城投先违约 → 银行跟着烂账 → 信贷一收紧 → 好公司也借不到钱(就是第 1 题那个「血管冻住」)——整条链子都不经过股市。抗那三样,靠的是另一套家伙:央行印钱搞保交楼、财政掏十万亿置换地方债、四大行和 AMC 消化银行窟窿。</p>
+    <blockquote>
+      这套弹药从出生那天起,就被焊死在股市里了。
+      <span class="src">证据 ④ · 证监会公告 2024-10「资金只能用于投资股票市场」</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>地方债的真实窟窿,说不准:官方认账的隐性债是十几万亿,市场普遍认为广义口径(含城投全部有息负债)是 50 万亿+ 量级,两个口径差三四倍。没有哪个数是「真值」;这块里有多少最终要财政硬兜,是整份报告最大的不确定点。</p>
+    </div>
+  </section>
+
+  <section id="q5">
+    <div class="qhead">
+      <span class="qnum">5</span>
+      <h2>托底是急诊室,不是康复科</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>中国这次病的性质,更像<strong>日本</strong>(结构性的慢性病),不像香港(急性投机战);但它比韩国强得多,可以直接排除韩国剧本。这个底值一张「不让它崩」的保险钱,但不值「所以基本面要反转了」的钱。</p>
+    </div>
+    <p>三个国家给了三个答案。香港 1998 是满分样本但样本特殊:索罗斯带投机盘做汇市股市连环套利,香港同时在两个战场对砸还临时改规则,把对手两条腿都打亏——赢了,事后把捡来的股票成立盈富基金慢慢卖回,32 个月本金全收回还净赚一千多亿港元。但它赢的前提是对手是一小撮看得见、钱有限的投机者,这是<em>急性病</em>,挡住就赢。</p>
+    <p>日本是「赢了股市、输了经济」的样本,也最关键:2010 年起日本央行一篮子一篮子买股,买成全市场最大股东(攥着约 7%),日经最近还创了历史新高——可公司用股东的钱赚钱的效率从 1991 年的 7% 以上掉到不到 1%,经济增速从近 7% 掉到 0。<em>股价那条线被硬撑着,基本面那条线一直趴在地上,这就是「失去的三十年」</em>;而且这条「东京大鲸」想退出,按现在速度要卖一百多年。韩国则连下场资格都没有——口袋 300 亿、欠债 1100 亿,只能找 IMF,大半财阀和银行被清算。</p>
+    <blockquote>
+      托底是急诊室,不是康复科。它买得到时间、信心、阻击战的胜利;买不到基本面的痊愈。
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>最容易踩的预期错位:把「托底」理解成「政府会托住股价不让它崩」,大概率对;理解成「政府托底了,所以该涨了」,就是把日本剧本看成了香港剧本。续命不等于治好。</p>
+    </div>
+  </section>
+
+  <section id="q6">
+    <div class="qhead">
+      <span class="qnum">6</span>
+      <h2>它垫的是地板,不是你的盈亏</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>「国家托底」是一个可信的「指数地板」,但不是个股的免死金牌;它保的是「指数不崩」,不保「你投进去不亏」。中国离崩盘式金融危机还远,但慢性病在身上——今后你只需盯房地产那一盏灯,别盯国家队的手。</p>
+    </div>
+    <p>把前面五层拧成一根绳:它是真的——托的是人民币计价的小池子,中国能印本币又半封资本账户,钱几乎不是约束,汇金现在约一万五千亿、央行明牌供弹药,所以「指数不会崩盘式跳水」这只手是硬的。<em>但它托的是「指数的地板」,不是「你那只票的盈亏」</em>:国家队买的是宽基 ETF(沪深 300、A500),接的是整个市场的底,不会去接你讲故事的题材股,也救不了护城河塌掉的烂公司。</p>
+    <p>至于离金融危机多远——明确倾向是「远」:金融危机的本质是血管冻住,而这条血管在中国是国有银行、是央行能直接供血的,挤兑 → 多米诺那条链被物理掐断(IMF 2025 评估也背书头部大行能扛严重冲击);真正的火药桶正在被慢慢放气(地方隐性债三年从 14.3 万亿化到 10.5 万亿);汇率压力也在缓解(2025 人民币五年最强、外储站稳 3.3 万亿以上)。但<em>「远」指的是急性崩盘远,不是资产马上会涨</em>——更像日本的慢性通缩:地板很硬,可地板上面也许很久不长东西。能拿这个底去判断的:把「不会 2008 式崩盘」当长期配置底座里的一块砖、当宽基指数的下限保护。</p>
+    <blockquote>
+      地板托住,不等于天花板打开。你赚不赚钱,仍然百分之百是「你选的生意好不好」。
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>三件别拿这个底去赌的事:</p>
+      <ul>
+        <li>别把「国家会托」当选股的免死金牌——它救不了塌护城河的烂公司、买在顶的题材股;</li>
+        <li>别把「国家队进场」当买入信号;</li>
+        <li>别把「不会崩」误读成「会涨」(日本剧本:地板托住,仍可失去三十年)。</li>
+      </ul>
+      <p>并且记住:「离危机远 / 更像日本」是方位推断,不是预言——房地产二次失速、外部脱钩、地缘冲击这类黑天鹅,能改变方位。</p>
+    </div>
+  </section>
+
+  <section id="signals">
+    <div class="qhead">
+      <span class="qnum">◎</span>
+      <h2>之后盯什么</h2>
+    </div>
+    <ul class="signals">
+      <li><span class="dot">▸</span><span><b>房地产销售(总灯)</b> — 跌幅继续收窄、由磨底转企稳是好兆;它是源头那盏,后面拖着地方债、银行、地方财政。现为黄灯偏暖(2025 商品房销售额约 -12.6%,官方定性「止跌回稳初期」)。</span></li>
+      <li><span class="dot">▸</span><span><b>一线 / 强二线房价</b> — 二次明显破位才是系统信号(三四线弱是已知的),这是由黄转红的第一灯。</span></li>
+      <li><span class="dot">▸</span><span><b>地方债化债节奏</b> — 置换被打断、利息再飙,说明拆雷断了,转红灯。</span></li>
+      <li><span class="dot">▸</span><span><b>人民币＋外储</b> — 单边持续贬值＋外储月度连续失血,是最高级别红灯:那道印不出来的闸告急,国家队的手要从股市挪去保汇率。</span></li>
+      <li><span class="dot">▸</span><span><b>别盯国家队的手</b> — 汇金今天买没买 ETF、买了多少是噪音;把「国家队进场」当买入信号,是最典型的误用。</span></li>
+    </ul>
+  </section>
+
+  <details class="sources">
+    <summary>来源清单</summary>
+    <ul>
+      <li>① 金融危机 ≠ 股灾:雷曼倒闭当天道指仅跌 4.5%,但银行间借贷一夜冻结;通用电气隔夜借不到钱,靠巴菲特注资 120 亿救命;中国股票占居民金融资产约一成多。来源:Wikipedia、CNN Money、ProPublica、USCC、Chicago Booth Review。</li>
+      <li>② 国家队是谁 + 弹药本质:互换便利(初期 5000 亿)＋回购增持再贷款(初期 3000 亿),2025-05 合并扩到 8000 亿、利率 1.5%;汇金 ETF 约 1.05 万亿(2024 底)→ 约 1.53 万亿(2025Q3);人民日报 2015「流动性可能是无限量的」。来源:证监会 / 人民银行公告、21 世纪经济报道、证券时报、人民网。</li>
+      <li>③ 天花板 = 汇率/外储:外储约 3.4 万亿美元(2026-01,连增),2014 峰值近 4 万亿,2015-16 两年为保汇率烧掉近 1 万亿、跌破 3 万亿;不可能三角(中国弃资本自由,换汇率稳＋货币自主);证金 2015 进 800 多家前十大股东、平价退出需数十年。来源:国家外汇管理局、中国政府网、财新、维基「三元悖论」、香帅团队。</li>
+      <li>④ 托 A 股 ≠ 抗金融危机:SFISF 等工具资金「只能用于投资股票市场」;房地产相关贷款约 52.8 万亿、银行不良约 3.3 万亿(2024Q4);地方隐性债 14.3 万亿(2023 末)→ 10.5 万亿(2024 末),广义口径市场估 50 万亿+;10 万亿化债(6 万亿置换＋4 万亿专项债);A 股小池子(权益占居民金融资产 3–5%、房产约 60%,股票融资占社融存量约 3%、间接融资 70%+)。来源:证监会公告、中国政府网、华安基金 / 21 财经、中金 / 招商、人民银行。</li>
+      <li>⑤ 国际托底考古:香港 1998 投入约 1180 亿港元(约外汇基金 18%),32 个月本金尽数回笼、净赚 1100 多亿;日本 BOJ 2010 起买 ETF、成最大单一股东(约占市值 7%)、清空约需 112 年,企业 ROE 从 >7% 跌到 <1%、名义增速从近 7% 跌到 0;韩国 1997 外储约 300 亿 vs 外债约 1100 亿、找 IMF 借 550 亿。来源:澎湃、格隆汇、Bloomberg、金融界、界面「东京鲸」、中青在线。</li>
+      <li>⑥ 方位(离危机多远 + 盯哪盏灯):隐性债 14.3 万亿 → 10.5 万亿、化债利息一年省约 4500 亿;IMF 2025 FSAP/Article IV 系统级资本充足率 15.4%、一级资本 12.4%、头部大行能扛严重冲击,2025-06 四大行注资 5200 亿;2025 人民币五年最大涨幅、收于 6.99,外储 3.35–3.7 万亿;2025 商品房销售面积 -8.7%、销售额 -12.6%,官方定性「止跌回稳初期」。来源:财政部、第一财经、新浪财经、IMF Country Report 2026/044、国家统计局、CME Group、CF40。</li>
+    </ul>
+  </details>
+
+  <footer>
+    <span class="byline"><span class="m">墨菲斯</span> · Morpheus · 20260624-155054</span>
+  </footer>
+
+</div>
+</body>
+</html>
