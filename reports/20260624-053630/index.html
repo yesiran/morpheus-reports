@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>不是韩国出事,是钱在变贵 · 墨菲斯研究</title>
+<style>
+:root {
+  --paper: #F4F1EA;
+  --paper-2: #FBF9F4;
+  --ink: #211F1A;
+  --ink-strong: #111111;
+  --muted: #7A7368;
+  --line: #E3DCCD;
+  --accent: #2F5D57;
+  --accent-deep: #234742;
+  --accent-soft: rgba(47, 93, 87, 0.09);
+  --brick: #B0503C;
+  --brick-soft: rgba(176, 80, 60, 0.10);
+  --amber: #BB8A2B;
+  --serif: "Songti SC", "Noto Serif SC", "Source Han Serif SC", Georgia, serif;
+  --sans: "PingFang SC", "Noto Sans SC", "Source Han Sans SC", -apple-system, "Helvetica Neue", sans-serif;
+  --mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  --shadow: 0 22px 48px -26px rgba(60, 48, 28, 0.30);
+  --shadow-soft: 0 12px 28px -18px rgba(60, 48, 28, 0.22);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1C1A16;
+    --paper-2: #24211C;
+    --ink: #E6E1D6;
+    --ink-strong: #F5F2EA;
+    --muted: #9A9385;
+    --line: #3A362E;
+    --accent: #5E9C93;
+    --accent-deep: #7DB5AC;
+    --accent-soft: rgba(94, 156, 147, 0.14);
+    --brick: #CC7A66;
+    --brick-soft: rgba(204, 122, 102, 0.14);
+    --amber: #D2A653;
+    --shadow: none;
+    --shadow-soft: none;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.85;
+  font-feature-settings: "tnum";
+}
+.wrap { max-width: 744px; margin: 0 auto; padding: 0 26px 96px; }
+
+/* ── 开篇 ─────────────────────────────────────────── */
+.hero { padding: 76px 0 40px; border-bottom: 1px solid var(--line); }
+.kicker {
+  font: 600 12.5px/1 var(--mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 22px;
+}
+h1 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(32px, 6.2vw, 50px);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  color: var(--ink-strong);
+  margin: 0 0 20px;
+}
+.lead {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--muted);
+  border-left: 2px solid var(--line);
+  padding-left: 18px;
+  margin: 0;
+}
+.lead b { color: var(--ink); font-weight: 600; }
+
+/* ── 总判断 ───────────────────────────────────────── */
+.verdict {
+  margin: 44px 0 8px;
+  padding: 28px 30px;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+}
+.verdict .tag {
+  font: 700 12px/1 var(--mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 12px;
+}
+.verdict p {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.66;
+  color: var(--ink-strong);
+}
+
+/* ── 目录 ─────────────────────────────────────────── */
+.toc { margin: 40px 0 0; padding: 0; list-style: none; }
+.toc li { margin: 0; border-bottom: 1px solid var(--line); }
+.toc a {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  padding: 11px 2px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.toc a:hover { color: var(--accent); }
+.toc .n { font: 700 13px/1 var(--mono); color: var(--accent); min-width: 20px; }
+
+/* ── 每题一节 ─────────────────────────────────────── */
+section { padding-top: 58px; scroll-margin-top: 24px; }
+.qhead { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 18px; }
+.qnum {
+  flex: none;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #FBF9F4;
+  font: 700 15px/32px var(--mono);
+  text-align: center;
+  margin-top: 5px;
+}
+h2 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.34;
+  color: var(--ink-strong);
+  margin: 0;
+}
+.answer {
+  margin: 20px 0 26px;
+  padding: 18px 22px;
+  background: var(--accent-soft);
+  border-radius: 12px;
+  font-size: 17px;
+  line-height: 1.75;
+}
+.answer .tag {
+  font: 700 11.5px/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 8px;
+}
+.answer p { margin: 0; color: var(--ink-strong); font-weight: 500; }
+p { margin: 0 0 18px; }
+strong { color: var(--ink-strong); font-weight: 650; }
+em {
+  font-style: normal;
+  background: linear-gradient(transparent 62%, var(--accent-soft) 62%);
+  padding: 0 2px;
+}
+blockquote {
+  margin: 30px 0;
+  padding: 4px 0 4px 24px;
+  border-left: 3px solid var(--accent);
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.62;
+  color: var(--ink-strong);
+}
+blockquote .src {
+  display: block;
+  margin-top: 10px;
+  font: 500 12.5px/1.5 var(--mono);
+  color: var(--muted);
+}
+ul, ol { margin: 0 0 18px; padding-left: 24px; }
+li { margin-bottom: 8px; line-height: 1.7; }
+a { color: var(--accent); text-decoration-color: var(--line); text-underline-offset: 3px; }
+
+/* ── 风险/反面(用砖红,克制) ───────────────────────── */
+.watch {
+  margin: 30px 0;
+  padding: 18px 22px;
+  background: var(--brick-soft);
+  border-radius: 12px;
+}
+.watch .tag {
+  font: 700 11.5px/1 var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brick);
+  display: block;
+  margin-bottom: 8px;
+}
+.watch p, .watch ul { margin: 0; }
+.watch li { margin-bottom: 6px; }
+
+/* ── 信号看板(盯什么) ─────────────────────────────── */
+.signals { margin: 26px 0 0; padding: 0; list-style: none; }
+.signals li {
+  display: flex;
+  gap: 12px;
+  padding: 12px 2px;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+.signals .dot { flex: none; font: 700 13px/1 var(--mono); color: var(--amber); }
+.signals b { color: var(--ink-strong); font-weight: 650; }
+
+/* ── 来源与脚注 ───────────────────────────────────── */
+.sources { margin-top: 28px; }
+.sources summary {
+  cursor: pointer;
+  font: 600 13px/1 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 8px 0;
+}
+.sources ul { margin: 12px 0 0; }
+.sources li { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+/* ── 结尾 ─────────────────────────────────────────── */
+footer { margin-top: 76px; text-align: center; }
+.byline {
+  display: inline-block;
+  font: 600 13px/1.2 var(--mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 1px solid var(--ink-strong);
+  border-bottom: 1px solid var(--ink-strong);
+  padding: 14px 26px;
+}
+.byline .m { color: var(--accent); }
+
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .wrap { padding: 0 18px 72px; }
+  .hero { padding: 52px 0 32px; }
+  h1 { font-size: 32px; }
+  h2 { font-size: 22px; }
+  blockquote { font-size: 19px; }
+  .verdict { padding: 22px 20px; }
+  .verdict p { font-size: 18px; }
+  section { padding-top: 46px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="kicker">Morpheus Research · 2026-06-24</p>
+    <h1>不是韩国出事,是钱在变贵</h1>
+    <p class="lead">你问的是:<b>墨菲斯,帮我研究一下,昨天韩国股市为什么暴跌?</b> 你真正想知道的,是这把火会不会烧到你的金子和那盘 AI 棋。</p>
+  </header>
+
+  <div class="verdict">
+    <span class="tag">总判断</span>
+    <p>昨天韩国 -10%、盘中熔断那场暴跌,对你是<strong>信号,但不用动盘</strong>。它真正的情报不是「韩国出事」、也不是「AI 见顶」,而是「美元在变贵」——今后你只需死盯一根灯:美联储的利率方向。黄金、紫金、你脑子里那盘 AI 棋,一个都不用碰。</p>
+  </div>
+
+  <ul class="toc">
+    <li><a href="#q1"><span class="n">1</span>韩国不是震源,是台放大器</a></li>
+    <li><a href="#q2"><span class="n">2</span>这一刀,是仓位杀不是周期杀</a></li>
+    <li><a href="#q3"><span class="n">3</span>最该有的坏消息,根本不存在</a></li>
+    <li><a href="#q4"><span class="n">4</span>金丝雀指着 AI,不是你的金子</a></li>
+    <li><a href="#q5"><span class="n">5</span>不动盘,只留一根灯:美联储</a></li>
+  </ul>
+
+  <section id="q1">
+    <div class="qhead">
+      <span class="qnum">1</span>
+      <h2>韩国不是震源,是台放大器</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>昨天的火星是进口的(全球 AI 抛售,全亚洲、美股都在跌);烧成史上级别的大跌,却是韩国自己堆的炸药。它不是韩国一个人的本地事,而是一台把全球恐惧放大三倍的机器,满负荷转了一次。</p>
+    </div>
+    <p>同一阵风:韩国 KOSPI 一天蒸发 <strong>9.99%</strong>、下午直接熔断停盘 20 分钟,可同一天日经只跌 3.6%、台股只跌 0.4%。差别在于,KOSPI 根本不是「一个国家的股市」,而是三个零件叠在一起、昨天同时点火的放大器:</p>
+    <ul>
+      <li><strong>外资持股全球最高 + 韩元易抛。</strong>美国基金经理半夜被 AI 泡沫吓到、想把钱收回现金,韩国是他一篮子亚洲资产里「最好卖、卖了立刻换回美元、卖了最不心疼」的那个——全球一恐慌,第一刀永远先砍韩国。昨天外资单日净卖约 4 万亿韩元(30 多亿美元)。但三星、海力士的真实订单一夜没变,变的只是「外资想离场」:<em>这是资金面在砸,不是基本面在塌</em>。</li>
+      <li><strong>两只股票绑架整个指数。</strong>指数一半以上身家压在三星电子 + SK 海力士,它俩是全球 AI 内存芯片的两根承重柱。昨晚美光暴跌 13%,这把火直接烧到它俩、各跌约 12%,机械地就把指数拖垮。</li>
+      <li><strong>本地杠杆踩踏。</strong>前一天监管头头刚警告杠杆盘风险已经很大;价格一开跌,杠杆盘被强平,砸盘再触发下一批强平,把一个本该 -3% 的回调,<em>滚成 -10% 的踩踏</em>。</li>
+    </ul>
+    <blockquote>
+      火星是进口的,那就该去查「进口的到底是什么」,而不是满世界找一条韩国的坏消息。
+      <span class="src">第一步收口 · 定下后续查证方向</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>跌幅与外资净卖额有口径分歧:主流来源(Korea Herald、KED Global、CNN)一致报 -9.99%、触发熔断、收 8,203,据此采信;外资净卖额则有 4.13 / 5.28 / 5.79 万亿韩元三个口径打架,量级一致(30~38 亿美元级),正文取「约 4 万亿」的保守说法。结论(指数级触发熔断的暴跌)不受影响。</p>
+    </div>
+  </section>
+
+  <section id="q2">
+    <div class="qhead">
+      <span class="qnum">2</span>
+      <h2>这一刀,是仓位杀不是周期杀</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>是「仓位杀」,不是「周期杀」。这是一把精准捅在 AI 内存这条腿上的刀——估值太贵 + 仓位太挤 + 一个加息惊吓,挨刀的是最拥挤的 AI 芯片,但生意本身没破。</p>
+    </div>
+    <p>怎么分?不看「跌没跌」,要看「谁跌得不成比例」。昨天的盘面写得很清楚:道指几乎持平,标普只 <strong>-1.44%</strong>、纳指 -2.21%;可费城半导体 <strong>-6.5%</strong>、美光 / 三星 / SK 海力士齐刷刷 <strong>-12%~-13%</strong>。<em>道指纹丝不动,而内存三家齐跌 12%——这是精准捅刀,不是漫天乱砍</em>。韩国跌得最狠,因为 KOSPI 本质就是「亚洲对 AI 内存周期的一只高 beta 期权」,芯片打个喷嚏,它就发高烧。</p>
+    <p>但刀刃朝哪,才对你最有价值:就在暴跌后一天,内存龙头美光的财报反而很强,<strong>HBM 的 2026 年产能早已全部卖光、厂商不接新单</strong>,四大云厂今年 AI 资本开支合计约 7,250 亿美元、同比还在涨 <strong>77%</strong>。基本面杀是砍单、降价、客户消失;现在是反过来——买都买不到。</p>
+    <blockquote>
+      不是 AI 完了,是太多人挤在最热的船上、还加了杠杆,被一句「过热」喊踩踏了。
+      <span class="src">第二步 · 仓位杀 vs 周期杀</span>
+    </blockquote>
+    <p>对你这个长期主义者,这不改变你对 AI 的判断,只给一个体感校准:这条最拥挤的赛道脆性很高,任何风吹草动都会被 3 倍放大——别在最热的点上追,别用杠杆。</p>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>「仓位杀不是基本面杀」靠两个硬指标撑着(AI capex 仍 +77%、HBM 2026 售罄)。这是当前最强证据,但万一后续真出现「云厂砍单 / capex 下修」,这条判断要立刻推翻——这也是「盯利率」之外的那个备用警报。</p>
+    </div>
+  </section>
+
+  <section id="q3">
+    <div class="qhead">
+      <span class="qnum">3</span>
+      <h2>最该有的坏消息,根本不存在</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>从反面再砸一遍,也确认韩国不是震源,是放大器。当天确有本地催化,但它们是叠在一场全球 AI 抛售之上的油,不是火本身;真正伤长期逻辑的只有一条。</p>
+    </div>
+    <p>大家第一反应都是「韩国肯定又出大事了」——毕竟前两年戒严、弹劾闹得那么凶。可把那几天的韩国新闻翻个底朝天,会发现一件反直觉的事:<em>那条最该有的「政治坏消息」根本不存在</em>。逐个命门排查:</p>
+    <ul>
+      <li><strong>政治:稳,而且方向是反的。</strong>尹锡悦那条线早翻篇,现任总统李在明支持率约 60%,执政党刚在地方选举大胜。当天政治面是「稳」,不是「乱」。</li>
+      <li><strong>韩元:没崩。</strong>韩元在 1,540 附近、较前日基本没动;6 月前 20 天出口同比还暴涨 60%(半导体拉动)。没有「韩元崩→外资夺路而逃」这条线。</li>
+      <li><strong>真有的本地事只两条,只一条伤筋骨。</strong>一条是 MSCI <em>再次</em>把韩国挡在「发达市场」门外(离岸韩元不可交割、卖空结算效率低),抽走了今年一直撑着外资买入的「升级预期」,伤的是长期吸引外资的能力,偏结构;另一条是国会论坛抛出「对未实现浮盈征税」的提案,吓了大家一跳,但它只是论坛主张、还没立法,属于一天的情绪惊吓。</li>
+    </ul>
+  </section>
+
+  <section id="q4">
+    <div class="qhead">
+      <span class="qnum">4</span>
+      <h2>金丝雀指着 AI,不是你的金子</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>昨天金价不但没涨、反而跌了 1.86%——现在跑的不是「逃命的钱」,是「从太贵的 AI 股里获利了结的钱」。这只金丝雀指着的是 AI 赛道的拥挤度,暂时还不是你手里的金子。</p>
+    </div>
+    <p>韩国最敏感、最早开盘、最好卖,全球的钱一转向,它总是第一个扑腾。所以这条新闻可能根本不在说韩国。看你的金子,答案就出来了:<em>真要是「全世界要完」,黄金该大涨——可昨天金价反跌 1.86%</em>。逃命的钱会买金子;获利了结、又碰上加息预期的钱,会顺手连金子一起卖。再看外溢的三条链,印证同一个判断——一条腿在出血,身子暂时没事:</p>
+    <ul>
+      <li><strong>股市:</strong>次日(6/24)亚洲早盘 KOSPI 高开、盘中一度反弹 4%;A 股、港股几乎没被传染(上证 -1.4% vs 韩国 -10%),因为中国指数里金融、消费权重大、半导体权重小,结构上对这次「AI 挤仓」天然免疫。</li>
+      <li><strong>你的紫金:</strong>可以松口气。它赚的是铜和金的钱,跟韩国半导体、跟 AI 几乎零关系。<em>对紫金,这次是纯噪音</em>。</li>
+      <li><strong>新兴市场货币 / 恐慌指数:</strong>韩元和一批新兴市场货币确实同步走弱(这是偏「真信号」的一面),但恐慌指数 VIX 没有爆表——市场把这判成「板块事件」,不是「系统性危机」。</li>
+    </ul>
+    <blockquote>
+      一张「全球危机的第一张骨牌」,不会第二天就反弹 4%。这是单日恐慌挤仓的脸,不是趋势崩塌的脸。
+      <span class="src">第四步 · 金丝雀的判决</span>
+    </blockquote>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>「黄金跌 = 非全面恐慌」是推断,不是铁律。黄金当天下跌,一部分也来自美伊达成 60 天和谈这个一次性利好(避险溢价消退),不全是「市场不恐慌」。逻辑可靠,但不绝对。</p>
+    </div>
+  </section>
+
+  <section id="q5">
+    <div class="qhead">
+      <span class="qnum">5</span>
+      <h2>不动盘,只留一根灯:美联储</h2>
+    </div>
+    <div class="answer">
+      <span class="tag">带回的判断</span>
+      <p>有一点关系,但不是你以为的那种。「紫金被带崩」「AI 见顶」查到底都是虚惊;真正有关的那点藏在更上游——美元在收紧。动作明确:不动盘,只死盯一根灯。</p>
+    </div>
+    <p>顺着「韩国为什么这一刻崩」一路往上拆:外资撤 → 因为全球资金在收 → 因为美元变贵、利率不降 → 因为<strong>美联储 6 月 17 日按住没降息</strong>,还因油价把通胀顶起来(核心通胀从 3.0% 升到 3.3%),市场开始预期它可能要加息。这只手,才是<em>同时压着你黄金(高利率是黄金唯一的天敌,高盛、大摩刚下调金价目标)、又让全世界高估值资产一起缩水的那只手</em>。三个候选灯逐个验:「AI 内存见顶」划掉(capex 还涨 77%、HBM 售罄,反而绿得发亮);「新兴市场外流」是症状不是病根;只有「美元 / 美联储」是病根。</p>
+    <blockquote>
+      利率一松,新兴市场外流自己缓、拥挤交易自己续命、你的金子也松一口气;利率继续紧,什么资产都得重新打折。一灯三用。
+      <span class="src">第五步 · 落回你的手</span>
+    </blockquote>
+    <p>所以给你的动作倾向明确不含糊:<strong>不动盘</strong>。黄金、紫金、那盘 AI 棋一个都不用碰。把这次当成一次「记下来的提醒」,只留一根灯亮着:美联储是松还是紧。这根灯只要不转向加息、通胀只要不失控,你手上这几样东西的长期逻辑就都还站得住。</p>
+    <div class="watch">
+      <span class="tag">反面 / 风险</span>
+      <p>次日(6/24)数据只部分落定:亚洲早盘反弹是确证,但 6/24 美股、A 股、港股的<strong>收盘</strong>在查询时点尚未完全确定。若 6/24 美股收盘转为深跌、且黄金转头大涨,则需把判断上调向「真信号」一侧——这是该继续盯两三天的地方。</p>
+    </div>
+  </section>
+
+  <section id="signals">
+    <div class="qhead">
+      <span class="qnum">◎</span>
+      <h2>之后盯什么</h2>
+    </div>
+    <ul class="signals">
+      <li><span class="dot">▸</span><span><b>美联储利率方向</b> — 唯一总闸。下次 FOMC 偏降,黄金、新兴市场、AI 拥挤交易同时松一口气;偏紧,所有高估值资产重新打折。只死盯这一根。</span></li>
+      <li><span class="dot">▸</span><span><b>核心 PCE 通胀</b> — 每月看一眼是否继续往上(已从 3.0% 升到 3.3%)。它一失控,利率就难降,总闸就关。</span></li>
+      <li><span class="dot">▸</span><span><b>6/24 起两三天的美股收盘 + 金价</b> — 若美股转深跌、且黄金转头大涨,把「信号不用动盘」上调向「真信号」一侧。</span></li>
+      <li><span class="dot">▸</span><span><b>云厂 AI capex / HBM 订单</b> — 备用警报。一旦出现砍单或 capex 下修,「仓位杀不是基本面杀」立刻推翻。</span></li>
+    </ul>
+  </section>
+
+  <details class="sources">
+    <summary>来源清单</summary>
+    <ul>
+      <li>KOSPI -9.99%、外资净卖、三星 -12.31% / SK 海力士 -12.47%:The Korea Herald《Kospi crashes nearly 10% on massive tech sell-offs》(2026-06-23);KED Global《Kospi suffers biggest-ever daily drop on 'Black Tuesday'》。</li>
+      <li>同日各市场(道指持平、标普 -1.44%、纳指 -2.21%、SOX/SMH -6.5%、美光 -13%、日经 -3.6%、台股 -0.4%):Yahoo Finance《S&amp;P 500, Nasdaq sink as AI trade cools off》;TheStreet《Stock Market Today, June 23 2026》。</li>
+      <li>仓位杀非基本面杀(美光财报强、HBM 2026 售罄、AI capex 约 7,250 亿 +77%):TrendForce 美光财报前瞻;Tom's Hardware《Big Tech's AI spending reaches $725 billion》;Goldman Sachs AI capex 展望。</li>
+      <li>本地催化(MSCI 落空=结构、浮盈税提案=情绪、政治稳):Bloomberg / Seoul Economic Daily《Korea misses MSCI upgrade》;KuCoin《South Korea proposes taxing unrealized gains》;The Diplomat(李在明支持率)。</li>
+      <li>金丝雀与外溢(黄金 -1.86%、次日 KOSPI +4%、A 股结构免疫、EM 货币走弱、VIX 温和):CNN Business《Wall Street trampled by AI sell-off, South Korea plunges 10%》;Fortune《Current price of gold, June 23 2026》;Bloomberg《Korea tech rout pulls down EM equities》。</li>
+      <li>收口那根灯(美联储 6/17 维持 3.50–3.75%、降息预期转向、金价目标下调、紫金独立驱动):Federal Reserve 6/17 FOMC 声明;J.P. Morgan 金价 2026 展望;Trading Economics 紫金矿业(601899)行情。</li>
+    </ul>
+  </details>
+
+  <footer>
+    <span class="byline"><span class="m">墨菲斯</span> · Morpheus · 20260624-053630</span>
+  </footer>
+
+</div>
+</body>
+</html>
